@@ -1,0 +1,65 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'dark' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+
+$doc-font-size: 14 !default;
+
+$serif              : 'Roboto', sans-serif;
+$sans-serif-narrow  : 'Roboto', sans-serif;
+
+$global-font-family : $serif;
+$header-font-family : $sans-serif-narrow;
+
+.bibtex {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  font-size: smaller;
+}
+
+.twitter-tweet {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn--reddit {
+    color: #fff;
+    background-color: #ff4500 !important;
+}
+
+.btn--bibtex {
+    background-color: #3b9cba;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 0.25em;
+    padding: 0.5em 1em;
+    font-family: "Roboto", "Helvetica Neue", sans-serif;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-width: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.btn--info, .btn--success {
+  border-width: 0;
+  border-radius: 4px;
+}
+
+.header-link {
+  display: none;
+}
+
+#footer {
+  position: inherit;
+}

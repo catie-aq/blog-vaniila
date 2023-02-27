@@ -1,0 +1,18 @@
+main:
+  - title: "Audio"
+    url: /audio/
+  - title: "Image"
+    url: /cv/
+  - title: "Texte"
+    url: /nlp/
+  - title: "Tags"
+    url: /categories/
+  - title: "Articles"
+    url: /posts/
+  - title: "A propos"
+    url: /about/    
+
+
+sidebar-nlp:
+  - title: MECASNISMES D'ATTENTION
+    url: /nlp/Attention/
