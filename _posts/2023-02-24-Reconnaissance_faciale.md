@@ -6,7 +6,7 @@ tags:
   - Reconnaissance faciale à l’aide de réseaux de neurones siamois
 excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/main/assets/images/NLP_radom_blog.png"
 author_profile: false
 classes: wide
 ---
@@ -32,7 +32,7 @@ Nous vous proposons ici la description d’une solution de ce type basée sur un
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/screen.jpg">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/screen.jpg">
   <figcaption>
   Rendu des sorties de l’algorithme
   </figcaption>
@@ -59,7 +59,7 @@ L’architecture mise en œuvre ici est **siamoise** et fait intervenir deux ins
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/overview.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/overview.png">
   <figcaption>
   Aperçu général de l’architecture du dispositif
   </figcaption>
@@ -85,7 +85,7 @@ Le défi consiste ici à concevoir et à entraîner le réseau convolutif de sor
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/base_de_donnees.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/base_de_donnees.png">
   <figcaption>
   Source : 
   <a href="https://paperswithcode.com/dataset/vggface2-1">https://paperswithcode.com/dataset/vggface2-1</a>
@@ -113,7 +113,7 @@ Des temps d’inférence relativement courts caractérisent ce réseau (comparat
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/reseau.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/reseau.png">
   <figcaption>
   Architecture du réseau EfficientNet-B0 de Tan et Le (2019)
   </figcaption>
@@ -153,7 +153,7 @@ Cette fonction tend simultanément à rapprocher la paire $$(a, v_1)$$  et à é
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/triplet.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/triplet.png">
   <figcaption>
   Triplet loss de Schroff et al. (2015)
   </figcaption>
@@ -181,7 +181,7 @@ Cette méthode permet d’entraîner rapidement un réseau siamois.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/serveur.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/serveur.png">
   <figcaption>
   Source : <a href="https://www.catie.fr/cluster-vaniila/">https://www.catie.fr/cluster-vaniila/</a>
   </figcaption>
@@ -211,7 +211,7 @@ Restez donc à l’affût.
 
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/Reconnaissance_faciale/epock.jpg">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/epock.jpg">
   <figcaption>
   Epock, le robot du CATIE, pendant la Robocup 2019
   </figcaption>
