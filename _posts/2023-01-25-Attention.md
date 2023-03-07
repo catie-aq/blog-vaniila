@@ -14,13 +14,12 @@ classes: wide
 ---
 
 # Introduction
-TODO : Ecrire une intro
+Les mécanismes d'attention ont permis de révolutionner le traitement des séquences en *machine learning*.   
+Dans cette vidéo, nous introduisons ces mécanismes à travers deux architectures (les RNNs et les *transformers*) et présentons des cas d'applications au traitement du langage naturel et à la vision.  
+
+Bon visionnage :)
 
 # La vidéo
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rZGJJtYA4xs" frameborder="0" allowfullscreen></iframe>
 
 <br>
-
-
-# Conclusion
-TODO : Ecrire une conclusion (pour faire une ouverture sur l’article suivant)
