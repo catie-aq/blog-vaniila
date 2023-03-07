@@ -62,7 +62,7 @@ plugins:
 
 author:
   name   : "BLOG VANIILA"
-  avatar : "/assets/images/Logo_CATIE_CMNJ-1.png"
+  avatar : "/assets/images/Logo_blog_VANIILA.svg"
   bio              : "Plus de détails nous concernant dans la page *A propos*."
   location         : "Bordeaux"
   links:
