@@ -1,10 +1,4 @@
 main:
-  - title: "Audio"
-    url: /audio/
-  - title: "Image"
-    url: /cv/
-  - title: "Texte"
-    url: /nlp/
   - title: "Tags"
     url: /categories/
   - title: "Articles"
@@ -14,5 +8,6 @@ main:
 
 
 sidebar-nlp:
+  - title: ARTICLES SUR LE NLP
   - title: MECASNISMES D'ATTENTION
     url: /nlp/Attention/
