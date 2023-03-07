@@ -9,5 +9,6 @@ main:
 
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP
-  - title: MECASNISMES D'ATTENTION
+  - title: ---------------------
+  - title: MÉCANISMES D'ATTENTION
     url: /nlp/Attention/
