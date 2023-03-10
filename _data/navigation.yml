@@ -5,7 +5,8 @@ main:
     url: /posts/
   - title: "A propos"
     url: /about/    
-
+  - title: ":gb:"
+    url: https://catie-aq.github.io/blog-vaniila-en/   
 
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP
