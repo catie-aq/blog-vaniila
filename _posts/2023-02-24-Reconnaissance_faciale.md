@@ -50,7 +50,7 @@ La solution de reconnaissance faciale que nous avons développée repose sur l�
 - détecter les visages d’individus dans une photographie<br>
   - produire, pour chaque visage isolé, un <i>vecteur d’identité</i> à 64 dimensions le représentant<br>
 - calculer la distance entre les vecteurs associés à deux clichés distincts<br>
-- et déterminer, en parcourant une base de données, si le vecteur associé à un visage est proche, ou pas, de celui d’un autre déjà identifié<br>
+- et déterminer, en parcourant une base de données, si le vecteur associé à un visage est proche, ou pas, de celui d’un autre déjà identifié
 <br><br>
 La <b>détection des visages</b> dans une photographie ou un flux vidéo, puis leur <b>extraction</b>, sont effectuées à l’aide d’outils dont nous parlerons plus loin.
 <br><br>
@@ -140,7 +140,7 @@ Remarques :<br>
 L’apprentissage de similarités requiert l’utilisation de fonctions objectif appropriées, parmi lesquelles la <i><a href="https://ieeexplore.ieee.org/document/1640964">contrastive loss</a></i> de Hadsell et al. (2005) et la <i><a href="https://arxiv.org/abs/1503.03832">triplet loss</a></i> de Schroff et al. (2015).
 <br><br>
 La <b><i>contrastive loss</i></b> est définie par :
-
+</p>
 $$
 L(v_1, v_2)=\frac{1}{2} (1-\alpha)d(v_1, v_2)² + \frac{1}{2} \alpha(max(0,m-d(v_1, v_2)))²
 $$
@@ -149,8 +149,9 @@ où $$v_1$$ et $$v_2$$ étant deux vecteurs, $\alpha$ est un coefficient qui vau
 <br><br>
 Intuitivement, cette fonction objectif pénalise deux vecteurs de la même classe par leur distance, tandis que deux vecteurs de classes différentes ne sont pénalisés que si leur distance est inférieure à $$m$$.
 <br><br>
+<p style="text-align:justify;">
 La fonction <b>triplet loss</b> fait quant à elle intervenir un troisième vecteur, l’ancre, dans son équation: 
-
+</p>
 $$
 L(a, v_1, v_2)=max(d(a,v_1)²-d(a,v_2)²+m, 0) 
 $$
@@ -158,7 +159,6 @@ $$
 ici, $$a$$ désigne l’ancre, $$v_1$$ est un vecteur de la même classe que $$a$$ et $$v_2$$ est un vecteur d’une classe différente de $$a$$.
 <br><br>
 Cette fonction tend simultanément à rapprocher la paire $$(a, v_1)$$  et à éloigner la paire $$(a, v_2)$$ comme présenté sur la figure suivante : 
-</p>
 
 <center>
 <figure class="image">
@@ -179,13 +179,13 @@ Afin de contourner cette difficulté, nous avons adopté une approche alternativ
 ## Entraînement
 
 <p style="text-align:justify;">
-Nous avons dans un premier temps entraîné le réseau sur le problème de classification consistant à reconnaître la photographie d’une personne parmi les 9000 identités disponibles. La fonction de coût étant alors une fonction d’<b>entropie croisée</b> (<b><i>crossentropy</b></i>) classique pour un tel problème.
+Nous avons dans un premier temps entraîné le réseau sur le problème de classification consistant à reconnaître la photographie d’une personne parmi les 9000 identités disponibles. La fonction de coût étant alors une fonction d’<b>entropie croisée</b> (<b><i>crossentropy</i></b>) classique pour un tel problème.
 <br><br>
 Une fois la convergence du problème de classification obtenue, nous avons remplacé la dernière couche de classification par une nouvelle couche représentant en sortie le plongement de l’image.
 <br><br>
 Les couches précédentes conservent les poids des couches précédentes issus de l’entraînement à l’étape précédente. Cette idée est similaire à celle de l'<b>apprentissage par transfert<b> (<b><i>transfert learning</i></b>) : intuitivement, on cherche à conserver les caractéristiques apprises lors du problème de classification et à les réutiliser pour construire la métrique qui nous intéresse.
 <br><br>
-Le réseau a alors été réentraîné avec une fonction objectif de type <b><i>contrastive</b></i> ou <b><i>triplet</b></i> comme vu précédemment.
+Le réseau a alors été réentraîné avec une fonction objectif de type <b><i>contrastive</i></b> ou <b><i>triplet</i></b> comme vu précédemment.
 <br><br>
 Cette méthode permet d’entraîner rapidement un réseau siamois. 
 </p>
