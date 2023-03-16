@@ -67,7 +67,7 @@ author:
   bio              : "Plus de détails nous concernant dans la page *A propos*."
   location         : "Bordeaux"
   links:
-    - label: "La plateforme Vaniila"
+    - label: "La plateforme VANIILA"
       icon: "fab fa-fw fa-solid fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
@@ -92,7 +92,7 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "La plateforme Vaniila"
+    - label: "La plateforme VANIILA"
       icon: "fab fa-fw fa-solid fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
