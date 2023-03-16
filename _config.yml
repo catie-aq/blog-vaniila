@@ -68,10 +68,10 @@ author:
   location         : "Bordeaux"
   links:
     - label: "La plateforme Vaniila"
-      icon: "fab fa-solid fa-desktop"    
+      icon: "fab fa-fw fa-solid fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
-      icon: "fab fa-solid fa-globe"   
+      icon: "fab fa-fw fa-solid fa-globe"   
       url: "https://www.catie.fr/"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -93,10 +93,10 @@ author:
 footer:
   links:
     - label: "La plateforme Vaniila"
-      icon: "fab fa-solid fa-desktop"    
+      icon: "fab fa-fw fa-solid fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
-      icon: "fab fa-solid fa-globe"   
+      icon: "fab fa-fw fa-solid fa-globe"   
       url: "https://www.catie.fr/"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
