@@ -8,6 +8,8 @@ excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissa
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
+sidebar:
+    nav: sidebar-cv
 classes: wide
 ---
 
