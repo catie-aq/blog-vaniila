@@ -1,10 +1,11 @@
 ---
-title: "QUANTIQUE"
+title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE"
 categories:
   - Divers
 tags:
-  - Quantique
-excerpt : "Divers - QUANTIQUE"
+  - quantique
+  - informatique quantique
+excerpt : "Divers - Introduction à l'informatique quantique"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
@@ -19,7 +20,7 @@ A ajouter
 Bon visionnage :)
 
 # La vidéo
-<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rZGJJtYA4xs" frameborder="0" allowfullscreen></iframe>
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/5MerX4AzqrM" frameborder="0" allowfullscreen></iframe>
 
 <br><br>
 
