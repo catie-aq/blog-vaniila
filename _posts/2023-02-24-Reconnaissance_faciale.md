@@ -6,7 +6,7 @@ tags:
   - Reconnaissance faciale à l’aide de réseaux de neurones siamois
 excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale"
 header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/main/assets/images/NLP_radom_blog.png"
+    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
 classes: wide
 ---
