@@ -91,19 +91,27 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Email"
+    - label: "La plateforme Vaniila"
+      icon: "fa-solid fa-desktop"    
+      url: "https://www.vaniila.ai/"
+    - label: "Le CATIE"
+      icon: "fa-solid fa-globe"   
+      url: "https://www.catie.fr/"
+     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: mailto:contact@catie.fr
+      url: mailto:contact@vaniila.ai 
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/CATIE_AQ"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/catie-aq"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/company/catie-aq/"
-
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/catie-aq"
+    - label: "Hugging Face"
+      icon:      
+      url: "https://huggingface.co/CATIE-AQ"  
 
 
 defaults:
