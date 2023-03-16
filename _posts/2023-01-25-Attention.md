@@ -22,4 +22,14 @@ Bon visionnage :)
 # La vidéo
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rZGJJtYA4xs" frameborder="0" allowfullscreen></iframe>
 
-<br>
+<br><br>
+
+# Commentaires
+<script src="https://utteranc.es/client.js"
+        repo="catie-aq/blog-vaniila"
+        issue-term="pathname"
+        label="[Commentaires]"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
