@@ -17,3 +17,8 @@ sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
     url: /cv/Reconnaissance_faciale/
+
+sidebar-cv:
+  - title: ARTICLES DIVERS
+  - title: QUANTIQUE
+    url: /divers/Quantique/
