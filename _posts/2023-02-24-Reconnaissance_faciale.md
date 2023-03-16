@@ -145,7 +145,7 @@ $$
 L(v_1, v_2)=\frac{1}{2} (1-\alpha)d(v_1, v_2)² + \frac{1}{2} \alpha(max(0,m-d(v_1, v_2)))²
 $$
 
-où $$v_1$$ et $$v_2$$ étant deux vecteurs, $\alpha$ est un coefficient qui vaut 1 si les deux vecteurs sont de la même classe, 0 sinon, $$d$$ est une fonction de distance quelconque, et $$m$$ est un réel appelé la marge.
+où $$v_1$$ et $$v_2$$ étant deux vecteurs, α est un coefficient qui vaut 1 si les deux vecteurs sont de la même classe, 0 sinon, $$d$$ est une fonction de distance quelconque, et $$m$$ est un réel appelé la marge.
 <br><br>
 Intuitivement, cette fonction objectif pénalise deux vecteurs de la même classe par leur distance, tandis que deux vecteurs de classes différentes ne sont pénalisés que si leur distance est inférieure à $$m$$.
 <br><br>
@@ -183,7 +183,7 @@ Nous avons dans un premier temps entraîné le réseau sur le problème de class
 <br><br>
 Une fois la convergence du problème de classification obtenue, nous avons remplacé la dernière couche de classification par une nouvelle couche représentant en sortie le plongement de l’image.
 <br><br>
-Les couches précédentes conservent les poids des couches précédentes issus de l’entraînement à l’étape précédente. Cette idée est similaire à celle de l'<b>apprentissage par transfert<b> (<b><i>transfert learning</i></b>) : intuitivement, on cherche à conserver les caractéristiques apprises lors du problème de classification et à les réutiliser pour construire la métrique qui nous intéresse.
+Les couches précédentes conservent les poids des couches précédentes issus de l’entraînement à l’étape précédente. Cette idée est similaire à celle de l'<b>apprentissage par transfert</b> (<b><i>transfert learning</i></b>) : intuitivement, on cherche à conserver les caractéristiques apprises lors du problème de classification et à les réutiliser pour construire la métrique qui nous intéresse.
 <br><br>
 Le réseau a alors été réentraîné avec une fonction objectif de type <b><i>contrastive</i></b> ou <b><i>triplet</i></b> comme vu précédemment.
 <br><br>
