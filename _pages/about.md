@@ -7,10 +7,13 @@ title: "A propos"
 
 ## Qui sommes-nous ?
 <p style="text-align:justify;">
-Présentation du CATIE, de l'équipe, de Vaniila, etc.
-
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
-
-Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar. Nulla sollicitudin. Fusce varius, ligula non tempus aliquam, nunc turpis ullamcorper nibh, in tempus sapien eros vitae ligula. Pellentesque rhoncus nunc et augue. Integer id felis. Curabitur aliquet pellentesque diam. Integer quis metus vitae elit lobortis egestas. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi vel erat non mauris convallis vehicula. Nulla et sapien. Integer tortor tellus, aliquam faucibus, convallis id, congue eu, quam. Mauris ullamcorper felis vitae erat. Proin feugiat, augue non elementum posuere, metus purus iaculis lectus, et tristique ligula justo vitae magna.
-Aliquam convallis sollicitudin purus. Praesent aliquam, enim at fermentum mollis, ligula massa adipiscing nisl, ac euismod nibh nisl eu lectus. Fusce vulputate sem at sapien. Vivamus leo. Aliquam euismod libero eu enim. Nulla nec felis sed leo placerat imperdiet. Aenean suscipit nulla in justo. Suspendisse cursus rutrum augue. Nulla tincidunt tincidunt mi. Curabitur iaculis, lorem vel rhoncus faucibus, felis magna fermentum augue, et ultricies lacus lorem varius purus. Curabitur eu amet. »
+Ce blog a pour objectif de partager des informations et des connaissances sur les dernières tendances et innovations en matière d'<b>intelligence artificielle</b>.
+<br><br>
+Vous pourrez y trouver des articles et présentations destinés à tout type de lecteurs, du néophyte au spécialiste, mis à disposition par des experts travaillant sur divers projets, allant de l'analyse de données à l’apprentissage de <i>machine learning</i> et de <i>deep learning</i>, en passant par la vision par ordinateur et le traitement du langage naturel.
+<br><br>
+Le blog Vaniilla permet aux professionnels du domaine et à tous ceux qui s'intéressent aux technologies innovantes d'accéder à une source fiable d'informations et d’exemples, rédigés par les docteurs et ingénieurs du département Algorithmes et Données du <a href="https://catie.fr">CATIE</a>.
+<br><br>
+Nous espérons ainsi contribuer à la promotion des connaissances et expériences en IA pour stimuler l'innovation, favoriser les collaborations en matière d’IA et participer activement à l’écosystème dont le CATIE est partie intégrante en tant que Centre de Ressources Technologiques. 
+<br><br>
+Le CATIE est fier de collaborer avec des laboratoires de recherche, des universités et des partenaires industriels pour promouvoir l'<b>intelligence artificielle</b>.
 </p>
