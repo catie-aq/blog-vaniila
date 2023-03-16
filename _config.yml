@@ -73,7 +73,7 @@ author:
     - label: "Le CATIE"
       icon: "fa-solid fa-globe"   
       url: "https://www.catie.fr/"
-     - label: "Email"
+    - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
     - label: "Twitter"
@@ -98,7 +98,7 @@ footer:
     - label: "Le CATIE"
       icon: "fa-solid fa-globe"   
       url: "https://www.catie.fr/"
-     - label: "Email"
+    - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
     - label: "Twitter"
