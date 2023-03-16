@@ -71,7 +71,7 @@ author:
       icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
-      icon: "fa-solid fa-fw fa-globe" 
+      icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -93,10 +93,10 @@ author:
 footer:
   links:
     - label: "La plateforme VANIILA"
-      icon: "fab fa-fw fa-solid fa-desktop"    
+      icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
     - label: "Le CATIE"
-      icon: "fab fa-fw fa-solid fa-globe"   
+      icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
