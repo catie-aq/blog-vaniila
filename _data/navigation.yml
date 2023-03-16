@@ -12,3 +12,8 @@ sidebar-nlp:
   - title: ARTICLES SUR LE NLP
   - title: MÉCANISMES D'ATTENTION
     url: /nlp/Attention/
+
+sidebar-cv:
+  - title: ARTICLES SUR LA CV
+  - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
+    url: /cv/Reconnaissance_faciale/
