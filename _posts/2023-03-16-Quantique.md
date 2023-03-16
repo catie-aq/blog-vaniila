@@ -1,5 +1,5 @@
 ---
-title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE"
+title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE "/assets/images/difficulté_3.png""
 categories:
   - Divers
 tags:
