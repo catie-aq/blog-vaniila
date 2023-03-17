@@ -15,7 +15,10 @@ classes: wide
 ---
 
 # Introduction
-A ajouter
+<p style="text-align:justify;">
+L'informatique quantique est un domaine de recherche en plein essor, avec de nombreuses applications potentielles dans des domaines tels que la cryptographie, la simulation de molécules pour la découverte de médicaments, l'optimisation de la logistique, et la modélisation de systèmes complexes.<br>
+Cette vidéo n’a pas vocation à faire de vous des experts mais vous en saurez plus sur les qubits qui permettent aux ordinateurs quantiques de traiter l'information beaucoup plus rapidement qu’avec des ordinateurs classiques.<br>
+</p>
 
 Bon visionnage :)
 
