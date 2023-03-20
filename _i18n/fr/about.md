@@ -1,9 +1,3 @@
----
-permalink: /about/
-classes: wide
-title: "About us"
----
-
 ## Qui sommes-nous ?
 <p style="text-align:justify;">
 Ce blog a pour objectif de partager des informations et des connaissances sur les dernières tendances et innovations en matière d'<b>intelligence artificielle</b> et de <b>data science</b>.
