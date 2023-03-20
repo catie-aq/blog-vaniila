@@ -15,7 +15,9 @@
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
-              <a href="{{ link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+              <a href="{{ link.url | relative_url }}"{% if link.description %} 
+                 title="{{ link.description }}"
+                {% endif %}>{{ site.translations[site.lang].pages[link.title] }}</a>
             </li>
           {%- endfor -%}
           
@@ -25,7 +27,7 @@
               <a href="{{ link1 }}" > :gb: {% t global.english %}</a>
             </li>
           {% elsif site.lang == "en" %}
-            {% capture link2 %}{{ site.baseurl_root }}{% endcapture %}
+            {% capture link2 %}{{ site.baseurl_root }}/../{% endcapture %}
             <li class="masthead__menu-item"> 
               <a href="{{ link2 }}" > :fr: {% t global.french %}</a>
             </li>

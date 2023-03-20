@@ -4,6 +4,9 @@ global:
 pages:
   home: Accueil
   work: Work
+  tags: tags
+  about: A propos
+  articles: Articles
 
 author:
   name : "BLOG VANIILA"
