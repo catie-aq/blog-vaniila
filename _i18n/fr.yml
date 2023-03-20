@@ -4,3 +4,10 @@ global:
 pages:
   home: Accueil
   work: Work
+
+author:
+  name : "BLOG VANIILA"
+  avatar : "/assets/images/Logo_blog_VANIILA.png"
+  bio              : "Plus de détails nous concernant dans la page *A propos*."
+  location         : "Bordeaux"
+ 
