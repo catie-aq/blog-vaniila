@@ -67,7 +67,7 @@ languages: ["fr", "en"]
 exclude_from_localizations: ["assets", "_sass"]
 
 # _pages/toto.md is in french (default locale) --- >  _i18n/en/_pages/toto.md  is in english
-default_locale_in_subfolder: true
+# default_locale_in_subfolder: false
 
 author:
   name   : "BLOG VANIILA"
@@ -150,5 +150,4 @@ tag_archive:
   type: liquid
   path: /tags/
 
-markdown: kramdown
 mathjax: true
