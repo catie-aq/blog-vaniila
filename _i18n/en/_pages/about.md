@@ -1,7 +1,7 @@
 ---
 permalink: /about/
 classes: wide
-title: "A propos"
+title: "About us"
 ---
 
 ## Qui sommes-nous ?

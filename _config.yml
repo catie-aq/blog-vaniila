@@ -22,7 +22,7 @@ title: Blog Vaniila
 email:
 description: "Blog Vaniila"
 url :
-logo : "/assets/images/Logo_blog_VANIILA.png"
+logo :  /assets/images/Logo_blog_VANIILA.png
 google_site_verification:
 twitter_username: CATIE_AQ
 github_username: CATIE_AQ
@@ -60,6 +60,14 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-multiple-languages-plugin
+
+languages: ["fr", "en"]
+
+exclude_from_localizations: ["assets", "_sass"]
+
+# _pages/toto.md is in french (default locale) --- >  _i18n/en/_pages/toto.md  is in english
+default_locale_in_subfolder: true
 
 author:
   name   : "BLOG VANIILA"
