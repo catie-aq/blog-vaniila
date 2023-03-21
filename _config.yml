@@ -77,52 +77,52 @@ author:
   bio              : "Plus de détails nous concernant dans la page *A propos*."
   location         : "Bordeaux"
 
-## No translation yet in links
+## Labels are translated in links 
   links:
-    - label: "VANIILA platform"
+    - label: platform
       icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
-    - label: "Le CATIE"
+    - label: catie
       icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
-    - label: "Email"
+    - label: email
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
-    - label: "Twitter"
+    - label: twitter
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/CATIE_AQ"
-    - label: "LinkedIn"
+    - label: linkedin
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/company/catie-aq/"
-    - label: "GitHub"
+    - label: github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/catie-aq"
-    - label: "Hugging Face"
+    - label: hugging_face
       icon:      
       url: "https://huggingface.co/CATIE-AQ"   
       
 # Site Footer
 footer:
   links:
-    - label: "VANIILA platform"
+    - label: platform
       icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
-    - label: "Le CATIE"
+    - label: catie
       icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
-    - label: "Email"
+    - label: email
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
-    - label: "Twitter"
+    - label: twitter
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/CATIE_AQ"
-    - label: "LinkedIn"
+    - label: linkedin
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/company/catie-aq/"
-    - label: "GitHub"
+    - label: github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/catie-aq"
-    - label: "Hugging Face"
+    - label: hugging_face
       icon:      
       url: "https://huggingface.co/CATIE-AQ"  
 
