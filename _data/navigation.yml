@@ -28,14 +28,14 @@ sidebar-divers:
 sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: ATTENTION MECHANISMS
-    url: /en/nlp/Attention/
+    url: /nlp/Attention/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
   - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
-    url: /en/cv/Reconnaissance_faciale/
+    url: /cv/Reconnaissance_faciale/
 
 sidebar-divers-en:
   - title: MISC. ARTICLES
   - title: INTRODUCTION TO QUANTUM COMPUTING
-    url: /en/misc/Quantique/
+    url: /misc/Quantique/
