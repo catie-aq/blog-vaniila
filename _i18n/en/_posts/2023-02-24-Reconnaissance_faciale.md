@@ -149,7 +149,7 @@ $$
 L(v_1, v_2)=\frac{1}{2} (1-\alpha)d(v_1, v_2)² + \frac{1}{2} \alpha(max(0,m-d(v_1, v_2)))²
 $$
 
-where $$v_1$$ and $ $v_2$$ being two vectors, α is a coefficient of 1 if the two vectors are of the same class, 0 otherwise, $$d$$ is a function of any distance, and $$m$$ is a real called the margin.
+where $$v_1$$ and $$v_2$$ being two vectors, α is a coefficient of 1 if the two vectors are of the same class, 0 otherwise, $$d$$ is a function of any distance, and $$m$$ is a real called the margin.
 <br><br>
 Intuitively, this objective function penalizes two vectors of  the same class by their distance, while two vectors of different classes are penalized only if their distance is less than $$m$$.
 <br><br>
