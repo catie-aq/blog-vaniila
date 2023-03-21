@@ -9,7 +9,7 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
 sidebar:
-    nav: sidebar-nlp
+    nav: sidebar-nlp-en
 classes: wide
 ---
 # Introduction
