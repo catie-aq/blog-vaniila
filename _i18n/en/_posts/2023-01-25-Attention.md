@@ -27,7 +27,7 @@ Enjoy the video :)
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
         issue-term="pathname"
-        label="[Commentaires]"
+        label="[Comments]"
         theme="github-dark"
         crossorigin="anonymous"
         async>
