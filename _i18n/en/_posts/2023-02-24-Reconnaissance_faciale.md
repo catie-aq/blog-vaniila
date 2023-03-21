@@ -1,10 +1,10 @@
 ---
-title: "RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS"
+title: "FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS"
 categories:
   - CV
 tags:
-  - Reconnaissance faciale à l’aide de réseaux de neurones siamois
-excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale"
+  - Facial recognition using Siamese neural networks
+excerpt : "CV - Explaining Siamese neural networks for face recognition"
 header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
@@ -17,27 +17,27 @@ classes: wide
 
 # Introduction
 
-<p style="text-align:justify;">
-La <b>reconnaissance faciale</b> vise à permettre l'<b>identification automatique de personnes</b> à partir d’informations caractéristiques extraites de photographies de leur visage. Ces techniques ont considérablement évolué au cours des trois dernières décennies (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> se penchaient déjà sur un sujet similaire en 1994), en particulier grâce aux apports de l’<b>intelligence artificielle</b> et notamment de l’<b>apprentissage profond</b> (<b><i>deep learning</i></b>).
+<p style="text-align:justify;" >
+The <b>facial recognition</b> aims to enable the <b>automatic identification of persons</b> from characteristic information extracted from pictures of their face. These techniques have evolved considerably over the last three decades (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> were already working on a similar subject in 1994), in particular thanks to the contributions of <b>artificial intelligence</b> and in particular <b>deep learning</b>.
 <br><br>
-Les <b>réseaux de neurones</b> sont aujourd’hui au cœur de nombreux dispositifs et équipements utilisés pour l’identification d’individus. Leur conception et leur intégration dépendent naturellement de l’application envisagée et des <b>ressources matérielles disponibles</b>, ainsi que d’autres paramètres importants tels que la <b>disponibilité de jeux de données pour leur entraînement</b>.
+<b>Neural networks</b> are now at the heart of many devices and equipment used for the identification of individuals. Their design and integration naturally depend on the intended application and the <b>available hardware resources</b>, as well as other important parameters such as the <b>availability of datasets for their training</b>.
 <br><br>
-La reconnaissance faciale est souvent abordée comme un <b>problème de classification</b> où il s’agit de déterminer, à l’aide d’un réseau de neurones, la <b>classe d’appartenance la plus probable</b> de la photographie du visage d’un individu. Cette approche peut, dans certains cas, poser problème car :<br>
-- elle nécessite de devoir disposer d’un <b>jeu de données labellisées</b> assez conséquent, potentiellement fastidieux à constituer et à mettre à jour<br>
-- le réseau correspondant doit être <b>réentraîné</b> chaque fois que de nouvelles classes (nouveaux individus à identifier) doivent être ajoutées
+Facial recognition is often approached as a <b>classification problem</b> where it involves determining, using a neural network, the most likely <b>class of belonging</b> of a photo of an individual's face. This approach can, in some cases, be problematic because :<br>
+- it requires a fairly substantial <b>set of labeled data</b> potentially tedious to build and update<br>
+- the corresponding network must be <b>retrained</b> whenever new classes (new individuals to be identified) need to be added
 <br><br>
-Dans les cas où l’on souhaite, par exemple, reconnaître à la volée de nouveaux individus dans un flux vidéo, <b>l’approche par classification se révèle inadaptée</b> et il est donc nécessaire de se tourner vers des solutions moins gourmandes en ressources matérielles et en temps de calcul.
+In cases where, for example, it is desired to recognize new individuals on the fly in a video stream, <b>the classification approach is inappropriate</b> and it is therefore necessary to turn to solutions that require less material resources and computational time.
 <br><br>
-Dans ces cas, on privilégiera la mise en œuvre <b>d’architectures prenant appui sur des fonctions de calcul de similarité</b> que l’on utilisera pour déterminer si les photographies de personnes à identifier correspondent, ou pas, aux représentations d’individus connus, enregistrées dans une base de données (et qui pourra elle-même, le cas échéant, être enrichie en temps réel, au fur et à mesure de la détection de nouveaux visages). 
+In these cases, preference will be given to the implementation <b>architectures based on similarity calculation functions</b> which will be used to determine whether or not the photographs of persons to be identified correspond to the representations of known individuals, recorded in a database (and which may itself, if necessary,  be enriched in real time, as new faces are detected). 
 <br><br>
-Nous vous proposons ici la description d’une solution de ce type basée sur une <b>architecture siamoise</b> que nous avons notamment testée et mise en œuvre dans le cadre de la <b><a href="https://www.robocup.org/domains/3">RoboCup@Home</a></b>, compétition internationale dans le domaine de la robotique de service dans laquelle les robots doivent interagir avec des opérateurs humains.
+We offer you here the description of a solution of this type based on a <b>siamese architecture</b> that we have tested and implemented as part of the <b><a href="https://www.robocup.org/domains/3">RoboCup@Home</a></b>, an international competition in the field of service robotics in which robots must interact with human operators.
 </p>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/screen.jpg">
   <figcaption>
-  Rendu des sorties de l’algorithme
+  Algorithm outputs
   </figcaption>
 </figure>
 </center>
@@ -45,151 +45,153 @@ Nous vous proposons ici la description d’une solution de ce type basée sur un
 <br><br>
 
 
-# Architecture générale
+# General architecture
 
-<p style="text-align:justify;">
-La solution de reconnaissance faciale que nous avons développée repose sur l’intégration d’outils et de réseaux de neurones respectivement destinés à :<br>
-- détecter les visages d’individus dans une photographie<br>
-  - produire, pour chaque visage isolé, un <i>vecteur d’identité</i> à 64 dimensions le représentant<br>
-- calculer la distance entre les vecteurs associés à deux clichés distincts<br>
-- et déterminer, en parcourant une base de données, si le vecteur associé à un visage est proche, ou pas, de celui d’un autre déjà identifié
+<p style="text-align:justify;" >
+The facial recognition solution we have developed is based on the integration of tools and neural networks respectively intended to :<br>
+- detect the faces of individuals in a photo<br>
+- produce, for each isolated face, a <i>identity vector</i> with 64 dimensions representing it<br>
+- calculate the distance between the vectors associated with two distinct images<br>
+- and determine, by browsing a database, whether the vector associated with one face is close, or not, to that of another already identified
 <br><br>
-La <b>détection des visages</b> dans une photographie ou un flux vidéo, puis leur <b>extraction</b>, sont effectuées à l’aide d’outils dont nous parlerons plus loin.
+<b>Face detection</b> in an image or video stream, and then their <b>extraction</b>, are performed using tools we'll discuss later.
 <br><br>
-Le cœur du dispositif est quant à lui constitué d’un modèle dont la fonction objectif calcule une similarité permettant de déterminer si deux photographies de visage se réfèrent, ou non, à un même individu.
+The heart of the device consists of a model whose objective function calculates a similarity to determine whether or not two face photographs refer to the same individual.
 <br><br>
-L’architecture mise en œuvre ici est <b>siamoise</b> et fait intervenir deux instances d’un même <b>réseau de neurones convolutif</b> prenant chacun en entrée une photographie de visage et fournissant en sortie une <b>représentation vectorielle</b> de celui-ci en 64 dimensions.
+The architecture implemented here is <b>siamese</b> and involves two instances of the same <b>convolutional neural network</b> each taking as input a photograph of the face and providing output a <b>vector representation</b> of it in 64 dimensions.
 </p>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/overview.png">
   <figcaption>
-  Aperçu général de l’architecture du dispositif
+  Overview of the architecture
   </figcaption>
 </figure>
 </center>
 
-<p style="text-align:justify;">
-Le réseau convolutif a été entraîné de manière à fournir des <b>représentations proches</b>, en distance euclidienne, <b>pour deux clichés de visage de la même personne</b> et, inversement, <b>éloignées ou très éloignées</b> pour les clichés de deux <b>personnes différentes</b>.
+<p style="text-align:justify;" >
+The convolutional network was trained to provide <b>close representations</b>, in Euclidean distance, <b>for two face images of the same person</b> and, conversely, <b>distant or very distant</b> for <b>images of two different persons</b>.
 <br><br>
-Les sorties des deux instances du réseau (identiques en tous points et partageant donc la même configuration et les mêmes poids) se rejoignent ensuite et sont alors utilisées pour le calcul d’un <b>score de similarité directement déduit de la distance séparant les représentations vectorielles des clichés fournis en entrée</b>.
+The outputs of the two instances of the network (identical in all points and therefore sharing the same configuration and the same weights) then join and are then used for the calculation of a <b>similarity score directly deduced from the distance separating the vector representations from the images provided as input</b>.
 <br><br>
-Chaque visage détecté dans une photographie ou tiré d’un flux vidéo est alors encodé par le réseau, le vecteur résultant étant <b>comparé à une série d’empreintes connues</b> stockées dans une base de données. Le résultat de cette comparaison, retourné sous la forme d’une valeur scalaire (le score de similarité évoqué précédemment), est alors évalué au regard d’un seuil au-delà duquel on peut considérer les empreintes <b>comme étant identiques</b> et, par suite, l’individu concerné comme étant <b>identifié</b>.
+Each face detected in an image or taken from a video stream is then encoded by the network, the resulting vector being <b>compared to a series of known fingerprints</b> stored in a database. The result of this comparison, returned in the form of a scalar value (the similarity score mentioned above), is then evaluated with regard to a threshold beyond which the fingerprints <b>as identical</b> and, consequently, the individual concerned as being <b>identified</b>.
 </p>
 <br><br>
 
   
-# Caractéristiques et entraînement du réseau
+# Network characteristics and drive
   
-<p style="text-align:justify;">
-Le défi consiste ici à concevoir et à entraîner le réseau convolutif de sorte que <b>des entrées similaires soient projetées en des endroits relativement proches dans l’espace des représentations</b> et, inversement, que des <b>entrées différentes soient projetées en des points éloignés</b>.
+<p style="text-align:justify;" >
+The challenge here is to design and train the convolutional network so that <b>similar inputs are projected at relatively close locations in the performance space</b> and, conversely, different <b>inputs are projected at distant points</b>.
 </p>
 <br>
 
-## Jeu de données utilisé et pré-traitements
+## Dataset used and pre-processing
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/base_de_donnees.png">
   <figcaption>
+  <center>
   Source : 
   <a href="https://paperswithcode.com/dataset/vggface2-1">https://paperswithcode.com/dataset/vggface2-1</a>
+  </center>
   </figcaption>
 </figure>
 </center>
 
-<p style="text-align:justify;">
-L’entraînement du réseau a été réalisé sur la base du jeu de données <a href="http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/">VGGFace2</a> de Cao et al. (2018), un jeu de données accessible publiquement, comportant environ 3,3 millions d’images et se référant à plus de 9000 personnes.
+<p style="text-align:justify;" >
+The network training was carried out based on the dataset <a href="http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/">VGGFace2</a> by Cao et al. (2018), a publicly accessible dataset containing about 3.3 million images and referring to more than 9000 people.
 <br><br>
-Les images tirées de ce jeu présentant une grande variabilité dans les poses, âge des sujets, expositions, etc., ont été <b>normalisées</b> de manière à identifier les visages et à positionner les points caractéristiques de ceux-ci (yeux, nez, bouche) en des coordonnées identiques quel que soit le cliché considéré.
+The images taken from this dataset with great variability in poses, age of subjects, exposures, etc., have been <b>normalized</b> so as to identify the faces and position the characteristic points of these (eyes, nose, mouth) in identical coordinates whatever the cliché considered.
 <br><br>
-Cette étape de normalisation des images est critique pour les performances du réseau. La détection des visages a été effectuée à l’aide d’un réseau neuronal <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace</a> de Deng et al. (2019) permettant d’identifier une <i>bounding box</i> du visage ainsi que les points caractéristiques, l’image obtenue étant <b>découpée et transformée</b> de manière à positionner les points caractéristiques aux positions prédéfinies.
+This step of image normalization is critical to network performance. Face detection was performed using a neural network <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace</a> by Deng et al. (2019) to identify an <i>bounding box</i> of the face as well as the characteristic points, the image obtained being <b>cut and transformed</b> so as to position the characteristic points at the predefined positions.
 <br><br>
-Le réseau convolutif positionné au cœur de notre dispositif de reconnaissance faciale a alors été entraîné à partir de ces clichés.
+The convolutional network was then trained from these frames.
 </p>
 <br>
 
 ## Architecture
 
-<p style="text-align:justify;">
-Le réseau est construit sur la base d’une architecture <a href="https://arxiv.org/abs/1905.11946">EfficientNet-B0</a> de Tan et Le (2019), ce choix est un compromis entre les diverses contraintes du problème qui nous occupe puisque l’algorithme sera embarqué sur le robot, dans une carte graphique dont les capacités sont limitées.
-Le nombre de paramètres en mémoire est contraint et la vitesse d’exécution doit être suffisante (la décision doit être rapide car les personnes à identifier peuvent se déplacer, par exemple).
+<p style="text-align:justify;" >
+The network is built on the basis of an architecture <a href="https://arxiv.org/abs/1905.11946">EfficientNet-B0</a> by Tan and Le (2019), this choice is a compromise between the various constraints of the problem that concerns us since the algorithm will be embedded on the robot, in a graphics card whose capacities are limited.
+The number of parameters in memory is constrained and the speed of execution must be sufficient (the decision must be fast because the people to be identified can move, for example).
 <br><br>
-Des temps d’inférence relativement courts caractérisent ce réseau (comparativement à des réseaux plus profonds, certes plus performants mais induisant des temps de traitement significativement plus longs).
+Relatively short inference times characterize this network (compared to deeper networks, certainly more efficient but inducing significantly longer processing times).
 </p>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/reseau.png">
   <figcaption>
-  Architecture du réseau EfficientNet-B0 de Tan et Le (2019)
+  Tan and Le EfficientNet-B0 Network Architecture (2019)
   </figcaption>
 </figure>
 </center>
 
-<p style="text-align:justify;">
-Remarques :<br>
-- le EfficientNet-B0 est le fruit d’un domaine de recherche qui tient une place importante en apprentissage profond : le NAS (<i>Neural Architecture Search</i>), et qui a pour objet d'automatiser et d'optimiser les architectures des réseaux utilisés. Il a donné lieu à de nombreux réseaux, dont les plus populaires sont les <a href="https://arxiv.org/abs/1704.04861">MobileNets</a> de Howard et al. (2017), <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> (Tan et Le (2019)) ou <a href="https://arxiv.org/abs/2201.03545">ConvNext</a> de Liu et al. (2022).<br>
-- de nos jours les <i>transformers</i> pour la vision (<a href="https://arxiv.org/abs/2010.11929">ViT</a> de Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zha et al. (2020)) sont une alternative aux réseaux de neurones convolutifs. On peut citer par exemple le <a href="https://arxiv.org/abs/2103.14030">Swin Transformer</a> de Liu, Lin, Cao, Hu et al. (2021) 
+<p style="text-align:justify;" >
+Notes:<br>
+- EfficientNet-B0 is the result of a field of research that holds an important place in deep learning: NAS (<i>Neural Architecture Search</i>), and which aims to automate and optimize the architectures of the networks used. It has given rise to many networks, the most popular of which are the <a href="https://arxiv.org/abs/1704.04861">MobileNets</a> by Howard et al. (2017), <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> (Tan and Le (2019)) or <a href="https://arxiv.org/abs/2201.03545">ConvNext</a> by Liu et al. (2022).<br>
+- nowadays <i>transformers</i> for vision (<a href="https://arxiv.org/abs/2010.11929">ViT</a> by Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zha  et al. (2020)) are an alternative to convolutional neural networks. Examples include the <a href="https://arxiv.org/abs/2103.14030">Swin Transformer</a> by Liu, Lin, Cao, Hu et al. (2021) 
 </p>
 <br>
 
 
-## Choix de la fonction objectif
+## Choice of objective function
 
-<p style="text-align:justify;">
-L’apprentissage de similarités requiert l’utilisation de fonctions objectif appropriées, parmi lesquelles la <i><a href="https://ieeexplore.ieee.org/document/1640964">contrastive loss</a></i> de Hadsell et al. (2005) et la <i><a href="https://arxiv.org/abs/1503.03832">triplet loss</a></i> de Schroff et al. (2015).
+<p style="text-align:justify;" >
+Learning similarities requires the use of appropriate objective functions, including the <i><a href="https://ieeexplore.ieee.org/document/1640964">contrastive loss</a></i> by Hadsell et al. (2005) and the <i><a  href="https://arxiv.org/abs/1503.03832">triplet loss</a></i> by Schroff et al. (2015). 
 <br><br>
-La <b><i>contrastive loss</i></b> est définie par :
+The <b><i>contrastive loss</i></b> is defined by:
 </p>
 $$
 L(v_1, v_2)=\frac{1}{2} (1-\alpha)d(v_1, v_2)² + \frac{1}{2} \alpha(max(0,m-d(v_1, v_2)))²
 $$
 
-où $$v_1$$ et $$v_2$$ étant deux vecteurs, α est un coefficient qui vaut 1 si les deux vecteurs sont de la même classe, 0 sinon, $$d$$ est une fonction de distance quelconque, et $$m$$ est un réel appelé la marge.
+where $$v_1$$ and $ $v_2$$ being two vectors, α is a coefficient of 1 if the two vectors are of the same class, 0 otherwise, $$d$$ is a function of any distance, and $$m$$ is a real called the margin.
 <br><br>
-Intuitivement, cette fonction objectif pénalise deux vecteurs de la même classe par leur distance, tandis que deux vecteurs de classes différentes ne sont pénalisés que si leur distance est inférieure à $$m$$.
+Intuitively, this objective function penalizes two vectors of  the same class by their distance, while two vectors of different classes are penalized only if their distance is less than $$m$$.
 <br><br>
-<p style="text-align:justify;">
-La fonction <b>triplet loss</b> fait quant à elle intervenir un troisième vecteur, l’ancre, dans son équation: 
+<p style="text-align:justify;" >
+The function <b>triplet loss</b> involves a third vector, the anchor, in its equation: 
 </p>
 $$
 L(a, v_1, v_2)=max(d(a,v_1)²-d(a,v_2)²+m, 0) 
 $$
 
-ici, $$a$$ désigne l’ancre, $$v_1$$ est un vecteur de la même classe que $$a$$ et $$v_2$$ est un vecteur d’une classe différente de $$a$$.
+Here, $$a$$ denotes the anchor, $$v_1$$ is a vector of the same class as $$a$$ and $$v_2$$ is a vector of a different class of $$a$$.
 <br><br>
-Cette fonction tend simultanément à rapprocher la paire $$(a, v_1)$$  et à éloigner la paire $$(a, v_2)$$ comme présenté sur la figure suivante : 
+This function simultaneously tends to bring the pair $$(a, v_1)$$ closer together and to move away the pair $$(a, v_2)$$ as shown in the following figure: 
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/triplet.png">
   <figcaption>
-  Triplet loss de Schroff et al. (2015)
+  Triplet loss by Schroff et al. (2015)
   </figcaption>
 </figure>
 </center>
 
-<p style="text-align:justify;">
-De manière générale, l’entraînement des réseaux utilisant directement ces fonctions objectif est assez coûteux, la convergence de ce type de systèmes étant plus longue à obtenir que, par exemple, sur de classiques problèmes de classification.
+<p style="text-align:justify;" >
+In general, training networks using these objective functions directly is quite expensive, the convergence of this type of system being longer to achieve than, for example, on conventional classification problems.
 <br><br>
-Afin de contourner cette difficulté, nous avons adopté une approche alternative consistant en un entraînement du réseau en deux étapes.
+In order to circumvent this difficulty, we have adopted an alternative approach consisting of a two-step network training.
 </p>
 <br>
 
-## Entraînement
+## Training
 
-<p style="text-align:justify;">
-Nous avons dans un premier temps entraîné le réseau sur le problème de classification consistant à reconnaître la photographie d’une personne parmi les 9000 identités disponibles. La fonction de coût étant alors une fonction d’<b>entropie croisée</b> (<b><i>crossentropy</i></b>) classique pour un tel problème.
+<p style="text-align:justify;" >
+We first trained the network on the classification problem of recognizing the photograph of a person among the 9000 identities available. The cost function is then a <b>entropy </b> function (<b><i>crossentropy</i></b>) classical for such a problem.
 <br><br>
-Une fois la convergence du problème de classification obtenue, nous avons remplacé la dernière couche de classification par une nouvelle couche représentant en sortie le plongement de l’image.
+Once the convergence of the classification problem was achieved, we replaced the last classification layer with a new layer representing the embedding of the image as output.
 <br><br>
-Les couches précédentes conservent les poids des couches précédentes issus de l’entraînement à l’étape précédente. Cette idée est similaire à celle de l'<b>apprentissage par transfert</b> (<b><i>transfert learning</i></b>) : intuitivement, on cherche à conserver les caractéristiques apprises lors du problème de classification et à les réutiliser pour construire la métrique qui nous intéresse.
+The previous layers retain the weights of the previous layers from the training in the previous step. This idea is similar to that of <b>transfer learning</b>: intuitively, we try to preserve the characteristics learned during the classification problem and reuse them to build the metric that interests us.
 <br><br>
-Le réseau a alors été réentraîné avec une fonction objectif de type <b><i>contrastive</i></b> ou <b><i>triplet</i></b> comme vu précédemment.
+The network was then retrained with an objective function of type <b><i>contrastive</i></b> or <b><i>triplet</i></b> as seen above.
 <br><br>
-Cette méthode permet d’entraîner rapidement un réseau siamois. 
+This method makes it possible to quickly train a siamese network. 
 </p>
 
 <center>
@@ -204,24 +206,25 @@ Cette méthode permet d’entraîner rapidement un réseau siamois.
 
 <br><br>                                                                                                                    
 
-# Implémentation et intégration
+# Implementation and integration
 
-<p style="text-align:justify;">
-Le dispositif de reconnaissance faciale été produit par intégration d’outils et de scripts essentiellement codés en langage Python.
+<p style="text-align:justify;" >
+The facial recognition device was produced by integrating tools and scripts essentially coded in Python.
 <br><br>
-Le réseau de neurones est lui-même implémenté à l’aide de <a href="https://github.com/pytorch/pytorch">PyTorch</a> de Paszke, Gross, Chintala, Chanan et al. (2016), plus précisément en <a href="https://github.com/Lightning-AI/lightning">Pytorch Lightning</a> de Falcon et al. (2019), et entraîné avec les ressources de calcul de la plateforme <a href="https://www.vaniila.ai/">VANIILA</a> du CATIE.
+The neural network itself is implemented using <a href="https://github.com/ pytorch/pytorch">PyTorch</a> by Paszke, Gross, Chintala, Chanan et al. (2016), more precisely in <a href="https://github.com/Lightning-AI/ lightning">Pytorch  Lightning</a> by Falcon et al. (2019), and trained with computational resources from CATIE's <a href="https://www.vaniila.ai/">VANIILA</a> platform.
 <br><br>
-Cela a permis de réaliser les entraînements successifs en un temps raisonnable (moins de deux heures) et les performance obtenues sont apparues tout à fait intéressantes avec un score F1 de 0,92, ce qui est meilleur que les solutions du commerce testées.
+This made it possible to carry out the successive training sessions in a reasonable time (less than two hours) and the performances obtained appeared quite interesting with an F1 score of 0.92, which is better than the commercial solutions tested.
 </p>
 <br><br>
 
 # Conclusion
 
-<p style="text-align:justify;">
-Nous avons vu comment une première étape d’extraction et d’alignement des visages suivie, d’une seconde d’entraînement d’un réseau siamois à l’aide d’une fonction de coût adaptée, permet d’appréhender une problématique de reconnaissance faciale.
+<p style="text-align:justify;" >
+We have seen how a first step of extraction and alignment of faces followed, a second of training of a siamese network using an adapted cost function, makes it possible to understand a facial recognition problem.
 <br><br>
-Une des limites de ce genre de techniques, trouvables dans d’autres domaines, est la nécessité d’un très grand nombre d’images étiquetées pour entraîner le modèle. Cet étiquetage peut être très coûteux voire impossible. Pour remédier à cela, de nouvelles méthodes basées sur l’apprentissage auto-supervisé sont apparues récemment, consistant à entraîner les modèles avec de nombreuses données qui n’ont pas d’étiquette. Nous développerons les détails de ces techniques auto-supervisées dans un prochain article.
+One of the limitations of this kind of technique, found in other fields, is the need for a very large number of labeled images to train the model. This labelling can be very expensive or impossible. To remedy this, new methods based on self-supervised learning have recently emerged, consisting of training models with a lot of data that does not have a label. We will develop the details of these self-supervised techniques in a future article.
 <br><br>
+
 Stay tuned !
 </p>
 
@@ -229,7 +232,7 @@ Stay tuned !
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/epock.jpg">
   <figcaption>
-  Epock, le robot du CATIE, pendant la RoboCup 2019
+  Epock, CATIE's robot, during RoboCup 2019
   </figcaption>
 </figure>
 </center>
@@ -237,21 +240,21 @@ Stay tuned !
 
 <br><br>
 
-# Références
+# References
 
 <p style="text-align:justify;">
-- <a href="https://arxiv.org/abs/2201.03545">A ConvNet for the 2020s</a> de Liu et al. (2022)<br>
-- <a href="https://arxiv.org/abs/2010.11929">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</a> de Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zha et al. (2020)<br>
-- <a href="https://ieeexplore.ieee.org/document/1640964">Dimensionality Reduction by Learning an Invariant Mapping</a> de Hadsell et al. (2005)<br>
-- <a href="https://arxiv.org/abs/1905.11946">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</a> de Tan et Le (2019)<br>
-- <a href="https://arxiv.org/abs/1503.03832">FaceNet: A Unified Embedding for Face Recognition and Clustering</a> de Schroff et al. (2015)<br>
-- <a href="https://arxiv.org/abs/1704.04861">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</a> de Howard et al. (2017)<br>
-- <a href="https://github.com/pytorch/pytorch">PyTorch</a> de Paszke, Gross, Chintala, Chanan et al. (2016)<br>
-- <a href="https://github.com/Lightning-AI/lightning">Pytorch Lightning</a> de Falcon et al. (2019)<br>
-- <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace: Single-stage Dense Face Localisation in the Wild</a> de Deng et al. (2019)<br>
-- <a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Signature Verification using a "Siamese" Time Delay Neural Network</a> de Bromley et al. (1994)<br>
-- <a href="https://arxiv.org/abs/2103.14030">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a> de Liu, Lin, Cao, Hu et al. (2021)<br>
-- <a href="https://www.robots.ox.ac.uk/~vgg/publications/2018/Cao18/cao18.pdf">VGGFace2: A dataset for recognising faces across pose and age</a> de Cao et al. (2018)
+- <a href="https://arxiv.org/abs/2201.03545">A ConvNet for the 2020s</a> by Liu et al. (2022)<br>
+- <a href="https://arxiv.org/abs/2010.11929">An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</a> by Dosovitskiy, Beyer, Kolesnikov, Weissenborn, Zha et al. (2020)<br>
+- <a href="https://ieeexplore.ieee.org/document/1640964">Dimensionality Reduction by Learning an Invariant Mapping</a> by Hadsell et al. (2005)<br>
+- <a href="https://arxiv.org/abs/1905.11946">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</a> by Tan et Le (2019)<br>
+- <a href="https://arxiv.org/abs/1503.03832">FaceNet: A Unified Embedding for Face Recognition and Clustering</a> by Schroff et al. (2015)<br>
+- <a href="https://arxiv.org/abs/1704.04861">MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</a> by Howard et al. (2017)<br>
+- <a href="https://github.com/pytorch/pytorch">PyTorch</a> by Paszke, Gross, Chintala, Chanan et al. (2016)<br>
+- <a href="https://github.com/Lightning-AI/lightning">Pytorch Lightning</a> by Falcon et al. (2019)<br>
+- <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace: Single-stage Dense Face Localisation in the Wild</a> by Deng et al. (2019)<br>
+- <a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Signature Verification using a "Siamese" Time Delay Neural Network</a> by Bromley et al. (1994)<br>
+- <a href="https://arxiv.org/abs/2103.14030">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a> by Liu, Lin, Cao, Hu et al. (2021)<br>
+- <a href="https://www.robots.ox.ac.uk/~vgg/publications/2018/Cao18/cao18.pdf">VGGFace2: A dataset for recognising faces across pose and age</a> by Cao et al. (2018)
 </p>
 
 <br><br>
