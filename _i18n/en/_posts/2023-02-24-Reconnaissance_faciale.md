@@ -259,7 +259,7 @@ Stay tuned !
 
 <br><br>
 
-# Commentaires
+# Comments
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
         issue-term="pathname"
