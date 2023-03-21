@@ -8,6 +8,7 @@ main:
   - title: "about"
     url: /about/    
 
+# French
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP
   - title: MÉCANISMES D'ATTENTION
@@ -22,3 +23,19 @@ sidebar-divers:
   - title: ARTICLES DIVERS
   - title: INTRODUCTION A L'INFORMATIQUE QUANTIQUE
     url: /divers/Quantique/
+
+# English
+sidebar-nlp-en:
+  - title: ARTICLES ABOUT NLP
+  - title: ATTENTION MECHANISMS
+    url: /en/nlp/Attention/
+
+sidebar-cv-en:
+  - title: ARTICLES ABOUT CV
+  - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
+    url: /en/cv/Reconnaissance_faciale/
+
+sidebar-divers-en:
+  - title: MISC. ARTICLES
+  - title: INTRODUCTION TO QUANTUM COMPUTING
+    url: /en/misc/Quantique/
