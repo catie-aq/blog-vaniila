@@ -129,6 +129,8 @@ footer:
 
 defaults:
   # _posts
+
+## Cette partie n'est sûrement plus utilisée, car les pages sont déclarées explicitement maintenant.
   - scope:
       path: ""
       type: posts
