@@ -1,0 +1,22 @@
+global:
+  french: Français
+  english: Anglais
+pages:
+  home: Accueil
+  work: Work
+  tags: Tags
+  about: À propos
+  articles: Articles
+author:
+  name : "BLOG VANIILA"
+  avatar : "/assets/images/Logo_blog_VANIILA.png"
+  bio              : "Plus de détails nous concernant dans la page *A propos*."
+  location         : "Bordeaux"
+links: 
+  platform: "Plateforme VANIILA"
+  catie: "Le CATIE"
+  email: "Email"
+  twitter: "Twitter"
+  linkedin: Linkedin 
+  github: GitHub 
+  hugging_face: Hugging Face

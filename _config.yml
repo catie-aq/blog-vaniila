@@ -17,12 +17,13 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "defaut", "dirt",
 
 
 # Site Settings
-locale                   : "fr"
+# locale                   : "fr"
+## Replaced by site.lang
 title: Blog Vaniila
 email:
 description: "Blog Vaniila"
 url :
-logo : "/assets/images/Logo_blog_VANIILA.png"
+logo :  /assets/images/Logo_blog_VANIILA.png
 google_site_verification:
 twitter_username: CATIE_AQ
 github_username: CATIE_AQ
@@ -60,63 +61,76 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-multiple-languages-plugin
 
+languages: ["fr", "en"]
+
+# exclude_from_localizations: ["assets", "_sass"]
+
+# _pages/toto.md is in french (default locale) --- >  _i18n/en/_pages/toto.md  is in english
+# default_locale_in_subfolder: false
+
+## WARNING: author content uses the locale -> please look at it
 author:
   name   : "BLOG VANIILA"
   avatar : "/assets/images/Logo_blog_VANIILA.png"
   bio              : "Plus de détails nous concernant dans la page *A propos*."
   location         : "Bordeaux"
+
+## Labels are translated in links 
   links:
-    - label: "La plateforme VANIILA"
+    - label: platform
       icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
-    - label: "Le CATIE"
+    - label: catie
       icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
-    - label: "Email"
+    - label: email
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
-    - label: "Twitter"
+    - label: twitter
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/CATIE_AQ"
-    - label: "LinkedIn"
+    - label: linkedin
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/company/catie-aq/"
-    - label: "GitHub"
+    - label: github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/catie-aq"
-    - label: "Hugging Face"
+    - label: hugging_face
       icon:      
       url: "https://huggingface.co/CATIE-AQ"   
       
 # Site Footer
 footer:
   links:
-    - label: "La plateforme VANIILA"
+    - label: platform
       icon: "fas fa-fw fa-desktop"    
       url: "https://www.vaniila.ai/"
-    - label: "Le CATIE"
+    - label: catie
       icon: "fas fa-fw fa-globe" 
       url: "https://www.catie.fr/"
-    - label: "Email"
+    - label: email
       icon: "fas fa-fw fa-envelope-square"
       url: mailto:contact@vaniila.ai 
-    - label: "Twitter"
+    - label: twitter
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/CATIE_AQ"
-    - label: "LinkedIn"
+    - label: linkedin
       icon: "fab fa-fw fa-linkedin"      
       url: "https://www.linkedin.com/company/catie-aq/"
-    - label: "GitHub"
+    - label: github
       icon: "fab fa-fw fa-github"
       url: "https://github.com/catie-aq"
-    - label: "Hugging Face"
+    - label: hugging_face
       icon:      
       url: "https://huggingface.co/CATIE-AQ"  
 
 
 defaults:
   # _posts
+
+## Cette partie n'est sûrement plus utilisée, car les pages sont déclarées explicitement maintenant.
   - scope:
       path: ""
       type: posts
@@ -142,5 +156,4 @@ tag_archive:
   type: liquid
   path: /tags/
 
-markdown: kramdown
 mathjax: true

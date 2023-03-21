@@ -1,12 +1,12 @@
+
+# text translates in pages
 main:
-  - title: "Tags"
+  - title: "tags"
     url: /categories/
-  - title: "Articles"
+  - title: "articles"
     url: /posts/
-  - title: "A propos"
+  - title: "about"
     url: /about/    
-  - title: ":gb:"
-    url: https://catie-aq.github.io/blog-vaniila-en/   
 
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP

@@ -1,5 +1,5 @@
 ---
-title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE "
+title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE"
 categories:
   - Divers
 tags:
