@@ -14,7 +14,7 @@ sidebar:
 classes: wide
 ---
 
-# Introduction
+# Introduction [en]
 <p style="text-align:justify;">
 Quantum computing is a rapidly growing field of research, with many potential applications in areas such as cryptography, molecule simulation for drug discovery, logistics optimization, and modeling complex systems.<br>
 This video is not intended to make you experts, but you will learn more about qubits that allow quantum computers to process information much faster than with conventional computers.<br>

@@ -9,13 +9,13 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
 sidebar:
-    nav: sidebar-cv-en
+    nav: sidebar-cv
 classes: wide
 ---
 
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
 
-# Introduction
+# Introduction (en)
 
 <p style="text-align:justify;" >
 The <b>facial recognition</b> aims to enable the <b>automatic identification of persons</b> from characteristic information extracted from pictures of their face. These techniques have evolved considerably over the last three decades (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> were already working on a similar subject in 1994), in particular thanks to the contributions of <b>artificial intelligence</b> and in particular <b>deep learning</b>.

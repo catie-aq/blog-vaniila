@@ -15,7 +15,10 @@
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
-              <a href="{{ link.url | relative_url }}"{% if link.description %} 
+
+              
+              <a href="{{ site.baseurl_root }}{{ link.url | relative_url }}"
+                {% if link.description %} 
                  title="{{ link.description }}"
                 {% endif %}>{{ site.translations[site.lang].pages[link.title] }}</a>
             </li>
