@@ -10,7 +10,7 @@ pages:
 author:
   name: "VANIILA BLOG"
   avatar : "/assets/images/Logo_blog_VANIILA.png"
-  bio              : "More details in the *about us* page."
+  bio              : "More details in the *About* page."
   location         : "Bordeaux"
 links: 
   platform: "VANIILA Platform"
