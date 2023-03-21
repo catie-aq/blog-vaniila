@@ -20,3 +20,11 @@ links:
   linkedin: Linkedin 
   github: GitHub 
   hugging_face: Hugging Face
+
+sidebars: 
+  nlp-top: ARTICLES SUR LE NLP
+  nlp-attention: MÉCANISMES D'ATTENTION
+  cv-top: ARTICLES SUR LA CV
+  cv-face: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
+  divers-top: ARTICLES DIVERS
+  divers-quantum: INTRODUCTION A L'INFORMATIQUE QUANTIQUE

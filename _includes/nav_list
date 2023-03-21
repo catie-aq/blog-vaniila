@@ -8,11 +8,14 @@
     {% for nav in navigation %}
       <li>
         {% if nav.url %}
-          <a href="{{ nav.url | relative_url }}"><span class="nav__sub-title">{{ nav.title }}</span></a>
+          <a href="{{ site.baseurl_root }}{{ nav.url | relative_url }}">
+            <span class="nav__sub-title">{{site.translations[site.lang].sidebars[nav.title]   }}</span>
+          </a>
         {% else %}
-          <span class="nav__sub-title">{{ nav.title }}</span>
+           <span class="nav__sub-title"> {{ site.translations[site.lang].sidebars[nav.title] }}</span>
         {% endif %}
 
+        <!-- Not used yet, may need an update for translation -->
         {% if nav.children != null %}
         <ul>
           {% for child in nav.children %}

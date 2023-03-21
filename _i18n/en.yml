@@ -21,3 +21,10 @@ links:
   github: GitHub 
   hugging_face: Hugging Face
   
+sidebars: 
+  nlp-top: ARTICLES ABOUT NLP
+  nlp-attention: ATTENTION MECHANISMS
+  cv-top: ARTICLES ABOUT CV
+  cv-face: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
+  divers-top: VARIOUS ARTICLES
+  divers-quantum: INTRODUCTION TO QUANTUM COMPUTING
