@@ -12,6 +12,7 @@ sidebar:
     nav: sidebar-nlp-en
 classes: wide
 ---
+
 # Introduction
 <p style="text-align:justify;">
 Attention mechanisms have revolutionized sequence processing in *machine learning*. In this video, we introduce these mechanisms through two architectures (RNNs and *transformers*) and present applications to natural language processing and vision. 
