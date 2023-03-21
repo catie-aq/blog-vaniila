@@ -10,7 +10,7 @@ header :
     overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
 author_profile: false
 sidebar:
-    nav: sidebar-divers
+    nav: sidebar-divers-en
 classes: wide
 ---
 
@@ -27,7 +27,7 @@ Enjoy the video :)
 
 <br><br>
 
-# Commentaires
+# Comments
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
         issue-term="pathname"
