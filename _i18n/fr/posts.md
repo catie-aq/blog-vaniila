@@ -1,5 +1,5 @@
 ---
-title: "Posts by tags"
+title: "Posts par année"
 permalink: /tags/
 layout: tags
 author_profile: true
