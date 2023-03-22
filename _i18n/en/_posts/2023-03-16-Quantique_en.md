@@ -14,13 +14,12 @@ sidebar:
 classes: wide
 ---
 
-# Introduction [en]
+# Introduction
 <p style="text-align:justify;">
-Quantum computing is a rapidly growing field of research, with many potential applications in areas such as cryptography, molecule simulation for drug discovery, logistics optimization, and modeling complex systems.<br>
-This video is not intended to make you experts, but you will learn more about qubits that allow quantum computers to process information much faster than with conventional computers.<br>
+Quantum computing is a rapidly expanding field that holds enormous potential for revolutionizing industries such as cryptography, logistics, and systems modeling. By harnessing the power of quantum mechanics, quantum computers can perform calculations that would be impossible with classical computers.<br>
+In this video, you will gain a basic understanding of qubits and how they enable quantum computers to process information at lightning-fast speeds.
 </p>
 
-Enjoy the video :)
 
 # The video
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/5MerX4AzqrM" frameborder="0" allowfullscreen></iframe>
