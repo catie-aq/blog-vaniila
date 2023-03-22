@@ -5,8 +5,8 @@ categories:
 tags:
   - Attention
 excerpt : "NLP - Illustration des mécanismes d'attention"
-header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+header:
+   overlay_color: "#1C2A4D"
 author_profile: false
 sidebar:
     nav: sidebar-nlp
