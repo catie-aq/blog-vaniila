@@ -6,8 +6,8 @@ tags:
   - quantique
   - informatique quantique
 excerpt : "Divers - Introduction à l'informatique quantique"
-header :
-    overlay_image: "https://raw.githubusercontent.com/lbourdois/blog/master/assets/images/NLP_radom_blog.png"
+header:
+   overlay_color: "#1C2A4D"
 author_profile: false
 sidebar:
     nav: sidebar-divers
