@@ -2,7 +2,7 @@
 permalink: /about/
 classes: wide
 title: "A propos"
-layout: home
+layout: single
 author_profile: true
 ---
 
