@@ -102,23 +102,23 @@ The challenge here is to design and train the convolutional network so that <b>s
 </center>
 
 <p style="text-align:justify;" >
-The network training was carried out based on the dataset <a href="http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/">VGGFace2</a> by Cao et al. (2018), a publicly accessible dataset containing about 3.3 million images and referring to more than 9000 people.
+The convolutional network used in this study was trained on the <a href="http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/">VGGFace2</a> dataset – by Cao et al. (2018)- which is a publicly accessible dataset containing around 3.3 million images of over 9000 individuals.
 <br><br>
 The images taken from this dataset with great variability in poses, age of subjects, exposures, etc., have been <b>normalized</b> so as to identify the faces and position the characteristic points of these (eyes, nose, mouth) in identical coordinates whatever the cliché considered.
 <br><br>
-This step of image normalization is critical to network performance. Face detection was performed using a neural network <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace</a> by Deng et al. (2019) to identify an <i>bounding box</i> of the face as well as the characteristic points, the image obtained being <b>cut and transformed</b> so as to position the characteristic points at the predefined positions.
+The image normalization step is crucial for the network's performance. Face detection was performed using the <a href="https://arxiv.org/abs/1905.00641v2">RetinaFace</a> neural network developed by Deng et al. (2019), which identifies the <i>bounding box</i> of the face as well as characteristic points. The image is then <b>cropped and transformed</b> to position the characteristic points in predetermined positions.
 <br><br>
-The convolutional network was then trained from these frames.
+The convolutional network positioned at the core of our facial recognition device was then trained from these pictures.
 </p>
 <br>
 
 ## Architecture
 
 <p style="text-align:justify;" >
-The network is built on the basis of an architecture <a href="https://arxiv.org/abs/1905.11946">EfficientNet-B0</a> by Tan and Le (2019), this choice is a compromise between the various constraints of the problem that concerns us since the algorithm will be embedded on the robot, in a graphics card whose capacities are limited.
-The number of parameters in memory is constrained and the speed of execution must be sufficient (the decision must be fast because the people to be identified can move, for example).
+The architecture of our network is based on <a href="https://arxiv.org/abs/1905.11946">EfficientNet-B0</a>, developed by Tan and Le (2019). This choice is a compromise between various constraints relevant to our problem, as the algorithm will be embedded in the robot with limited graphics card capabilities. 
+The number of parameters in memory is constrained, and the execution speed must be fast, as the people to be identified may move during the identification process.
 <br><br>
-Relatively short inference times characterize this network (compared to deeper networks, certainly more efficient but inducing significantly longer processing times).
+This network offers relatively short inference times compared to deeper networks, which are more efficient but require significantly longer processing times.
 </p>
 
 <center>
@@ -183,15 +183,15 @@ In order to circumvent this difficulty, we have adopted an alternative approach 
 ## Training
 
 <p style="text-align:justify;" >
-We first trained the network on the classification problem of recognizing the photograph of a person among the 9000 identities available. The cost function is then a <b>entropy </b> function (<b><i>crossentropy</i></b>) classical for such a problem.
+We started by training the network on a classification task to recognize a person's picture from among 9,000 available identities, using a classical <b>entropy</b> function (<b><i>crossentropy</i></b>) as the cost function.
 <br><br>
-Once the convergence of the classification problem was achieved, we replaced the last classification layer with a new layer representing the embedding of the image as output.
+After achieving convergence on the classification task, we replaced the last classification layer with a new layer that represents the image embedding as the output.
 <br><br>
-The previous layers retain the weights of the previous layers from the training in the previous step. This idea is similar to that of <b>transfer learning</b>: intuitively, we try to preserve the characteristics learned during the classification problem and reuse them to build the metric that interests us.
+The previous layers retained their weights from the previous training step. This approach is similar to transfer learning, where we aim to preserve the learned features during the classification task and reuse them to build the metric that interests us.
 <br><br>
-The network was then retrained with an objective function of type <b><i>contrastive</i></b> or <b><i>triplet</i></b> as seen above.
+We then retrained the network with a <b><i>contrastive</i></b> or <b><i>triplet</i></b> objective function, as seen above.
 <br><br>
-This method makes it possible to quickly train a siamese network. 
+This method enables us to quickly train a siamese network.
 </p>
 
 <center>
@@ -203,31 +203,33 @@ This method makes it possible to quickly train a siamese network.
 </figure>
 </center>
 
-
 <br><br>                                                                                                                    
 
 # Implementation and integration
 
 <p style="text-align:justify;" >
-The facial recognition device was produced by integrating tools and scripts essentially coded in Python.
+<p style="text-align:justify;" >
+The facial recognition device was created by integrating various tools and scripts, mostly coded in Python.
 <br><br>
-The neural network itself is implemented using <a href="https://github.com/ pytorch/pytorch">PyTorch</a> by Paszke, Gross, Chintala, Chanan et al. (2016), more precisely in <a href="https://github.com/Lightning-AI/ lightning">Pytorch  Lightning</a> by Falcon et al. (2019), and trained with computational resources from CATIE's <a href="https://www.vaniila.ai/">VANIILA</a> platform.
+The neural network itself is implemented using <a href="https://github.com/ pytorch/pytorch">PyTorch</a>, developed by Paszke, Gross, Chintala, Chanan et al. (2016), and specifically <a href="https://github.com/Lightning-AI/ lightning">Pytorch  Lightning</a>, developed by Falcon et al. (2019). The network was trained using the computational resources provided by CATIE's <a href="https://www.vaniila.ai/">VANIILA</a> platform.
 <br><br>
-This made it possible to carry out the successive training sessions in a reasonable time (less than two hours) and the performances obtained appeared quite interesting with an F1 score of 0.92, which is better than the commercial solutions tested.
+This approach enabled us to complete the successive training sessions within a reasonable time frame of less than two hours. The results were more than interesting, with an F1 score of 0.92, which outperforms the commercial solutions we tested.
 </p>
-<br><br>
+<br><br> 
+
 
 # Conclusion
 
 <p style="text-align:justify;" >
-We have seen how a first step of extraction and alignment of faces followed, a second of training of a siamese network using an adapted cost function, makes it possible to understand a facial recognition problem.
+In this article, we have described the process of facial recognition using a siamese network with an adapted cost function. We first extracted and aligned faces, and then trained the network on a large dataset of labeled images to address a face recognition problem.
 <br><br>
-One of the limitations of this kind of technique, found in other fields, is the need for a very large number of labeled images to train the model. This labelling can be very expensive or impossible. To remedy this, new methods based on self-supervised learning have recently emerged, consisting of training models with a lot of data that does not have a label. We will develop the details of these self-supervised techniques in a future article.
+However, a major limitation of this approach is the need for a large number of labeled images, which can be expensive or impossible to obtain. To address this issue, self-supervised learning methods have been developed, which enable models to be trained on large amounts of unlabeled data. We will delve into the details of these self-supervised techniques in a future article.
 <br><br>
 
-Stay tuned !
+Stay tuned!
 </p>
 
+  
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/epock.jpg">
