@@ -14,11 +14,12 @@ classes: wide
 ---
 
 # Introduction
-<p style="text-align:justify;">
-Attention mechanisms have revolutionized sequence processing in machine learning. In this video, we introduce these mechanisms through two architectures (RNNs and transformers) and present applications to natural language processing and vision. 
-</p>
 
-Enjoy the video :)
+<p style="text-align:justify;">
+Attention mechanisms are a groundbreaking development in the field of machine learning, revolutionizing the way sequences are processed.<br>
+In this informative video, we will delve into the inner workings of these mechanisms, exploring two  architectures - recurrent neural networks (RNNs) and transformers.
+By providing a comprehensive overview of these architectures, we will demonstrate their applications to two domains of machine learning: natural language processing and computer vision.
+</p>
 
 # The Video
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rZGJJtYA4xs" frameborder="0" allowfullscreen></iframe>
