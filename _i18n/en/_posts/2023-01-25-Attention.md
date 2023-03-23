@@ -9,7 +9,7 @@ header:
    overlay_color: "#1C2A4D"
 author_profile: false
 sidebar:
-    nav: sidebar-nlp
+    nav: sidebar-nlp-en
 classes: wide
 ---
 

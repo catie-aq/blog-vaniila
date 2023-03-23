@@ -9,10 +9,10 @@
       <li>
         {% if nav.url %}
           <a href="{{ site.baseurl_root }}{{ nav.url | relative_url }}">
-            <span class="nav__sub-title">{{site.translations[site.lang].sidebars[nav.title]   }}</span>
+            <span class="nav__sub-title">{{ nav.title }}</span>
           </a>
         {% else %}
-           <span class="nav__sub-title"> {{ site.translations[site.lang].sidebars[nav.title] }}</span>
+           <span class="nav__sub-title"> {{  nav.title }}</span>
         {% endif %}
 
         <!-- Not used yet, may need an update for translation -->
