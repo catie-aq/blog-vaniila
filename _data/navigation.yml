@@ -30,7 +30,7 @@ sidebar-divers:
 sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: ATTENTION MECHANISMS
-    url: /en/nlp/Attention/
+    url: /en/nlp/Attention_mechanisms/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
