@@ -18,26 +18,27 @@ classes: wide
 # Introduction (en)
 
 <p style="text-align:justify;" >
-The <b>facial recognition</b> aims to enable the <b>automatic identification of persons</b> from characteristic information extracted from pictures of their face. These techniques have evolved considerably over the last three decades (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> were already working on a similar subject in 1994), in particular thanks to the contributions of <b>artificial intelligence</b> and in particular <b>deep learning</b>.
+<b>Facial recognition</b> is a technology that enables <b>automatic identification of people</b> based on characteristic information extracted from pictures of their face. This technology has evolved significantly over the last three decades (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> addressed a similar issue in 1994), particularly due to contributions from <b>artificial intelligence</b> and <b>deep learning</b> techniques.
 <br><br>
-<b>Neural networks</b> are now at the heart of many devices and equipment used for the identification of individuals. Their design and integration naturally depend on the intended application and the <b>available hardware resources</b>, as well as other important parameters such as the <b>availability of datasets for their training</b>.
+<b>Neural networks</b> are now at the core of many devices and equipment used for identifying individuals. The design and integration of these networks naturally depend on the intended application and <b>available hardware resources</b>, as well as other important parameters such as the <b>availability of datasets for training</b>.
 <br><br>
-Facial recognition is often approached as a <b>classification problem</b> where it involves determining, using a neural network, the most likely <b>class of belonging</b> of a photo of an individual's face. This approach can, in some cases, be problematic because :<br>
+Facial recognition is often approached as a <b>classification problem</b> where a neural network is used to determine the most likely class of a picture with individual's face. However, this approach can be problematic in some cases because:<br>
+it requires a substantial set of labeled data that can be tedious to build and update,
 - it requires a fairly substantial <b>set of labeled data</b> potentially tedious to build and update<br>
-- the corresponding network must be <b>retrained</b> whenever new classes (new individuals to be identified) need to be added
+- the corresponding network must be <b>retrained</b> whenever new classes (i.e., new individuals to be identified) need to be added
+<br><br>  
+For instance, in cases where new individuals need to be recognized on the fly in a video stream, the <b>classification approach is inappropriate</b>. Instead, it is necessary to turn to solutions that require fewer material resources and computational time.
 <br><br>
-In cases where, for example, it is desired to recognize new individuals on the fly in a video stream, <b>the classification approach is inappropriate</b> and it is therefore necessary to turn to solutions that require less material resources and computational time.
+In these cases, implementation of <b>architectures based on similarity calculation functions</b> are preferred, to determine whether pictures of individuals to be identified match the representations of known individuals recorded in a database, which may be enriched in real-time as new faces are detected.
 <br><br>
-In these cases, preference will be given to the implementation <b>architectures based on similarity calculation functions</b> which will be used to determine whether or not the photographs of persons to be identified correspond to the representations of known individuals, recorded in a database (and which may itself, if necessary,  be enriched in real time, as new faces are detected). 
-<br><br>
-We offer you here the description of a solution of this type based on a <b>siamese architecture</b> that we have tested and implemented as part of the <b><a href="https://www.robocup.org/domains/3">RoboCup@Home</a></b>, an international competition in the field of service robotics in which robots must interact with human operators.
+We present here a description of a solution of this type based on a <b>siamese architecture</b> that we have tested and implemented as part of the <b><a href="https://www.robocup.org/domains/3">RoboCup@Home</a></b>, an international competition in the field of service robotics, where robots must interact with human operators.
 </p>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Reconnaissance_faciale/screen.jpg">
   <figcaption>
-  Algorithm outputs
+  Output of the algorithm
   </figcaption>
 </figure>
 </center>
@@ -48,17 +49,17 @@ We offer you here the description of a solution of this type based on a <b>siame
 # General architecture
 
 <p style="text-align:justify;" >
-The facial recognition solution we have developed is based on the integration of tools and neural networks respectively intended to :<br>
-- detect the faces of individuals in a photo<br>
-- produce, for each isolated face, a <i>identity vector</i> with 64 dimensions representing it<br>
-- calculate the distance between the vectors associated with two distinct images<br>
-- and determine, by browsing a database, whether the vector associated with one face is close, or not, to that of another already identified
+Our facial recognition solution integrates a combination of tools and neural networks designed to perform the following tasks:<br>
+- Detect faces of individuals in pictures<br>
+- Create a 64-dimensional <i>identity vector</i> for each isolated face<br>
+- Calculate the distance between the vectors associated with two distinct images<br>
+- And determine whether the vector associated with one face is similar to another already identified by searching a database
 <br><br>
-<b>Face detection</b> in an image or video stream, and then their <b>extraction</b>, are performed using tools we'll discuss later.
+Tools for face detection - in a picture or video stream - and extraction will be discussed later.
 <br><br>
-The heart of the device consists of a model whose objective function calculates a similarity to determine whether or not two face photographs refer to the same individual.
+The core of the device consists of a model with an objective function that calculates a similarity score to determine if two face pictures refer to the same individual.
 <br><br>
-The architecture implemented here is <b>siamese</b> and involves two instances of the same <b>convolutional neural network</b> each taking as input a photograph of the face and providing output a <b>vector representation</b> of it in 64 dimensions.
+Our implemented architecture is <b>siamese</b> and involves two instances of the same <b>convolutional neural network</b>. Each one takes a picture of the face as input and provides a 64-dimensional <b>vector representation</b> of it as output.
 </p>
 
 <center>
@@ -71,14 +72,13 @@ The architecture implemented here is <b>siamese</b> and involves two instances o
 </center>
 
 <p style="text-align:justify;" >
-The convolutional network was trained to provide <b>close representations</b>, in Euclidean distance, <b>for two face images of the same person</b> and, conversely, <b>distant or very distant</b> for <b>images of two different persons</b>.
+A convolutional neural network has been trained to provide <b>close representations</b> – in Euclidean distance - <b>for two face images of the same person</b>, and distant or very <b>distant representations for images of two different people</b>.
 <br><br>
-The outputs of the two instances of the network (identical in all points and therefore sharing the same configuration and the same weights) then join and are then used for the calculation of a <b>similarity score directly deduced from the distance separating the vector representations from the images provided as input</b>.
+The outputs of the two network instances (identical in all points and therefore sharing the same configuration and the same weights) merge and are then used to calculate a <b>similarity score based on the distance between the vector representations of the input images</b>.
 <br><br>
-Each face detected in an image or taken from a video stream is then encoded by the network, the resulting vector being <b>compared to a series of known fingerprints</b> stored in a database. The result of this comparison, returned in the form of a scalar value (the similarity score mentioned above), is then evaluated with regard to a threshold beyond which the fingerprints <b>as identical</b> and, consequently, the individual concerned as being <b>identified</b>.
+Each face detected in an image or video stream is then encoded by the network and <b>compared to a set of known fingerprints</b> stored in a database. The result of this comparison is returned as a scalar value (the similarity score mentioned earlier) and evaluated in the light of a predetermined threshold. If the similarity score exceeds the threshold, the fingerprints can be seen <b>as identical</b> and the individual is thus <b>identified</b>.
 </p>
 <br><br>
-
   
 # Network characteristics and drive
   
