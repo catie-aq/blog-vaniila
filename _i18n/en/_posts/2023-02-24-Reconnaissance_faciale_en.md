@@ -15,7 +15,7 @@ classes: wide
 
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
 
-# Introduction (en)
+# Introduction
 
 <p style="text-align:justify;" >
 <b>Facial recognition</b> is a technology that enables <b>automatic identification of people</b> based on characteristic information extracted from pictures of their face. This technology has evolved significantly over the last three decades (<a href="https://proceedings.neurips.cc/paper/1993/file/288cc0ff022877bd3df94bc9360b9c5d-Paper.pdf">Bromley et al.</a> addressed a similar issue in 1994), particularly due to contributions from <b>artificial intelligence</b> and <b>deep learning</b> techniques.
