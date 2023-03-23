@@ -17,13 +17,13 @@
             <li class="masthead__menu-item">
              
               {% if site.lang == "en" %}
-                <a href="{{ site.baseurl_root }}{{ link.url | relative_url }}"
+                <a href="/en/{{ link.url | relative_url }}"
                 {% if link.description %} 
                 title="{{ link.description }}"
                 {% endif %}>{{ site.translations[site.lang].pages[link.title] }}
                 </a>
               {% elsif site.lang == "fr" %}
-              <a href="{{ site.baseurl_root }}{{ link.url | relative_url }}"
+              <a href="{{ link.url | relative_url }}"
                 {% if link.description %} 
                  title="{{ link.description }}"
                 {% endif %}>{{ site.translations[site.lang].pages[link.title] }}
