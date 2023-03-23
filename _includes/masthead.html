@@ -15,12 +15,21 @@
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             <li class="masthead__menu-item">
-
-              
+             
+              {% if site.lang == "en" %}
+                <a href="{{ site.baseurl_root }}{{ link.url | relative_url }}"
+                {% if link.description %} 
+                title="{{ link.description }}"
+                {% endif %}>{{ site.translations[site.lang].pages[link.title] }}
+                </a>
+              {% elsif site.lang == "fr" %}
               <a href="{{ site.baseurl_root }}{{ link.url | relative_url }}"
                 {% if link.description %} 
                  title="{{ link.description }}"
-                {% endif %}>{{ site.translations[site.lang].pages[link.title] }}</a>
+                {% endif %}>{{ site.translations[site.lang].pages[link.title] }}
+              </a>
+
+              {% endif %}
             </li>
           {%- endfor -%}
           
