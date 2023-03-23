@@ -23,7 +23,7 @@ classes: wide
 <b>Neural networks</b> are now at the core of many devices and equipment used for identifying individuals. The design and integration of these networks naturally depend on the intended application and <b>available hardware resources</b>, as well as other important parameters such as the <b>availability of datasets for training</b>.
 <br><br>
 Facial recognition is often approached as a <b>classification problem</b> where a neural network is used to determine the most likely class of a picture with individual's face. However, this approach can be problematic in some cases because:<br>
-it requires a substantial set of labeled data that can be tedious to build and update,
+it requires a substantial set of labeled data that can be tedious to build and update,<br>
 - it requires a fairly substantial <b>set of labeled data</b> potentially tedious to build and update<br>
 - the corresponding network must be <b>retrained</b> whenever new classes (i.e., new individuals to be identified) need to be added
 <br><br>  
@@ -207,7 +207,6 @@ This method enables us to quickly train a siamese network.
 
 # Implementation and integration
 
-<p style="text-align:justify;" >
 <p style="text-align:justify;" >
 The facial recognition device was created by integrating various tools and scripts, mostly coded in Python.
 <br><br>
