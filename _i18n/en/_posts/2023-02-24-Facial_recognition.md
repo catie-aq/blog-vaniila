@@ -1,11 +1,12 @@
 ---
 title: "FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS"
+categories:
+  - CV
 tags:
   - CV
   - facial recognition
   - siamese networks
   - 2023
-categories:
 excerpt : "CV - Explaining Siamese neural networks for face recognition <br>- Difficuly: beginner"
 header:
    overlay_color: "#1C2A4D"
