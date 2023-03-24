@@ -5,7 +5,7 @@ categories:
 tags:
   - quantique
   - informatique quantique
-excerpt : "Divers - Introduction à l'informatique quantique"
+excerpt : "Divers - Introduction à l'informatique quantique<br>Difficulté : confirmé"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
