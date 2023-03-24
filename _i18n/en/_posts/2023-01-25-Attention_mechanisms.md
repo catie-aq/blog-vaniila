@@ -3,9 +3,7 @@ title: "ATTENTION MECHANISMS AND APPLICATIONS"
 categories:
   - NLP
 tags:
-  - NLP
-  - attention
-  - 2023
+  - Attention
 excerpt: "NLP - Illustration of Attention Mechanisms <br>Difficuly: intermediate"
 header:
    overlay_color: "#1C2A4D"

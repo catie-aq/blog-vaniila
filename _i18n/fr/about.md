@@ -1,8 +1,8 @@
 ## Qui sommes-nous ?
 <p style="text-align:justify;">
-Ce blog a pour objectif de partager des informations et des connaissances sur les dernières tendances et innovations en matière d'<b>Intelligence Artificielle</b> et de <b>Data Science</b>.
+Ce blog a pour objectif de partager des informations et des connaissances sur les dernières tendances et innovations en matière d'<b>intelligence artificielle</b> et de <b>data science</b>.
 <br><br>
-Vous pourrez y trouver des articles et présentations destinés à tout type de lecteurs, du néophyte au spécialiste, mis à disposition par des experts travaillant sur nos divers projets, allant de l'analyse de données au <i>machine learning</i> et au <i>deep learning</i>, en passant par la vision par ordinateur et le traitement du langage naturel.
+Vous pourrez y trouver des articles et présentations destinés à tout type de lecteurs, du néophyte au spécialiste, mis à disposition par des experts travaillant sur nos divers projets, allant de l'analyse de données à l’apprentissage de <i>machine learning</i> et de <i>deep learning</i>, en passant par la vision par ordinateur et le traitement du langage naturel.
 <br><br>
 Le blog de VANIILA permettra aux professionnels du domaine et à tous ceux qui s'intéressent aux technologies innovantes d'accéder à une source fiable d'informations rédigées par les docteurs et ingénieurs du département Algorithmes et Données du Algorithmes et Données du <a href="https://catie.fr">CATIE</a>. Les problématiques et solutions apportées présentées dans les articles sont directement inspirées de nos projets ou sont des réponses à des questions que nous recevons fréquemment des entreprises. Nous partageons aussi du code en <a href="https://github.com/catie-aq">open source</a> et des <a href="https://huggingface.co/CATIE-AQ">modèles entraînés</a>. 
 <br><br>

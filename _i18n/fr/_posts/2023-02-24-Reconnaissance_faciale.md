@@ -3,10 +3,7 @@ title: "RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS"
 categories:
   - CV
 tags:
-  - CV
-  - reconnaissance faciale
-  - réseaux siamois
-  - 2023
+  - Reconnaissance faciale à l’aide de réseaux de neurones siamois
 excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale <br>Difficulté : débutant"
 header:
    overlay_color: "#1C2A4D"
