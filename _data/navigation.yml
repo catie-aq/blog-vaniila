@@ -2,7 +2,7 @@
 # text translates in pages
 main:
   - title: "tags"
-    url: /categories/
+    url: /tags/
   - title: "articles"
     url: /posts/
   - title: "about"
