@@ -1,11 +1,9 @@
 ---
 title: "INTRODUCTION A L'INFORMATIQUE QUANTIQUE"
-categories:
-  - Divers
 tags:
   - quantique
-  - informatique quantique
-excerpt : "Divers - Introduction à l'informatique quantique <br>Difficulté : confirmé"
+  - 2023
+excerpt : "Divers - Introduction à l'informatique quantique <br>- Difficulté : confirmé"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
