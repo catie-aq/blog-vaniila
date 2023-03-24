@@ -4,7 +4,8 @@ categories:
   - NLP
 tags:
   - Attention
-excerpt: "NLP - Illustration of Attention Mechanisms<br>Difficuly : intermediate"
+excerpt: "NLP - Illustration of Attention Mechanisms  
+          Difficuly: intermediate"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
