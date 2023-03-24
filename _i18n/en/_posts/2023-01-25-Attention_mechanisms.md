@@ -6,7 +6,7 @@ tags:
   - NLP
   - attention
   - 2023
-excerpt: "NLP - Illustration of Attention Mechanisms <br>- Difficuly: intermediate"
+excerpt: "NLP - Illustration of Attention Mechanisms <br>Difficuly: intermediate"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
