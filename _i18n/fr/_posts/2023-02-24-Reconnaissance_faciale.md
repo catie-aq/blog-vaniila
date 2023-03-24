@@ -4,8 +4,8 @@ categories:
   - CV
 tags:
   - CV
-  - reconnaissance faciale 
-  - réseaux de siamois
+  - reconnaissance faciale
+  - réseaux siamois
   - 2023
 excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale <br>- Difficulté : débutant"
 header:

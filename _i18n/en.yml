@@ -6,11 +6,12 @@ pages:
   work: Work
   tags: Tags
   about: About
+  articles: Articles
 author:
   name: "VANIILA BLOG"
   avatar : "/assets/images/Logo_blog_VANIILA.png"
   bio              : "More details in the *About* page."
-  location         : "Bordeaux/Talence"
+  location         : "Bordeaux"
 links: 
   platform: "VANIILA Platform"
   catie: "CATIE"
