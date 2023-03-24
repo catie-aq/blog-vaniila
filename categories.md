@@ -1,6 +1,6 @@
 ---
-title: "Posts par tags"
-layout: categories
-permalink: /categories/
+title: "Tags"
+layout: tags
+permalink: /tags/
 author_profile: true
 ---
