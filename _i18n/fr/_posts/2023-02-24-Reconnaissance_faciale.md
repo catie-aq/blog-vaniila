@@ -7,7 +7,7 @@ tags:
   - reconnaissance faciale
   - réseaux siamois
   - 2023
-excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale <br>- Difficulté : débutant"
+excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissance faciale <br>Difficulté : débutant"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
