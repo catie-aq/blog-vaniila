@@ -1,10 +1,9 @@
 ---
 title: "ATTENTION MECHANISMS AND APPLICATIONS"
-categories:
-  - NLP
 tags:
-  - Attention
-excerpt: "NLP - Illustration of Attention Mechanisms <br>Difficuly: intermediate"
+  - NLP
+  - attention
+excerpt: "NLP - Illustration of Attention Mechanisms <br>- Difficuly: intermediate"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
