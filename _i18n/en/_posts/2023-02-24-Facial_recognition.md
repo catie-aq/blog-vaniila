@@ -1,10 +1,10 @@
 ---
 title: "FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS"
-categories:
-  - CV
 tags:
-  - Facial recognition using Siamese neural networks
-excerpt : "CV - Explaining Siamese neural networks for face recognition <br>Difficuly: beginner"
+  - CV
+  - facial recognition
+  - siamese networks
+excerpt : "CV - Explaining Siamese neural networks for face recognition <br>- Difficuly: beginner"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
