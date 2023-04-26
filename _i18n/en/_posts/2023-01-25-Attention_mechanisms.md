@@ -25,6 +25,9 @@ By providing a comprehensive overview of these architectures, we will demonstrat
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/rZGJJtYA4xs" frameborder="0" allowfullscreen></iframe>
 <br><br>
 
+Boris ALBAR
+<br><br>
+
 # Comments
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
