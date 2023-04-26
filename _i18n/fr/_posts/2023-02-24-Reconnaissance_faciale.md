@@ -238,6 +238,10 @@ Stay tuned !
 
 <br><br>
 
+Thierry ARISCAUD et Pierre BÉDU
+
+<br><br>
+
 # Références
 
 <p style="text-align:justify;">
