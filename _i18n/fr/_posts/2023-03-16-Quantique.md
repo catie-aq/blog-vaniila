@@ -25,6 +25,9 @@ Bon visionnage :)
 
 <br><br>
 
+Boris ALBAR
+<br><br>
+
 # Commentaires
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
