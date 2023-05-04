@@ -15,6 +15,25 @@ $sans-serif-narrow  : 'Roboto', sans-serif;
 $global-font-family : $serif;
 $header-font-family : $sans-serif-narrow;
 
+h2 a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+h3 { 
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+li a {
+  font-family: "Montserrat";
+  font-weight: 200;
+  letter-spacing: 0.02em;
+}
+
+p { 
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .bibtex {
   padding: 0 18px;
   display: none;
