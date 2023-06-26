@@ -12,32 +12,32 @@ main:
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP
   - title: MÉCANISMES D'ATTENTION
-    url: /nlp/Attention/
+    url: /Attention/
 
 sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
-    url: /cv/Reconnaissance_faciale/
+    url: /Reconnaissance_faciale/
   - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
-    url: /cv/SSL_CV1/
+    url: /SSL_CV1/
     
 sidebar-divers:
   - title: ARTICLES DIVERS
   - title: INTRODUCTION A L'INFORMATIQUE QUANTIQUE
-    url: /divers/Quantique/
+    url: /Quantique/
 
 # English
 sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: ATTENTION MECHANISMS
-    url: /nlp/Attention_mechanisms/
+    url: /Attention_mechanisms/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
   - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
-    url: /cv/Facial_recognition/
+    url: /Facial_recognition/
 
 sidebar-misc-en:
   - title: MISC. ARTICLES
   - title: INTRODUCTION TO QUANTUM COMPUTING
-    url: /misc/Quantum/
+    url: /Quantum/
