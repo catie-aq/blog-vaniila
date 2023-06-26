@@ -18,7 +18,9 @@ sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
     url: /cv/Reconnaissance_faciale/
-
+  - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
+    url: /cv/SSL_CV1/
+    
 sidebar-divers:
   - title: ARTICLES DIVERS
   - title: INTRODUCTION A L'INFORMATIQUE QUANTIQUE
