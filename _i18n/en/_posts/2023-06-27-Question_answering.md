@@ -136,13 +136,12 @@ Specifically, we used : <br>
 </table>
  <br>
 
+<p style="text-align:justify;">
 For each of the datasets, we created questions with no answers in the associated context. To do this, for a given context, we removed the expected answer and replaced the original question with a random one (which may have come from the original dataset, or from one of the other three). We made sure that the new question was not the same as the previous one.	<br>
 We thus end up with an augmented dataset containing 50% of questions answered in context and 50% of questions with no answer. The total number of questions/answers available to us is therefore 227,726 (221,350 for the training, 6,376 for the test).
 These new unanswered questions have been indexed in a dataset called <a href="https://huggingface.co/datasets/CATIE-AQ/frenchQA">FrenchQA</a>, which we are making available in open-source. <br>
 
 The idea of using a question that has already been asked to replace an original question, rather than a completely external question that has never been seen before, is to try and make the model more robust. Indeed, the fact that the same question has several possible answers (in this case, an answer and a "non-answer") should, according to our hypothesis, enable us to have a model that doesn't specialize in answering a given answer to a given question, but remains generalist. In other words, it should focus on the phenomenon of seeking an answer rather than providing an absolute answer.
-
-
 </p>
 <br><br>
 
@@ -258,7 +257,7 @@ result
  'end': 744,
  'answer': 'visiteurs.'}
 ```
-<br><br>
+<br>
 
 If you'd like to test the model more directly, a demonstrator has been created and is hosted as a <i>Space</i> on Hugging Face. It is available <a href="https://huggingface.co/spaces/CATIE-AQ/Qamembert">here</a> or below:
 <iframe
