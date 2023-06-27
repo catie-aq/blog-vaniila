@@ -1,0 +1,377 @@
+---
+title: "THE QUESTION ANSWERING"
+tags:
+  - NLP
+  - question answering
+  - "2023"
+excerpt : "NLP - Explanation of the question answering task  <br> - Difficuly: beginner"
+header:
+   overlay_color: "#1C2A4D"
+author_profile: false
+sidebar:
+    nav: sidebar-nlp-en
+classes: wide
+---
+
+# What is question answering?
+<p style="text-align:justify;">
+Question answering (often abbreviated to QA) is an NLP task that involves providing an answer to a user question formulated in natural language.<br>
+There are two types of question answering. The first is called "QA closed-book", i.e. the model answers a question without relying on any associated context text. This approach can be thought of as the "Using your knowledge, answer the following question" exercise we had to deal with when we were students. <br>
+The performance of these types of models depends mainly on the data used for training. We won't go into more detail on this type of QA in this article. <br>
+The second type of QA that will interest us in the remainder of this blog post is "extractive QA", i.e. the model answers a question based on an associated context text: the answer is extracted from a given text, hence the term "extractive". This is the default approach when talking about QA. <br>
+It should be noted that for each of the two types, it is possible to qualify them as "closed-domain" (model specialized on a particular domain, e.g. medical) or "open-domain" (model trained on several different domains to make it as generalist as possible). <br>
+
+From a technical point of view, the QA extractive task can be considered as binary classification, where instead of classifying at the level of the whole sentence (for sentiment analysis, for example), we classify at the level of the word, saying whether or not the word in question is part of the expected response.
+</p>
+<br><br>
+
+# QA datasets with context
+<p style="text-align:justify;">
+The most famous QA dataset is the <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD (Stanford Question Answering Dataset) </a>  dataset by Rajpurkar et al. Created for English from Wikipedia articles, other languages have generally adopted its formatting. <br>
+There are two versions of this dataset. <a href="https://arxiv.org/abs/1606.05250">SQuAD 1.0 by Rajpurkar et al. (2016)</a>  contains 107,785 triplets of context text, question and answer. Below is an example of a line from this version of the dataset: <br>
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/QA/SQUAD_V1.png">
+  <figcaption>
+    Example of a line from the SQUAD1.0 dataset
+  </figcaption>
+</figure>
+</center>
+<p style="text-align:justify;">
+<a href="https://arxiv.org/abs/1806.03822">SQuAD 2.0 by Rajpurkar et al. (2018)</a> contains 53,775 additional triplets where the answers are empty, i.e. the context does not contain the answer to the question asked. This enables the model to be trained not to systematically extract a piece of text from the context, and that sometimes a question doesn't have an answer and should therefore abstain from answering. In this version, two-thirds of questions have answers taken from the context and one-third have no answers. <br>
+Below is an example of a line from this version of the dataset: <br>
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/QA/SQUAD_V2.png">
+  <figcaption>
+    Example of a line from the SQUAD 2.0 dataset
+  </figcaption>
+</figure>
+</center>
+<p style="text-align:justify;">
+For the French language, datasets have been created using the SQuAD methodology. These include: <br>
+- <a href="https://fquad.illuin.tech/">FQuAD 1.0 (2020)</a> by Illuin Technology (in particular <a href="https://arxiv.org/abs/2002.06071">Hoffschmidt et al. (2021)</a>), which is based on the SQuAD 1.0 methodology and contains 26,108 questions/answers based on <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9"> high-quality Wikipedia articles </a>. The data is available on the Illuin Technology website after filling in a form (only the train and dev samples are available, not the test). Version FQuAD 1.1 by the same authors contains 62,003 questions/answers, but this dataset is not open. <br>
+- <a href="https://arxiv.org/abs/2109.13209v1"> by Heinrich et al. </a> using SQUAD 2.0 methodology bringing 13,591 new unanswered questions. However, this dataset is not open. <br>
+- The <https://piaf.etalab.studio/">PIAF</a> (Pour une IA Francophone) project supported by <a href="https://www.etalab.gouv.fr/">Etalab</a> and more specifically <a href="https://aclanthology.org/2020.lrec-1.673/">Keraron et al. (2020)</a> includes more than 9225 questions. The PIAF data are freely accessible <a href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">here</a>.<br>
+- <a href="https://huggingface.co/datasets/lincoln/newsquadfr">Newsquadfr (2021)</a> by <a href="https://www.lincoln.fr/">Lincoln</a> is a dataset of 2520 questions. The contexts are paragraphs of articles extracted from nine French online newspapers during the year 2020/2021. <br><br>
+A total of 37,853 context/question/answer triplets are available natively in French. <br><br>
+There are also a few datasets that are translations of SQuAD into French. These include: <br>
+- <a href="https://github.com/Alikabbadj/French-SQuAD">French-SQuAD</a> by <a href="https://www.linkedin.com/pulse/something-new-french-text-mining-information-chatbot-largest-kabbadj/">Kabbadj (2018)</a>, which translates the SQuAD 1.0 dataset using <a href="https://github.com/ssut/py-googletrans"> Google's unofficial API </a> <a href="https://arxiv.org/abs/1806.03822">. This translation is not of good quality (punctuation, nonsense phrases). <br>
+- <a href="https://huggingface.co/datasets/qwant/squad_fr">Squad_fr </a> by <a href="https://hal.archives-ouvertes.fr/hal-03336060/file/RANLP_2021_transformers_usability.pdf">Cattan et al. (2021)</a>, which translates the SQuAD 1.0  dataset using their own translation system based on the transformer by Vaswani et al. Although of better quality than French-SQuAD, this dataset contains many errors. <br>
+- <a href="https://huggingface.co/datasets/pragnakalp/squad_v2_french_translated"> Squad_v2_french_translated</a> by Pragnakalp Techlabs (2022), which partially translates (79,069 data out of the original 161,560) the SQuAD 2.0  dataset using Google Translation. This dataset is the best quality of the three available translations.
+</p>
+<br><br>
+
+# Which model for solving a QA task?
+<p style="text-align:justify;">
+
+Any transformer model is able to solve this task, whether it's a full transformer (encoder and decoder), a transformer decoder, or a transformer encoder. <br>
+Only the way in which the data is provided to the model differs between the different approaches. <br>
+In practice, encoder models are the most widely used. Because they are best suited to solving classification tasks, and probably out of habit. Indeed, in the case of French, encoder transformers were available before decoder transformers and full transformers. Furthermore, it should be noted that CamemBERT model by <a href="https://arxiv.org/abs/1911.03894">Martin et al. (2019)</a> is more commonly used than FlauBERT by <a href="https://arxiv.org/abs/1912.05372">He et al. (2019)</a> for the QA task, due to empirical observations: several authors have noted that the former tends to give better results than the latter on this task. <br><br>
+A few models finetuned to the QA task are available in open-source. These include: <br>
+-	The <a href="https://huggingface.co/illuin/camembert-base-fquad"> CamemBERT base model finetuned on FQUAD 1.0 </a> by Illuin <br>
+-	The <a href="https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf"> CamemBERT model finetuned on the combination of PIAF 1.1, FQuAD 1.0 and French-SQuAD </a> by Etalab <br>
+-	The <a href="https://huggingface.co/cmarkea/distilcamembert-base-qa"> DistillCamemBERT base model finetuned on FQUAD 1.0 and PIAF </a> by Crédit Mutuel<br><br>
+
+Each of these models has its limitations. <br>
+Firstly, none of them uses all the available data: <br>
+- Illuin's model uses only one dataset, i.e. 26,108 questions/answers (including 2189 test questions/answers). <br>
+- Etalab's model uses three, i.e. around 128,090 questions/answers (including 3188 test questions/answers), including the French-SQuAD, which is of poor quality, and PIAF version 1.1, containing 7570 questions/answers, instead of version 1.2, containing 9225 questions/answers. <br>
+- Crédit Mutuel's uses only two sets of data, i.e. 27,754 questions/answers (including 3188 test questions/answers). <br>
+Secondly, all the data used in these models is based solely on the SQuAD 1.0 methodology, which requires the answer to the question to be found in the context text. <br>
+Thirdly, the Crédit Mutuel model is a distilled CamemBERT. As such, it has fewer parameters than the others, but in return achieves lower performance. If your objective is to have the smallest model possible, because you have hardware constraints for example, this model is certainly the best suited to your needs. However, if your objective is to have a model with the best possible performance, this model should be avoided. <br><br>
+
+With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a basic version of the model free of charge and freely in open-source <a href="https://huggingface.co/CATIE-AQ/QAmembert"> (https://huggingface.co/CATIE-AQ/QAmembert) </a>, as well as a large version free of charge but on request. <br>
+Specifically, we used : <br>
+<table>
+    <tr>
+        <td>Dataset</td>
+        <td>Format</td>
+        <td>Train split</td>
+        <td>Dev split</td>
+        <td>Test split</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+        <a href="https://www.data.gouv.fr/en/datasets/piaf-le-dataset-francophone-de-questions-reponses/"> PIAF 1.2</a> 
+       </td>
+        <td>SQuAD 1.0</td>
+        <td>9 225 Q &amp; A</td>
+        <td>X</td>
+        <td>X</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+        <a href=" https://fquad.illuin.tech/"> FQuAD 1.0</a> 
+        </td>
+        <td>SQuAD 1.0</td>
+        <td>20 731 Q &amp; A</td>
+        <td>3 188 Q &amp; A  (not used for training because used as a test dataset)</td>
+        <td>2 189 Q &amp; A (not used in our work because not freely available)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+      <a href="https://huggingface.co/datasets/lincoln/newsquadfr"> lincoln/newsquadfr </a> 
+       </td>
+        <td>SQuAD 1.0</td>
+        <td>1 650 Q &amp; A</td>
+        <td>455 Q &amp; A (not used in our work)</td>
+        <td>415 Q &amp; A (not used in our work)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+<a href="https://huggingface.co/datasets/pragnakalp/squad_v2_french_translated"> pragnakalp/squad_v2_french_translated </a>
+       </td>
+        <td>SQuAD 2.0</td>
+        <td>79 069 Q &amp; A</td>
+        <td>X</td>
+        <td>X</td>
+        <td></td>
+    </tr>
+</table>
+ <br>
+
+For each of the datasets, we created questions with no answers in the associated context. To do this, for a given context, we removed the expected answer and replaced the original question with a random one (which may have come from the original dataset, or from one of the other three). We made sure that the new question was not the same as the previous one.	<br>
+We thus end up with an augmented dataset containing 50% of questions answered in context and 50% of questions with no answer. The total number of questions/answers available to us is therefore 227,726 (221,350 for the training, 6,376 for the test).
+These new unanswered questions have been indexed in a dataset called <a href="https://huggingface.co/datasets/CATIE-AQ/frenchQA">FrenchQA</a>, which we are making available in open-source. <br>
+
+The idea of using a question that has already been asked to replace an original question, rather than a completely external question that has never been seen before, is to try and make the model more robust. Indeed, the fact that the same question has several possible answers (in this case, an answer and a "non-answer") should, according to our hypothesis, enable us to have a model that doesn't specialize in answering a given answer to a given question, but remains generalist. In other words, it should focus on the phenomenon of seeking an answer rather than providing an absolute answer.
+
+
+</p>
+<br><br>
+
+# Metrics and evaluation
+<p style="text-align:justify;">
+How do the models perform? Let's start by describing the metrics on which QA models are evaluated.
+</p>
+
+## Metrics
+
+<p style="text-align:justify;">
+There are a few differences between the metrics in SQuAD 1.0 and SQuAD 2.0. <br>
+
+For <a href="https://huggingface.co/spaces/evaluate-metric/squad), ">SQuAD 1.0</a>, the exact match and F1 score are calculated. The exact match is based on the strict correspondence of the predicted and correct response characters. For correctly predicted answers, the exact match will be 1. And even if only one character is different, the exact match will be 0. <br>
+The F1 score is the harmonic mean between precision and recall. It is calculated for each word in the predicted sequence in relation to the correct answer. <br>
+For <a href="https://huggingface.co/spaces/evaluate-metric/squad_v2">SQuAD 2.0</a>, in addition to calculating the exact-match and F1 score, it is possible to obtain F1 and exact-match details for questions with an answer, as well as F1 and exact-match details for questions without an answer.
+</p>
+
+## Evaluation
+<p style="text-align:justify;">
+
+From an implementation point of view, the best way to calculate the above metrics is to use the python package <a href="https://pypi.org/project/evaluate/">evaluate</a> by Hugging Face. <br>
+
+Performance results for the various models considered are available in the table below. <br>
+<table>
+    <tr>
+        <td>Model</td>
+        <td>etalab/camembert-base-squadFR-fquad-piaf</td>
+        <td>QAmemBERT</td>
+        <td>QAmemBERT-large</td>
+    </tr>
+    <tr>
+        <td>Number of parameters</td>
+        <td>110M</td>
+        <td>110M</td>
+        <td>335M</td>
+    </tr>
+    <tr>
+        <td>FQuAD 1.0 (dev)</td>
+        <td>F1: 78.09<br>exact_match: 53.60</td>
+        <td>F1: 78.00<br>exact_match: 53.98</td>
+        <td>F1: 81.05<br>exact_match: 55.95</td>
+    </tr>
+    <tr>
+        <td>qwant/squad_fr (validation)</td>
+        <td>F1: 78.27<br>exact_match: 60.17</td>
+        <td>F1: 77.30<br>exact_match: 60.95</td>
+        <td>F1: 81.74<br>exact_match: 65.58</td>
+    </tr>
+    <tr>
+        <td>frenchQA</td>
+        <td>N/A</td>
+        <td>F1: 86.88<br>exact_match: 77.14<br>Answer_f1: 75.66<br>NoAnswer_f1: 98.11</td>
+        <td>F1: 88.74<br>exact_match: 77.14<br>Answer_f1: 78.83<br>NoAnswer_f1: 98.65</td>
+    </tr>
+</table>
+Performance results for different QA models
+
+With an equivalent number of parameters, the Etalab model appears to perform best on the F1 score for SQuAD 1.0 datasets type. On the exact_match metric, QAmemBERT produces better results. Its advantage is that it is capable of handling SQuAD 2.0 datasets type, contrary to the Etalab model. <br>
+The QAmemBERT-large model achieves the best results whatever the test dataset considered.
+</p>
+<br><br>
+
+# Examples of use
+When the answer is contained in the context: <br>
+```
+from transformers import pipeline
+qa = pipeline('question-answering', model='CATIE-AQ/QAmembert', tokenizer='CATIE-AQ/QAmembert')
+result = qa({
+    'question': "Combien de personnes utilisent le français tous les jours ?",
+    'context': "Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones. Elle est parfois surnommée la langue de Molière.  Le français est parlé, en 2023, sur tous les continents par environ 321 millions de personnes : 235 millions l'emploient quotidiennement et 90 millions en sont des locuteurs natifs. En 2018, 80 millions d'élèves et étudiants s'instruisent en français dans le monde. Selon l'Organisation internationale de la francophonie (OIF), il pourrait y avoir 700 millions de francophones sur Terre en 2050."
+})
+
+if result['score'] < 0.01:
+    print("La réponse n'est pas dans le contexte fourni.")
+else :
+    print(result['answer'])
+```
+```
+235 millions
+```
+```
+# details
+result
+{'score': 0.9945194721221924,
+ 'start': 269,
+ 'end': 281,
+ 'answer': '235 millions'}
+```
+When the answer is not contained in the context: <br>
+```
+from transformers import pipeline
+qa = pipeline('question-answering', model='CATIE-AQ/QAmembert', tokenizer='CATIE-AQ/QAmembert')
+result = qa({
+    'question': "Quel est le meilleur vin du monde ?",
+    'context': "La tour Eiffel est une tour de fer puddlé de 330 m de hauteur (avec antennes) située à Paris, à l’extrémité nord-ouest du parc du Champ-de-Mars en bordure de la Seine dans le 7e arrondissement. Son adresse officielle est 5, avenue Anatole-France.  
+Construite en deux ans par Gustave Eiffel et ses collaborateurs pour l'Exposition universelle de Paris de 1889, célébrant le centenaire de la Révolution française, et initialement nommée « tour de 300 mètres », elle est devenue le symbole de la capitale française et un site touristique de premier plan : il s’agit du quatrième site culturel français payant le plus visité en 2016, avec 5,9 millions de visiteurs. Depuis son ouverture au public, elle a accueilli plus de 300 millions de visiteurs."
+})
+
+if result['score'] < 0.01:
+    print("La réponse n'est pas dans le contexte fourni.")
+else :
+    print(result['answer'])
+```
+```
+La réponse n'est pas dans le contexte fourni.
+```
+```
+# details
+result
+{'score': 3.619904940035945e-13,
+ 'start': 734,
+ 'end': 744,
+ 'answer': 'visiteurs.'}
+```
+<br><br>
+
+If you'd like to test the model more directly, a demonstrator has been created and is hosted as a <i>Space</i> on Hugging Face. It is available <a href="https://huggingface.co/spaces/CATIE-AQ/Qamembert">here</a> or below:
+<iframe
+	src="https://catie-aq-qamembert.hf.space"
+	frameborder="0"
+	width="950"
+	height="600"
+></iframe>
+<br><br> 
+
+# Possible improvements
+<p style="text-align:justify;">
+Let's finish by listing some possible improvements to this work.<br>
+Firstly, it would be interesting to vary the number of unanswered questions. In order to simplify the process, we have doubled the number of questions in our unanswered data creation process. We suspect that this has an impact on performance, as we can see that the F1 score for unanswered data is at least 10 points higher than that for answered questions. In order to balance these two F1 scores, we might consider reducing the number of unanswered questions. The SQuAD 2.0 dataset uses a 66% (answered)/33% (unanswered) split, as opposed to our 50%/50% split.<br>
+Secondly, we need to balance the different types of questions (who? what? where? why? how? when? etc.). The aim is to have a model that performs well regardless of the type of questions used. At present, the distribution is as follows: <br>
+</p>
+
+<table>
+    <tr>
+        <td>Type of question</td>
+        <td>Frequency in percent</td>
+    </tr>
+    <tr>
+        <td>What (que)</td>
+        <td>55.12</td>
+    </tr>
+    <tr>
+        <td>Who (qui)</td>
+        <td>16.24</td>
+    </tr>
+    <tr>
+        <td>How much (combien)</td>
+        <td>7.56</td>
+    </tr>
+    <tr>
+        <td>When (quand)</td>
+        <td>6.85</td>
+    </tr>
+    <tr>
+        <td>Where (où)</td>
+        <td>3.98</td>
+    </tr>
+    <tr>
+        <td>How (comment)</td>
+        <td>3.76</td>
+    </tr>
+    <tr>
+        <td>What (quoi)</td>
+        <td>2.94</td>
+    </tr>
+    <tr>
+        <td>Why (pourquoi)</td>
+        <td>1.41</td>
+    </tr>
+    <tr>
+        <td>Other</td>
+        <td>2.14</td>
+    </tr>
+</table>
+<br>
+
+<p style="text-align:justify;">
+In the same vein, we could increase the number of questions containing a negation, e.g. "What was the name of Chopin's first music teacher who was not an amateur musician?", which currently accounts for only 3.07% of questions. <br>
+This would, however, require investment in annotation in new data, although the first point mentioned could help in rebalancing. An alternative might be to scrape open-source online data, such as patent annals and, more generally, exercises asking students to answer a question by quoting an extract from a text. <br>
+Thirdly, we can consider incorporating a proportion of unanswered data in the context from corpora other than those used here. The logic we have applied is to take questions from SQuAD 1.0-type corpora so that the same question is sometimes an answer and other times not, so that the model doesn't learn a given answer to a given question and thus overlearn. <br>
+The idea of adding unanswered questions (with a new associated context) that are not part of the SQuAD 1.0 datasets is to increase the variability of possible questions seen by the model. A few datasets exist in French. These include: <br>
+- <a href="https://github.com/apple/ml-mkqa/">Mkqa</a> by <a href="https://arxiv.org/abs/2007.15207">Longpre et al. (2021)</a> is a multilingual dataset containing 10,000 questions in French. An interesting piece of information that is specified in this dataset is that the type of question (who? what? when? etc.) must be specified by the user. <br>
+- <a href="https://inklab.usc.edu/XCSR/xcsr_datasets">X-CSR</a> by <a href="https://arxiv.org/abs/2109.13209v1">Lin et al. (2021)</a>   contains two subsets. For QA, only the X-CSQA subset containing 2074 questions and answers is relevant. <br>
+This means that 12,074 questions in French are available in the SQuAD 2.0 methodology. <br>
+Finally, it would be appropriate to create a new test dataset for research purposes, rather than using the FQuAD 1.0 dev dataset as is currently widespread. In fact, the latter is under a restrictive license that does not allow it to be shared in SQuAD 2.0 format. 
+</p>
+<br><br>
+
+# Conclusion
+<p style="text-align:justify;">
+
+We introduce the QAmembert model in its basic and wide versions. The former is freely available on Hugging Face. The second is available on request from X. <br>
+These models are the first in France to adopt the open-source SQuAD 2.0 methodology. <br>
+We do not rule out further work, in particular to balance the type of questions. <br>
+</p>
+<br><br>
+
+# Citation
+DOI
+# References
+
+<p style="text-align:justify;">
+- <a href="https://arxiv.org/abs/1606.05250">SQuAD: 100,000+ Questions for Machine Comprehension of Text</a> by Rajpurkar et al. (2016)<br>
+- <a href="https://arxiv.org/abs/1806.03822">Know What You Don't Know: Unanswerable Questions for SQuAD</a> by Rajpurkar et al. (2018)<br>
+- <a href="https://arxiv.org/abs/2002.06071">FQuAD: French Question Answering Dataset</a> by Hoffschmidt et al. (2020)<br>
+- <a href="https://arxiv.org/abs/2109.13209v1">FQuAD2.0: French Question Answering and knowing that you know nothing</a> by Heinrich et al. (2021)<br>
+- <a href="https://arxiv.org/abs/2109.13209v1">Project PIAF: Building a Native French Question-Answering Dataset</a> by Keranon et al. (2020)<br>
+- <a href="https://huggingface.co/datasets/lincoln/newsquadfr">Newsquadfr</a> by Lincoln (2021)<br>
+- <a href="https://arxiv.org/abs/1911.03894">CamemBERT: a Tasty French Language Model</a> de Martin et al. (2019)<br>
+- <a href="https://arxiv.org/abs/1912.05372">FlauBERT: Unsupervised Language Model Pre-training for French</a> de He et al. (2019<br>
+- <a href="https://www.linkedin.com/pulse/something-new-french-text-mining-information-chatbot-largest-kabbadj/">Something new in French Text Mining and Information Extraction (Universal Chatbot): Largest Q&A French training dataset (110 000+)</a> by Kabbadj (2018)<br>
+- <a href="https://hal.archives-ouvertes.fr/hal-03336060/file/RANLP_2021_transformers_usability.pdf">On the Usability of Transformers-based models for a French Question-Answering task</a> by Cattan et al. (2021)<br>
+- <a href="https://huggingface.co/datasets/pragnakalp/squad_v2_french_translated
+">SQuAD v2 French Translated</a> by Pragnakalp Techlabs (2022)<br>
+- <a href="https://arxiv.org/abs/2007.15207">MKQA: A Linguistically Diverse Benchmark for Multilingual Open Domain Question Answering</a> by Longpre et al. (2021)<br>
+- <a href="https://arxiv.org/abs/2109.13209v1">Common Sense Beyond English: Evaluating and Improving Multilingual Language Models for Commonsense Reasoning</a> by Lin et al. (2021)<br>
+
+</p>
+
+<br><br>
+
+# Comments
+<script src="https://utteranc.es/client.js"
+        repo="catie-aq/blog-vaniila"
+        issue-term="pathname"
+        label="[Comments]"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
