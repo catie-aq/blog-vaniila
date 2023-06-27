@@ -168,6 +168,7 @@ For <a href="https://huggingface.co/spaces/evaluate-metric/squad_v2">SQuAD 2.0</
 From an implementation point of view, the best way to calculate the above metrics is to use the python package <a href="https://pypi.org/project/evaluate/">evaluate</a> by Hugging Face. <br>
 
 Performance results for the various models considered are available in the table below. <br>
+</p>
 <table>
     <tr>
         <td>Model</td>
@@ -200,8 +201,8 @@ Performance results for the various models considered are available in the table
         <td>F1: 88.74<br>exact_match: 77.14<br>Answer_f1: 78.83<br>NoAnswer_f1: 98.65</td>
     </tr>
 </table>
-Performance results for different QA models
 
+<p style="text-align:justify;">
 With an equivalent number of parameters, the Etalab model appears to perform best on the F1 score for SQuAD 1.0 datasets type. On the exact_match metric, QAmemBERT produces better results. Its advantage is that it is capable of handling SQuAD 2.0 datasets type, contrary to the Etalab model. <br>
 The QAmemBERT-large model achieves the best results whatever the test dataset considered.
 </p>
