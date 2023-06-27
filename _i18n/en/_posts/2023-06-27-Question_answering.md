@@ -76,14 +76,16 @@ A few models finetuned to the QA task are available in open-source. These includ
 
 Each of these models has its limitations. <br>
 Firstly, none of them uses all the available data: <br>
-- Illuin's model uses only one dataset, i.e. 26,108 questions/answers (including 2189 test questions/answers). <br>
-- Etalab's model uses three, i.e. around 128,090 questions/answers (including 3188 test questions/answers), including the French-SQuAD, which is of poor quality, and PIAF version 1.1, containing 7570 questions/answers, instead of version 1.2, containing 9225 questions/answers. <br>
-- Crédit Mutuel's uses only two sets of data, i.e. 27,754 questions/answers (including 3188 test questions/answers). <br>
+- Illuin's model uses only one dataset, i.e. 26,108 questions/answers (including 2,189 test questions/answers). <br>
+- Etalab's model uses three, i.e. around 128,090 questions/answers (including 3,188 test questions/answers), including the French-SQuAD, which is of poor quality, and PIAF version 1.1, containing 7,570 questions/answers, instead of version 1.2, containing 9,225 questions/answers. <br>
+- Crédit Mutuel's uses only two sets of data, i.e. 27,754 questions/answers (including 3,188 test questions/answers). <br>
 Secondly, all the data used in these models is based solely on the SQuAD 1.0 methodology, which requires the answer to the question to be found in the context text. <br>
 Thirdly, the Crédit Mutuel model is a distilled CamemBERT. As such, it has fewer parameters than the others, but in return achieves lower performance. If your objective is to have the smallest model possible, because you have hardware constraints for example, this model is certainly the best suited to your needs. However, if your objective is to have a model with the best possible performance, this model should be avoided. <br><br>
 
 With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a basic version of the model free of charge and freely in open-source <a href="https://huggingface.co/CATIE-AQ/QAmembert">(https://huggingface.co/CATIE-AQ/QAmembert)</a>, as well as a large version free of charge but on request. <br>
 Specifically, we used : <br>
+</p>
+
 <table>
     <tr>
         <td>Dataset</td>
@@ -98,7 +100,7 @@ Specifically, we used : <br>
         <a href="https://www.data.gouv.fr/en/datasets/piaf-le-dataset-francophone-de-questions-reponses/"> PIAF 1.2</a> 
        </td>
         <td>SQuAD 1.0</td>
-        <td>9 225 Q &amp; A</td>
+        <td>9,225 Q &amp; A</td>
         <td>X</td>
         <td>X</td>
         <td></td>
@@ -108,9 +110,9 @@ Specifically, we used : <br>
         <a href=" https://fquad.illuin.tech/"> FQuAD 1.0</a> 
         </td>
         <td>SQuAD 1.0</td>
-        <td>20 731 Q &amp; A</td>
-        <td>3 188 Q &amp; A  (not used for training because used as a test dataset)</td>
-        <td>2 189 Q &amp; A (not used in our work because not freely available)</td>
+        <td>20,731 Q &amp; A</td>
+        <td>3,188 Q &amp; A  (not used for training because used as a test dataset)</td>
+        <td>2,189 Q &amp; A (not used in our work because not freely available)</td>
         <td></td>
     </tr>
     <tr>
@@ -118,7 +120,7 @@ Specifically, we used : <br>
       <a href="https://huggingface.co/datasets/lincoln/newsquadfr"> lincoln/newsquadfr </a> 
        </td>
         <td>SQuAD 1.0</td>
-        <td>1 650 Q &amp; A</td>
+        <td>1,650 Q &amp; A</td>
         <td>455 Q &amp; A (not used in our work)</td>
         <td>415 Q &amp; A (not used in our work)</td>
         <td></td>
@@ -128,7 +130,7 @@ Specifically, we used : <br>
 <a href="https://huggingface.co/datasets/pragnakalp/squad_v2_french_translated"> pragnakalp/squad_v2_french_translated </a>
        </td>
         <td>SQuAD 2.0</td>
-        <td>79 069 Q &amp; A</td>
+        <td>79,069 Q &amp; A</td>
         <td>X</td>
         <td>X</td>
         <td></td>
