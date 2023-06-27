@@ -27,7 +27,7 @@ From a technical point of view, the QA extractive task can be considered as bina
 
 # QA datasets with context
 <p style="text-align:justify;">
-The most famous QA dataset is the <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD (Stanford Question Answering Dataset) </a>  dataset by Rajpurkar et al. Created for English from Wikipedia articles, other languages have generally adopted its formatting. <br>
+The most famous QA dataset is the <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD (Stanford Question Answering Dataset)</a>  dataset by Rajpurkar et al. Created for English from Wikipedia articles, other languages have generally adopted its formatting. <br>
 There are two versions of this dataset. <a href="https://arxiv.org/abs/1606.05250">SQuAD 1.0 by Rajpurkar et al. (2016)</a>  contains 107,785 triplets of context text, question and answer. Below is an example of a line from this version of the dataset: <br>
 </p>
 <center>
@@ -54,7 +54,7 @@ Below is an example of a line from this version of the dataset: <br>
 For the French language, datasets have been created using the SQuAD methodology. These include: <br>
 - <a href="https://fquad.illuin.tech/">FQuAD 1.0 (2020)</a> by Illuin Technology (in particular <a href="https://arxiv.org/abs/2002.06071">Hoffschmidt et al. (2021)</a>), which is based on the SQuAD 1.0 methodology and contains 26,108 questions/answers based on <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9"> high-quality Wikipedia articles </a>. The data is available on the Illuin Technology website after filling in a form (only the train and dev samples are available, not the test). Version FQuAD 1.1 by the same authors contains 62,003 questions/answers, but this dataset is not open. <br>
 - <a href="https://arxiv.org/abs/2109.13209v1"> by Heinrich et al. </a> using SQUAD 2.0 methodology bringing 13,591 new unanswered questions. However, this dataset is not open. <br>
-- The <https://piaf.etalab.studio/">PIAF</a> (Pour une IA Francophone) project supported by <a href="https://www.etalab.gouv.fr/">Etalab</a> and more specifically <a href="https://aclanthology.org/2020.lrec-1.673/">Keraron et al. (2020)</a> includes more than 9225 questions. The PIAF data are freely accessible <a href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">here</a>.<br>
+- The <a href="https://piaf.etalab.studio/">PIAF</a> (Pour une IA Francophone) project supported by <a href="https://www.etalab.gouv.fr/">Etalab</a> and more specifically <a href="https://aclanthology.org/2020.lrec-1.673/">Keraron et al. (2020)</a> includes more than 9225 questions. The PIAF data are freely accessible <a href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">here</a>.<br>
 - <a href="https://huggingface.co/datasets/lincoln/newsquadfr">Newsquadfr (2021)</a> by <a href="https://www.lincoln.fr/">Lincoln</a> is a dataset of 2520 questions. The contexts are paragraphs of articles extracted from nine French online newspapers during the year 2020/2021. <br><br>
 A total of 37,853 context/question/answer triplets are available natively in French. <br><br>
 There are also a few datasets that are translations of SQuAD into French. These include: <br>
@@ -66,7 +66,6 @@ There are also a few datasets that are translations of SQuAD into French. These 
 
 # Which model for solving a QA task?
 <p style="text-align:justify;">
-
 Any transformer model is able to solve this task, whether it's a full transformer (encoder and decoder), a transformer decoder, or a transformer encoder. <br>
 Only the way in which the data is provided to the model differs between the different approaches. <br>
 In practice, encoder models are the most widely used. Because they are best suited to solving classification tasks, and probably out of habit. Indeed, in the case of French, encoder transformers were available before decoder transformers and full transformers. Furthermore, it should be noted that CamemBERT model by <a href="https://arxiv.org/abs/1911.03894">Martin et al. (2019)</a> is more commonly used than FlauBERT by <a href="https://arxiv.org/abs/1912.05372">He et al. (2019)</a> for the QA task, due to empirical observations: several authors have noted that the former tends to give better results than the latter on this task. <br><br>
@@ -83,7 +82,7 @@ Firstly, none of them uses all the available data: <br>
 Secondly, all the data used in these models is based solely on the SQuAD 1.0 methodology, which requires the answer to the question to be found in the context text. <br>
 Thirdly, the Crédit Mutuel model is a distilled CamemBERT. As such, it has fewer parameters than the others, but in return achieves lower performance. If your objective is to have the smallest model possible, because you have hardware constraints for example, this model is certainly the best suited to your needs. However, if your objective is to have a model with the best possible performance, this model should be avoided. <br><br>
 
-With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a basic version of the model free of charge and freely in open-source <a href="https://huggingface.co/CATIE-AQ/QAmembert"> (https://huggingface.co/CATIE-AQ/QAmembert) </a>, as well as a large version free of charge but on request. <br>
+With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a basic version of the model free of charge and freely in open-source <a href="https://huggingface.co/CATIE-AQ/QAmembert">(https://huggingface.co/CATIE-AQ/QAmembert)</a>, as well as a large version free of charge but on request. <br>
 Specifically, we used : <br>
 <table>
     <tr>
