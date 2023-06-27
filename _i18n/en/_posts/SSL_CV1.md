@@ -1,0 +1,767 @@
+---
+title: "SELF-SUPERVISED LEARNING IN COMPUTER VISION"
+tags:
+  - CV
+  - self-supervised
+  - SSL
+  - "2023"
+excerpt : "CV - Self-supervised learning (SSL) models in computer vision <br>- Difficulté : intermediate"
+header:
+   overlay_color: "#1C2A4D"
+author_profile: false
+sidebar:
+    nav: sidebar-cv
+classes: wide
+---
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script> 
+
+# Foreword
+Have you ever wondered how babies and animals learn? how ChatGPT generates its texts? How DeepL translates texts? Well, part of it is due to SSL methods.   
+This article is the first part of the series around Self-Supervised Learning. No knowledge is required to understand the main message this article is trying to get across.
+Nevertheless, since most of the methods presented above are based on Siamese networks, if you feel you need it, you can read our <a href="https://blog.vaniila.ai/en/Facial_recognition/">blog post on the subject</a> beforehand.
+The experimentations described in the article were carried out by building on the well-known library <a href="https://github.com/lightly-ai/lightly">lightly by Susmelj et al. (2020)</a>.
+<br><br>
+
+
+# Introduction
+<p style="text-align:justify;">
+
+Over the past decades, we have seen a dramatic surge in data availability due to new data formats other than texts (images, audio, videos, surveys, sensors etc), new technologies (data storage, social media, Internet of Things, data transfer etc) and data duplication. Making inferences from such big data using traditional techniques has been challenging. However, supervised learning techniques have been the go-to approaches for building predictive models with higher accuracy and exceeding human-level performance in recent years.
+<br>
+Even with the success of these approaches, they often rely on extensive labelled data. 
+Labelling data can be a long, laborious, tedious, and costly process compared with how humans approach learning, often making the deployment of ML systems not cost-effective. 
+Therefore, the recurrent question has been how to make inferences in a supervised learning setting with minimum label data. Current approaches to tackling this challenge rely on unsupervised and self-supervised learning techniques.   Both self-supervised and unsupervised learning methods don't require labelled datasets, making them complementary techniques. 
+<br>
+<!--
+Unsupervised learning encompasses self-supervised learning but lacks feedback loops. In contrast, self-supervised learning employs numerous supervisory signals as feedback during the training process. 
+-->
+We focus this article on self-supervised techniques for classification tasks in computer vision. In the following, we discuss what self-supervised learning is, and then provide some literature on this growing research topic. We then list SSL methods used in this article before describing the experiments on some public data and finally reporting some results.
+</p>
+<br><br>
+
+
+# What is self-supervised learning?  
+<p style="text-align:justify;">
+Self-supervised learning (SSL) is a type of machine learning in which a model learns to represent and understand the underlying structure of data by making use of the inherent patterns and relationships within the data itself, rather than relying on explicit labels or annotations.
+<br>
+In SSL, the model is trained on a task that is automatically generated from the input data, such as predicting the missing parts of an image, predicting the next word in a sentence, or transforming an image into another modality like text or sound. By solving these tasks, the model learns to capture the underlying structure of the data and can generalize to new, unseen data.
+<br>
+The key to SSL is that it pre-trains the deep neural networks on large datasets, and then fine-tuned them for specific downstream tasks such as classification, object detection, and language modelling. It has been used to achieve state-of-the-art results on various tasks in computer vision, natural language processing, and speech recognition (see Section literature review below). 
+<br><br>
+SSL techniques include but are not limited to:< br>
+1. <b>Contrastive learning</b> involves training a model to distinguish between similar and dissimilar examples. It learns to map similar examples closer together in a latent space while pushing dissimilar examples further apart.<br>
+2. <b>Autoencoders</b> train a model to encode an input into a compact latent representation and then decode it back into the original input. By minimizing the difference between the input and the reconstructed output, the model learns to capture the underlying structure of the data.<br>
+3. <b>Generative model</b> techniques train a model to generate new examples that are similar to the input data. Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs) are commonly used generative models in self-supervised learning.<br>
+4. <b>Multitask learning</b> techniques train a model on multiple related tasks simultaneously, leveraging the shared structure between the tasks to improve the model's ability to capture the underlying structure of the data.<br>
+5. <b> Predictive coding by <a href="https://arxiv.org/abs/2202.09467">Millidge et al (2022)</a></b> : This technique trains a model to predict the next frame in a video or the next word in a sentence, based on the previous frames or words. By doing so, the model learns to capture the temporal structure of the data.<br>
+
+6. <b>Non-Contrastive Learning</b> refers to techniques that do not rely on explicit comparisons between examples to learn representations. Instead, these methods use other types of learning signals to train the model. <br><br>
+We mainly focus here on contrastive and non-contrastive methods. <br>  
+We will evaluate the performance of some of these methods on various image datasets for classification tasks.
+</p>
+<br><br>
+
+# Literature review
+<p style="text-align:justify;">
+
+La revue la plus complète et la mieux ordonnée que nous avons identifié est celle communautaire hébergée par <a href="https://github.com/jason718/awesome-self-supervised-learning">Jason Ren</a>.
+Vous y trouverez les articles/présentations les plus pertinents sur ce sujet, classés par catégorie.
+Son répertoire comprend des liens vers des blogs bien détaillés, auxquels nous pouvons ajouter les articles by blog by <a href="https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/">FAIR</a>, <a href="https://neptune.ai/blog/self-supervised-learning">Neptune.ai</a> et <a href="https://www.v7labs.com/blog/self-supervised-learning-guide">v7labs</a>.
+</p>
+<br>
+
+## Methods considered
+
+### SimCLR (<i>Simple Contrastive Learning of Representations</i>) by <a href="https://arxiv.org/abs/2002.05709">Chen et al. (2020)</a>
+
+<p style="text-align:justify;">
+
+SimCLR learns representations by maximizing the agreement between different augmented views of the same image while minimizing the agreement between different images. Specifically, SimCLR uses a contrastive loss function that encourages representations of the same image to be close together in a high-dimensional embedding space, while pushing representations of different images further apart. The idea is that if two different views of the same image produce similar representations, these representations must capture useful and invariant features of the image (see Figure 1). 
+
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/simclr.png">
+  <figcaption>
+  Figure 1: SimCLR’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+### SimSiam (Exploring Simple Siamese Representation Learning) by <a href="https://arxiv.org/abs/2011.10566">Chen et He (2020)</a>
+<p style="text-align:justify;">
+Similar to SimCLR, SimSiam learns representations by maximizing the agreement between differently augmented views of the same image. However, unlike SimCLR, SimSiam does not use negative samples (i.e., it does not compare the representations of different images). Instead, SimSiam uses a Siamese network architecture with two identical branches with the same parameters. One branch is used to generate a predicted representation of an image, while the other branch generates a randomly augmented version of the same image. The goal is to train the network to predict the augmented representation using only the other branch (see Figure 2). 
+
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/simsiam.png">
+  <figcaption>
+  Figure 2: SimSiam’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+### SWAV (Swapping Assignments between multiple Views of the same image) by <a href="https://arxiv.org/abs/2006.09882">Caron et al. (2020)</a>
+<p style="text-align:justify;">
+SWAV aims to learn representations that capture the semantic content of images. The method involves training a network to predict a set of learned "prototypes" for a given image. These prototypes are learned by clustering the representations of different augmented views of the same image. During training, the network is trained to predict which prototype corresponds to each view of the image, while also minimizing the distance between the representations of the views belonging to the same image (see Figure 3). 
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/swav.png">
+  <figcaption>
+  Figure 3: SWAV’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+### BYOL (Bootstrap Your Own Latent) by <a href="https://arxiv.org/abs/2006.07733">Grill et al. (2020)</a>
+<p style="text-align:justify;">
+BYOL involves training two copies of the same network to predict each other's outputs. One copy of the network (the "online" network) is updated during training, while the other copy (the "target" network) is kept fixed. The online network is trained to predict the output of the target network, while the target network serves as a fixed target for the online network.
+The key innovation of BYOL is that it uses a "predictive coding" approach, where the online network is trained to predict a future representation of the target network. This approach allows the network to learn representations that are more invariant to data augmentation than those learned by contrastive learning methods (see Figure 4).
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/byol.png">
+  <figcaption>
+  Figure 4: BYOL’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+### Barlow Twins by <a href="https://arxiv.org/abs/2103.03230">Zbontar et al. (2021)</a>
+<p style="text-align:justify;">
+Barlow Twins is based on the idea of maximizing the agreement between two randomly augmented views of the same data point while minimizing the agreement between different data points (see Figure 5). The intuition is that if two different views of the same data point produce similar representations, then these representations must capture meaningful and invariant features of the data.<br>
+Barlow Twins achieves this by introducing a new loss function that encourages the representations of the two views to be highly correlated. Specifically, the Barlow Twins loss is a distance correlation loss that measures the difference between the cross-covariance matrix of the representations and the identity matrix.
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/barlow_twins.png">
+  <figcaption>
+  Figure 5: Balow Twins’ architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+### VICReg ("Variance-Invariance-Covariance Regularization") by <a href="https://arxiv.org/abs/2105.04906">Bardes et al. (2021)</a>
+<p style="text-align:justify;">
+VICReg aims to improve the generalization performance of self-supervised models by encouraging them to capture the underlying structure of the data. It essentially learns feature representation by matching features that are close in the embedding space (see Figure 6). It does so by regularizing the model's feature representation using three types of statistical moments: variance, invariance, and covariance.<br>
+- Variance regularization encourages the model to produce features with low variance across different views of the same instance. This encourages the model to capture the intrinsic properties of the instance that are invariant across different views.<br>
+- Invariance regularization encourages the model to produce features that are invariant to certain transformations, such as rotations or translations. This encourages the model to capture the underlying structure of the data that is invariant to certain types of transformations.<br>
+- Covariance regularization encourages the model to capture the pairwise relationships between different features. This encourages the model to capture the dependencies and interactions between different parts of the data.<br>
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/vicreg.png">
+  <figcaption>
+  Figure 6: VICReg’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+
+### VICRegL by <a href="https://arxiv.org/abs/2210.01571">Bardes et al. (2022)</a>
+<p style="text-align:justify;">
+
+VICRegL is an extension of VICReg described above. In addition to learning global features, it learns to extract local visual features by matching features that are close in terms of locations in their original image (see Figure 7). It does that by using the regularization of VICReg in both the global and the local feature representation with the loss function described as a weighted sum of both local and feature-based losses. The weighted sum is governed by a scale factor $\alpha$ controlling the importance one wants to put on learning global rather than local representation. We refer the reader to the paper by <a href="https://arxiv.org/abs/2210.01571"> Bardes et al. (2022)</a> for details on how the loss function is derived.
+</p>
+<center>
+<figure class="image">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/vicregl.png">
+  <figcaption>
+  Figure 7: VICRegL’s architecture
+  </figcaption>
+</figure>
+</center>
+<br>
+
+# Implementation details and results
+<p style="text-align:justify;">             
+
+We provide here the implementation details to reproduce these results. Here we built on the well-known library <a href="https://github.com/lightly-ai/lightly">lightly</a> to provide a much more flexible way of executing a classification task. The training pipelines are carefully designed and structured such that a new pipeline can be efficiently constructed without much code re-writing. This enables us to compare the effect of varying hyperparameters notably the parameters related to image transformation such as colour jitter, rotation angle, cropping etc on the performance of the SSL models.   
+<br><br> 
+
+
+For our benchmarks, we initially use a baseline transformation similar to that encoded in the library [lightly](https://github.com/lightly-ai/lightly) involving cropping, resizing, rotating, colour distortion (colour dropping, brightness, contrast, saturation and hue) and Gaussian blur.  We then investigate the effect of four other transformations:  <br>
+
+-	the data augmentation methods used in SimCLR<br>
+-	the transformation based on the horizontal and vertical flip (orthogonality) <br>
+-	the LoRot-I transformation by <a href="https://arxiv.org/abs/2207.10023"> Moon et al. (2022)</a>, i.e.draw and rotate a random area of the image<br>
+-	the DCL transformation by <a href="https://arxiv.org/abs/2105.08788"> Maaz et al. (2021)</a>, i.e. a deconstruction of the image using a confusion-by-regions mechanism.
+<br><br>
+
+
+We train the self-supervised models from scratch on various subsets of <a href="https://github.com/fastai/imagenette">ImageNette by Howard (2019)</a>. These datasets include:<br>
+-	<b>ImageNette</b> a subset of 10 easily classified classes from Imagenet (tench, English springer, cassette player, chain saw, church, French horn, garbage truck, gas pump, golf ball, parachute, <br>
+-	 <b>ImageNette v2-160</b> (which is version 2 of ImageNette, where the distribution of training and by-validation samples is modified to 70%/30%, compared with 96%/4% in version 1. The number 160 indicates that the images are by size 160 by 160 pixels.)
+-	<b>ImageWoof</b> a subset of 10 dog breed classes from Imagenet, Australian terrier, border terrier, Samoyed, Beagle, Shih-Tzu, English foxhound, Rhodesian ridgeback, Dingo, Golden retriever, Old English sheepdog.
+
+We also attempt to investigate the LoRot-I and DCL transformations on the <a href=" https://dl.allaboutbirds.org/nabirds ">NABirds by Van Horn et al. (2015)</a> (North America Birds), a collection of 48,000 annotated photographs of the 550 species of birds that are commonly observed in North America) dataset. 
+It is important to note that while ImageNette and ImageNette v2-160 are easy to classify, ImageWoof and NABirds are not.<br><br>
+
+Because the VICRegL method requires local transformations in addition to the global ones, we set the parameters for the global transformation as for other methods and those of the local transformation as designed in the paper <a href="https://arxiv.org/abs/2210.01571"> by Bardes et al. (2022)</a>.<br>
+
+Four values of  α are considered including 0.25, 0.5, 0.75 and 0.95 deciding the contribution of the global representation loss to the overall training loss. All experiments are implemented with a <a href="https://arxiv.org/abs/1512.03385"> ResNet 18 backbone by He et al. (2015)</a>, 18-layer convolution NN utilizing skip connections or shortcuts to jump over some layers and each model is trained for 200 epochs with 256 batch size. It is worth noting that the choice of Resnet18 is for simplicity, the experiment could be easily adapted to any backbone included in <a href="https://github.com/huggingface/pytorch-image-models"> PyTorch Image Models (timm) by Wightman (2019)</a>. Contrary to lightly, we add a linear classifier to the backbone instead of using a KNN classifier on the test set. We follow the optimization protocol described in the library lightly.<br><br>
+
+In total, 10 models are benchmarked on four different public data sets using five different transformations. The following tables show the test accuracy of each experiment realized on each SSL model. We include the executing time and the peak GPU usage for the ImageNette data set. Results are similar for the other data set.    Overall, VICRegL and Barlow Twins seem to relatively outperform other models in terms of test accuracy. Except for the SimCLR and the orthogonality transformations, VICRegL models achieve similar accuracy to Barlow Twins with considerably less executing time as shown for the ImageNette data set.  Also, we observe a lower peak GPU usage for VICRegL models compared to others. Interestingly,  the test accuracy seems to be lower for results using the transformations that focus on some local parts of the images such as DCL and LoRot-I transformations. Conversely, the running time along with the peak GPU usage is lower for the latter transformations.                                     
+</p>
+<br>
+
+## ImageNette
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Batch size</th>
+<th>Input size</th>
+<th>Epochs</th>
+<th>Test Accuracy Baseline</th>
+<th>Test Accuracy SimClr</th>
+<th>Test Accuracy Orthogonality</th>
+<th>Test Accuracy LoRot-I</th>
+<th>Test Accuracy DCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BarlowTwins</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.705 (123.8Min/11.1Go)</td>
+<td>0.772 (127.6Min/11.1Go)</td>
+<td>0.728 (132.3Min/11.0Go)</td>
+<td>0.675 (80.1Min/11.0Go)</td>
+<td>0.667 (90.1Min/11.0Go)</td>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.679 (119.2Min/10.9GO)</td>
+<td>0.705 (135.8Min/11.8Go)</td>
+<td>0.682 (142.8Min/11.8Go)</td>
+<td>0.616 (64.8Min/11.8Go)</td>
+<td>0.626 (69.8Min/11.8Go)</td>
+</tr>
+<tr>
+<td>SimSiam</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.682 (119.1Min/11.9Go)</td>
+<td>0.691 (142.3Min/11.0Go)</td>
+<td>0.667 (142.3Min/12.7Go)</td>
+<td>0.611 (66.7Min/12.7Go)</td>
+<td>0.642 (66.3Min/12.7Go)</td>
+</tr>
+<tr>
+<td>SwaV</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.698 (120.5Min/11.9Go)</td>
+<td>0.693 (123.8Min/11.1Go)</td>
+<td>0.548 (143.1Min/12.7Go)</td>
+<td>0.626 (62.7Min/12.7Go)</td>
+<td>0.637 (61.2Min/12.7Go)</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.663 (122.4Min/13.3Go)</td>
+<td>0.659 (160.9Min/11.0Go)</td>
+<td>0.632 (164.2Min/14.2Go)</td>
+<td>0.610 (70.1Min/14.2Go)</td>
+<td>0.640 (70.0Min/14.2Go)</td>
+</tr>
+<tr>
+<td>VICReg</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.653 (121.0Min/11.8Go)</td>
+<td>0.718 (195.1Min/10.9GO)</td>
+<td>0.684 (196.6Min/12.7Go)</td>
+<td>0.613  (60.1Min/11.8Go)</td>
+<td>0.619 (59.7Min/11.8Go)</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.95</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.746 (60.0Min/7.7Go)</td>
+<td>0.744 (157.2Min/6.8Go)</td>
+<td>0.713 (160.8Min/8.6Go)</td>
+<td>0.702 (59.8Min/7.7Go)</td>
+<td>0.704 (59.8Min/7.7Go)</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.75</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.743 (59.1Min/7.7Go)</td>
+<td>0.744 (159.3Min/7.7Go)</td>
+<td>0.712 (171.3Min/8.6Go)</td>
+<td>0.700 (59.3Min/8.6Go)</td>
+<td>0.701 (56.1Min/8.6Go)</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.50</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.740 (58.2Min/7.7Go)</td>
+<td>0.742  (178.2Min/7.7Go)</td>
+<td>0.706 (188.5Min/8.6Go)</td>
+<td>0.697 (57.2Min/7.7Go)</td>
+<td>0.697 (54.2Min/7.7Go)</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.25</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.741 (58.1Min/7.7Go)</td>
+<td>0.742 (178.4Min/6.8Go)</td>
+<td>0.706 (198.5Min/8.6Go)</td>
+<td>0.695 (56.8Min/7.7Go)</td>
+<td>0.693 (53.8Min/7.7Go)</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+## ImageNette v2-160
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Batch size</th>
+<th>Input size</th>
+<th>Epoch</th>
+<th>Test Accuracy Baseline</th>
+<th>Test Accuracy SimClr</th>
+<th>Test Accuracy Orthogonality</th>
+<th>Test Accuracy LoRot</th>
+<th>Test Accuracy DCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BarlowTwins</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.763</td>
+<td>0.677</td>
+<td>0.653</td>
+<td>0.649</td>
+<td>0.618</td>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.685</td>
+<td>0.665</td>
+<td>0.594</td>
+<td>0.588</td>
+<td>0.621</td>
+</tr>
+<tr>
+<td>SimSiam</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.678</td>
+<td>0.663</td>
+<td>0.592</td>
+<td>0.590</td>
+<td>0.652</td>
+</tr>
+<tr>
+<td>SwaV</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.678</td>
+<td>0.667</td>
+<td>0.600</td>
+<td>0.597</td>
+<td>0.640</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.661</td>
+<td>0.636</td>
+<td>0.587</td>
+<td>0.589</td>
+<td>0.632</td>
+</tr>
+<tr>
+<td>VICReg</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.702</td>
+<td>0.634</td>
+<td>0.600</td>
+<td>0.597</td>
+<td>0.605</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.95</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.724</td>
+<td>0.723</td>
+<td>0.698</td>
+<td>0.691</td>
+<td>0.692</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.75</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.721</td>
+<td>0.723</td>
+<td>0.694</td>
+<td>0.684</td>
+<td>0.687</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.50</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.709</td>
+<td>0.710</td>
+<td>0.691</td>
+<td>0.680</td>
+<td>0.682</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.25</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.712</td>
+<td>0.706</td>
+<td>0.690</td>
+<td>0.674</td>
+<td>0.674</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+## ImageWoof
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Batch size</th>
+<th>Input size</th>
+<th>Epoch</th>
+<th>Test Accuracy Baseline</th>
+<th>Test Accuracy SimClr</th>
+<th>Test Accuracy Orthogonality</th>
+<th>Test Accuracy LoRot</th>
+<th>Test Accuracy DCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BarlowTwins</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.507</td>
+<td>0.455</td>
+<td>0.460</td>
+<td>0.448</td>
+<td>0.416</td>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.457</td>
+<td>0.423</td>
+<td>0.403</td>
+<td>0.396</td>
+<td>0.397</td>
+</tr>
+<tr>
+<td>SimSiam</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.437</td>
+<td>0.420</td>
+<td>0.393</td>
+<td>0.393</td>
+<td>0.401</td>
+</tr>
+<tr>
+<td>SwaV</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.051</td>
+<td>0.102</td>
+<td>0.393</td>
+<td>0.395</td>
+<td>0.398</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.436</td>
+<td>0.401</td>
+<td>0.392</td>
+<td>0.399</td>
+<td>0.413</td>
+</tr>
+<tr>
+<td>VICReg</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.444</td>
+<td>0.429</td>
+<td>0.400</td>
+<td>0.398</td>
+<td>0.381</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.95</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.464</td>
+<td>0.446</td>
+<td>0.443</td>
+<td>0.428</td>
+<td>0.430</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.75</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.465</td>
+<td>0.443</td>
+<td>0.435</td>
+<td>0.425</td>
+<td>0.427</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.50</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.466</td>
+<td>0.443</td>
+<td>0.435</td>
+<td>0.423</td>
+<td>0.420</td>
+</tr>
+<tr>
+<td>VICRegL, α=0.25</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.464</td>
+<td>0.452</td>
+<td>0.440</td>
+<td>0.434</td>
+<td>0.433</td>
+</tr>
+</tbody>
+</table>
+<br>
+
+### NABirds 
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Batch size</th>
+<th>Input size</th>
+<th>Epoch</th>
+<th>Test Accuracy top 1% LoRot</th>
+<th>Test Accuracy top 5% LoRot</th>
+<th>Test Accuracy top 1% DCL</th>
+<th>Test Accuracy top 5% DCL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BarlowTwins</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.082</td>
+<td>0.188554</td>
+<td>0.093</td>
+<td>0.214596</td>
+</tr>
+<tr>
+<td>SimCLR</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.079</td>
+<td>0.197335</td>
+<td>0.097</td>
+<td>0.237408</td>
+</tr>
+<tr>
+<td>SimSiam</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.042</td>
+<td>0.123549</td>
+<td>0.061</td>
+<td>0.161401</td>
+</tr>
+<tr>
+<td>SwaV</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.073</td>
+<td>0.193197</td>
+<td>0.097</td>
+<td>0.230342</td>
+</tr>
+<tr>
+<td>BYOL</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.040</td>
+<td>0.116786</td>
+<td>0.059</td>
+<td>0.165540</td>
+</tr>
+<tr>
+<td>VICReg</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.083</td>
+<td>0.188654</td>
+<td>0.099</td>
+<td>0.224589</td>
+</tr>
+<tr>
+<td>VICRegL α=0.95</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.155</td>
+<td>0.334915</td>
+<td>0.154</td>
+<td>0.333603</td>
+</tr>
+<tr>
+<td>VICRegL α=0.75</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.155</td>
+<td>0.332694</td>
+<td>0.153</td>
+<td>0.333199</td>
+</tr>
+<tr>
+<td>VICRegL α=0.50</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.150</td>
+<td>0.326739</td>
+<td>0.150</td>
+<td>0.327344</td>
+</tr>
+<tr>
+<td>VICRegL α=0.25</td>
+<td>256</td>
+<td>224</td>
+<td>200</td>
+<td>0.144</td>
+<td>0.314626</td>
+<td>0.144</td>
+<td>0.316443</td>
+</tr>
+</tbody>
+</table>
+<br><br>
+
+# Conclusion
+<p style="text-align:justify;">
+- SSL in computer vision refers to making a computer learn the visual word with minimal human supervision.<br>
+- The choice of data augmentation is key to improving classification in computer vision problems.<br>
+- Accounting for local and global features during learning by using VICRegL model seems to give the best tradeoff between accuracy and computer capability for improving classification accuracy.<br>
+- Doing only pure SSL using LoRot-I and DCL transformations does not outperform traditional transformations.<br>
+- Future work on extending the scope of this work will be carried out e.g. using different backbones, more epochs etc. especially on ImageWoof and NABirds datasets.<br>
+- In the next article, we will measure the effectiveness of using the transformation as SSL pretext task as in Maaz et al. (2021).
+</p>
+
+<br><br>
+
+# References
+
+- <a href="https://arxiv.org/abs/2202.09467">Predictive Coding: Towards a Future of Deep Learning beyond Backpropagation?</a> by Millidge et al (2022),
+- <a href="https://arxiv.org/abs/2002.05709">A Simple Framework for Contrastive Learning of Visual Representations</a> by Chen et al. (2020),
+- <a href="https://arxiv.org/abs/2002.05709"> Exploring Simple Siamese Representation Learning</a> by Chen et al. (2020),
+- <a href="https://arxiv.org/abs/2011.10566">Exploring Simple Siamese Representation Learning</a> by Chen et He (2020),
+- <a href="https://arxiv.org/abs/2006.09882"> Unsupervised Learning of Visual Features by Contrasting Cluster Assignments</a> by Caron et al. (2020),
+- <a href="https://arxiv.org/abs/2006.07733"> Bootstrap Your Own Latent: A New Approach to Self-Supervised Learning</a> by Grill et al. (2020),
+- <a href="https://arxiv.org/abs/2103.03230"> Barlow Twins: Self-Supervised Learning via Redundancy Reduction</a> by Zbontar et al. (2021),
+- <a href="https://arxiv.org/abs/2105.04906"> VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning</a> by Bardes et al. (2021),
+- <a href="https://arxiv.org/abs/2210.01571"> VICRegL: Self-Supervised Learning of Local Visual Features </a> by Bardes et al. (2022),
+- <a href="https://arxiv.org/abs/2207.10023">Tailoring Self-Supervision for Supervised Learning</a> by Moon et al. (2022),
+- <a href="https://arxiv.org/abs/2105.08788">Self-Supervised Learning for Fine-Grained Visual Categorization</a> by Maaz et al. (2021),
+- <a href="https://github.com/fastai/imagenette">ImageNette</a> by Howard (2019),
+- <a href="https://dl.allaboutbirds.org/nabirds"> Building a Bird Recognition App and Large Scale Dataset With Citizen Scientists: The Fine Print in Fine-Grained Dataset Collection</a> by Van Horn et al. (2015), 
+- <a href="https://arxiv.org/abs/1512.03385"> Deep Residual Learning for Image Recognition</a> by He et al. (2015),
+- <a href="https://github.com/huggingface/pytorch-image-models"> PyTorch Image Models (timm) </a> by Wightman (2019)
+
+<br><br>
+
+
+# Comments
+<script src="https://utteranc.es/client.js"
+        repo="catie-aq/blog-vaniila"
+        issue-term="pathname"
+        label="[Commentaires]"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
