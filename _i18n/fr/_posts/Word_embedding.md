@@ -32,7 +32,7 @@ Pour les machines, comprendre le sens des mots et des phrases est une tâche com
 <br><br>
 Le traitement du langage naturel remonte au début de l'informatique, dans les années 50. À l'époque, les experts cherchent comment représenter numériquement des mots. Dans les années 2010, la puissance des ordinateurs est telle qu'elle permet la démocratisation des <b>réseaux de neurones</b> ce qui va pousser la représentation vectorielle à s'imposer (à un mot on associe une séquence de plusieurs centaines de nombres). En effet la plupart des modèles de <b>machine learning</b> utilisent des <b>vecteurs</b> comme données d'entraînement.
 <br><br>
-Les modèles de <b>word embedding</b> ont précisément pour fonction de <b>capturer les relations entre les mots d'un corpus de textes et de les traduire en vecteurs</b>. Dans cet article, nous verrons comment interpréter ces vecteurs et comment ils sont générés, en analysant les modèles Word2Vec et GloVe.
+Les modèles de <b>word embedding</b> ont précisément pour fonction de <b>capturer les relations entre les mots d'un corpus de textes et de les traduire en vecteurs</b>. Dans cet article, nous verrons comment interpréter ces vecteurs et comment ils sont générés, en analysant le modèle Word2Vec.
 </p>
 
 # L'arithmétique des mots
@@ -72,10 +72,10 @@ $$
 Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>.
 </p>
 
-# Les modèles de Word Embedding
+# Word2Vec
 
 <p style="text-align:justify;">
-Il existe de nombreux modèles de word embedding mais 2 d'entre eux sont particulièrement cités dans la littérature scientifique : <b>Word2Vec</b> et <b>GloVe</b>. Le premier a été développé par une équipe de chercheurs de Google en 2013<sup><a href="#bib:original_word2vec">[1]</a></sup> et est considéré comme étant le modèle qui a permis de <b>démocratiser cette technologie</b>. Le second a été publié par l'université de Stanford en 2014<sup><a href="#bib:glove">[2]</a></sup> et se positionne comme le successeur de Word2Vec.
+<b>Word2Vec</b> a été développé par une équipe de chercheurs de Google en 2013<sup><a href="#bib:original_word2vec">[1]</a></sup> et est considéré comme étant le modèle qui a permis de <b>démocratiser cette technologie</b>, de par sa simplicité et son efficacité. Même si d'autres modèles de word embedding ont été développés depuis (GloVe, FastText), il est encore largement utilisé et cité dans la littérature scientifique.
 </p>
 
 ## Quelques définitions
@@ -87,19 +87,8 @@ Il existe de nombreux modèles de word embedding mais 2 d'entre eux sont particu
 <br><br>
 <b>Encodage <i>one hot</i></b> : Étant donné un vocabulaire de taille N, l'encodage one hot d'un mot de ce vocabulaire consiste à créer un vecteur de taille N avec N-1 zéros et 1 un correspondant à la position du mot dans le vocabulaire. Par exemple, avec le vocabulaire {"la", "soeur", "de", "ma", "est"}, le vecteur one-hot correspondant à "soeur" est [0, 1, 0, 0, 0].
 <br><br>
-<b>Matrice de co-occurence</b> : Étant donné un texte, un vocabulaire et une taille de fenêtre, une matrice de co-occurence est une matrice dont chaque ligne et chaque colonne correspondent à un mot du vocabulaire, et l'élément à l'intersection des mots <i>mot1</i> et <i>mot2</i> correspond au nombre de fois où <i>mot2</i> est dans le voisinage de <i>mot1</i> (selon la taille de fenêtre). Par exemple, avec la phrase "La soeur de ma soeur est ma soeur" et une fenêtre de taille 1, cela donne :
 
-| |la|soeur|de|ma|est|
-|-|-|-|-|-|-|
-|la|0|1|0|0|0|
-|soeur|1|0|1|2|1|
-|de|0|1|0|1|0|
-|ma|0|2|1|0|1|
-|est|0|1|0|1|0|
-
-</p>
-
-## Word2Vec
+## Fonctionnement
 
 <p style="text-align:justify;">
 Le concept de Word2Vec est d'utiliser un <b>réseau de neurones</b> pour résoudre une "<i>fausse tâche</i>", appelée <b>tâche de prétexte</b> : les poids obtenus après entraînement ne servent pas à inférer des résultats mais <b>sont</b> le résultat <i>ie</i> les <b>vecteurs de mots</b>. Le modèle se décline en 2 versions (légèrement) différentes : <b>CBOW</b> (pour <i>Continuous Bag Of Words</i>) et <b>Skip Gram</b>. CBOW tente de résoudre la tâche qui à un <b>contexte</b> donné associe un <b>mot</b> tandis que Skip Gram fait l'inverse. La méthode utilisée étant à peu près la même pour les 2 versions, nous détaillerons par la suite uniquement le modèle Skip Gram.
@@ -156,17 +145,6 @@ Il est à noter que dans notre exemple les outputs sont assez prévisibles, car 
 Les vecteurs de mots ainsi produits sont pertinents dans la mesure où <b>2 mots similaires se verront associer 2 vecteurs proches</b>. En toute logique, 2 synonymes devraient effectivement avoir un contexte analogue, ce qui se traduit par 2 outputs quasi égaux pour ces 2 inputs. Le modèle va donc attribuer des poids quasi identiques aux 2 inputs, donnant ainsi 2 vecteurs proches.
 </p>
 
-## Glove
-<p style="text-align:justify;">
-Word2Vec construit ses vecteurs en se basant sur un contexte local (à l'intérieur de la fenêtre). Avant lui, d'autres algorithmes tiraient partie de la structure globale du corpus, avec des matrices qui comptaient le nombre d'occurence d'un mot dans chaque document du corpus. GloVe propose une méthode à mi-chemin entre les 2, avec une matrices de co-occurence. La matrice obtenue à partir du corpus permet de calculer la probabilité qu'un mot soit dans le contexte d'un autre. 
-<br><br>
-L'idée derrière GloVe est la suivante : soit Pki la probabilité que le mot k soit dans le contexte du mot i, alors le rapport Pki/Pkj nous permet d'apprécier la relation entre le mot k et les mots i et j. En effet, prenons i = guidon et j = gouvernail; avec k = vélo, le rapport devrait être relativement grand. À l'inverse, k = bateau donnerait une petite valeur. Quant à des mots proches ou éloignés de i et de j, tels k = véhicule ou k = banane, ils donneraient un rapport d'à peu près 1.
-<br><br>
-Ainsi les vecteurs sont construits de telle sorte qu'en calculant le produit scalaire entre 2 d'entre eux, il est possible de retrouver la probabilité que le mot associé au premier vecteur soit dans le contexte du mot associé au deuxième. Pour ce faire une fonction de coût est définie de la façon suivante :
-
-où F rend compte de la distance entre le produit scalaire et la probabilité de voisinage. Un algorithme d'optimisation (gradient descent) permet enfin d'ajuster les vecteurs pour réduire la valeur de la fonction de coût.
-</p>
-
 # Applications et limites
 
 <p style="text-align:justify;">
@@ -187,6 +165,5 @@ La principale limitation de cette technique de vectorisation est qu'elle ne pren
 # Références
 <ol>
   <li id="bib:original_word2vec">Mikolov, Tomas; et al. (2013). "Efficient Estimation of Word Representations in Vector Space". <a href="https://arxiv.org/abs/1301.3781">arXiv:1301.3781</a></li>
-  <li id="bib:glove">Jeffrey Pennington, Richard Socher, and Christopher D. Manning. (2014). <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>.</li>
   <li id="bib:word2vec_tutorial">McCormick, C. (2016, April 19). Word2Vec Tutorial - The Skip-Gram Model. Retrieved from <a href="http://www.mccormickml.com">http://www.mccormickml.com</a></li>
 </ol>
