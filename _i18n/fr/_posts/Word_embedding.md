@@ -61,7 +61,7 @@ $$
 
 <center>
   <figure class="image">
-    <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Word_embedding/vecteurs.png">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vecteurs.png">
     <figcaption>
     Figure 1 : Relation féminin-masculin et pays-capitale
     </figcaption>
@@ -117,7 +117,7 @@ Par exemple, avec le texte "Les vacances en Nouvelle Aquitaine c'est top, on va 
 
 <center>
   <figure class="image">
-    <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Word_embedding/fenetre.svg">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/fenetre.svg">
     <figcaption>
     Figure 2 : Exemple d'inputs et leur contexte
     </figcaption>
@@ -130,7 +130,7 @@ Toujours avec le même exemple, la figure 3 représente un réseau de neurones q
 
 <center>
   <figure class="image">
-    <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Word_embedding/reseau.svg">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/reseau.svg">
     <figcaption>
     Figure 3 : Exemple de réseau de neurones
     </figcaption>
@@ -143,7 +143,7 @@ Toujours avec le même exemple, la figure 3 représente un réseau de neurones q
 
 <center>
   <figure class="image">
-    <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/Word_embedding/matrice.svg">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/matrice.svg">
     <figcaption>
     Figure 4 : Création des vecteurs de mot à partir des poids du modèle
     </figcaption>
