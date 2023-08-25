@@ -71,11 +71,12 @@ $$
 <p style="text-align:justify;">
 Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>.
 </p>
+<!-- TODO: own HF space -->
 
 # Word2Vec
 
 <p style="text-align:justify;">
-<b>Word2Vec</b> a été développé par une équipe de chercheurs de Google en 2013<sup><a href="#bib:original_word2vec">[1]</a></sup> et est considéré comme étant le modèle qui a permis de <b>démocratiser cette technologie</b>, de par sa simplicité et son efficacité. Même si d'autres modèles de word embedding ont été développés depuis (GloVe, FastText), il est encore largement utilisé et cité dans la littérature scientifique.
+<b>Word2Vec</b> a été développé par une équipe de chercheurs de Google (Mikolov et al.) en 2013 et est considéré comme étant le modèle qui a permis de <b>démocratiser cette technologie</b>, de par sa simplicité et son efficacité. Même si d'autres modèles de word embedding ont été développés depuis (GloVe et FastText pour ne citer que les plus connus), il est encore largement utilisé et cité dans la littérature scientifique.
 </p>
 
 ## Quelques définitions
@@ -83,9 +84,9 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 <p style="text-align:justify;">
 <b>Contexte</b> : Étant donné un texte, le contexte d'un mot est défini comme étant tous les mots dans son <b>voisinage</b>, aux différents endroits du texte où il apparaît. Au voisinage est associée une <b>fenêtre</b> : une fenêtre de taille 3 englobe les 3 mots qui précèdent et les 3 mots qui suivent le mot visé.
 <br><br>
-<b>Vocabulaire</b> : (Sous-)Ensemble des mots qui apparaissent dans un texte. Par exemple, étant donné le texte "La soeur de ma soeur est ma soeur", le vocabulaire associé contiendrait au plus les mots suivant : "la", "soeur", "de", "ma", "est".
+<b>Vocabulaire</b> : (Sous-)Ensemble des mots qui apparaissent dans un texte. Par exemple, étant donné le texte "La sœur de ma sœur est ma sœur", le vocabulaire associé contiendrait au plus les mots suivant : "la", "sœur", "de", "ma", "est".
 <br><br>
-<b>Encodage <i>one hot</i></b> : Étant donné un vocabulaire de taille N, l'encodage one hot d'un mot de ce vocabulaire consiste à créer un vecteur de taille N avec N-1 zéros et 1 un correspondant à la position du mot dans le vocabulaire. Par exemple, avec le vocabulaire {"la", "soeur", "de", "ma", "est"}, le vecteur one-hot correspondant à "soeur" est [0, 1, 0, 0, 0].
+<b>Encodage <i>one hot</i></b> : Étant donné un vocabulaire de taille N, l'encodage one hot d'un mot de ce vocabulaire consiste à créer un vecteur de taille N avec N-1 zéros et 1 un correspondant à la position du mot dans le vocabulaire. Par exemple, avec le vocabulaire {"la", "sœur", "de", "ma", "est"}, le vecteur one-hot correspondant à "sœur" est [0, 1, 0, 0, 0].
 <br><br>
 
 ## Fonctionnement
@@ -148,22 +149,20 @@ Les vecteurs de mots ainsi produits sont pertinents dans la mesure où <b>2 mots
 # Applications et limites
 
 <p style="text-align:justify;">
-Comme évoqué en introduction, les modèles de word embedding peuvent servir à générer des vecteurs pour <b>entraîner des modèles</b> de NLP plus sophistiqués. Ils peuvent également servir à résoudre des tâches simples, tout en présentant l'avantage d'être <b>peu gourmands en ressources, facilement entraînables et explicables</b>. Il est par exemple possible d'utiliser la similarité entre les mots dans un <b>moteur de recherche</b>, pour remplacer un mot clé par un autre ou étendre la liste des mots clés en piochant dans leur contexte. Grâce aux vecteurs, il est également possible d'étudier la connotation des mots d'un texte pour <b>mettre en évidence des biais</b> liés aux stéréotypes.
+Comme évoqué en introduction, les modèles de word embedding peuvent servir à générer des vecteurs pour <b>entraîner des modèles</b> de NLP plus sophistiqués. Ils peuvent également servir à résoudre des tâches simples, tout en présentant l'avantage d'être <b>peu gourmands en ressources, facilement entraînables et explicables</b>. Il est par exemple possible d'utiliser la similarité entre les mots dans un <b>moteur de recherche</b>, pour remplacer un mot clé par un autre ou étendre la liste des mots clés en piochant dans leur contexte. Grâce aux vecteurs, il est également possible d'étudier la connotation des mots d'un texte pour <b>mettre en évidence des biais</b> liés aux stéréotypes; cf Garg et al. (2018).
 <br><br>
-Il existe également des applications de ces modèles en dehors du domaine du traitement du langage. En effet, au lieu de vectoriser des mots avec pour contexte le texte dont ils sont issus, il est par exemple possible de <b>vectoriser les produits d'une <i>marketplace</i></b> avec pour contexte une séquence de clics d'un utilisateur, afin de <b>recommander des produits similaires</b>.
+Il existe également des applications de ces modèles en dehors du domaine du traitement du langage. En effet, au lieu de vectoriser des mots avec pour contexte le texte dont ils sont issus, il est par exemple possible de <b>vectoriser les produits d'une <i>marketplace</i></b> avec pour contexte l'historique des achats des utilisateurs, afin de <b>recommander des produits similaires</b>; cf Grbovic et al. (2015).
 <br><br>
+La principale limitation de cette technique de vectorisation est qu'elle ne prend pas en compte la <b>polysémie</b> d'un mot : par exemple, étant donné le texte "L'avocat de la défense mange un avocat", le modèle de word embedding ne créera <b>qu'un seul vecteur</b> pour le mot "avocat". Un autre inconvénient est le travail de prétraitement du corpus à effectuer en amont : il faut définir un vocabulaire <i>ie</i> enlever les mots trop répétitifs (ce, de, le...) et potentiellement retirer les formes conjuguées/accordées (est-il souhaitable que"mot" et "mots" aient chacun leur vecteur ?).
 
-<!--
-Limitation 2 : accords de genre / conjugaison = mots différents (vecteurs différents) => prétraitement (lemmatisation)
-Fasttext: intermédiaire entre word2vec et transformer (gros modèle de word2vec)
-+ Glove en conclusion
--->
-
-La principale limitation de cette technique de vectorisation est qu'elle ne prend pas en compte la <b>polysémie</b> d'un mot. Étant donné le texte "L'avocat de la défense mange un avocat", le modèle de word embedding ne créera <b>qu'un seul vecteur</b> pour le mot "avocat". C'est de l'<b>embedding statique</b>. Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> utilisent des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte.
+Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être directement entraînés sur des textes, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
 </p>
 
 # Références
-<ol>
-  <li id="bib:original_word2vec">Mikolov, Tomas; et al. (2013). "Efficient Estimation of Word Representations in Vector Space". <a href="https://arxiv.org/abs/1301.3781">arXiv:1301.3781</a></li>
-  <li id="bib:word2vec_tutorial">McCormick, C. (2016, April 19). Word2Vec Tutorial - The Skip-Gram Model. Retrieved from <a href="http://www.mccormickml.com">http://www.mccormickml.com</a></li>
-</ol>
+<ul>
+  <li><a href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a> de Mikolov et al. (2013),</li>
+  <li><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a> de McCormick (2016),</li>
+  <li><a href="https://doi.org/10.1073/pnas.1720347115">Word embeddings quantify 100 years of gender and ethnic stereotypes</a> de Garg, Schiebinger, Jurafsky et Zou (2018),</li>
+  <li><a href="https://arxiv.org/abs/1601.01356">E-commerce in your inbox:
+  Product recommendations at scale</a> de Grbovic, Radosavljevic, Djuric, Bhamidipati, Savla, Bhagwan et Sharp (2015)</li>
+</ul>
