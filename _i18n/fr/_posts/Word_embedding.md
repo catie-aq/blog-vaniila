@@ -4,7 +4,6 @@ tags:
   - NLP
   - word embedding
   - word2vec
-  - glove
   - démonstrateur
 excerpt : "Introduction au concept de word embedding <br>- Difficulté : débutant"
 header:
@@ -63,7 +62,7 @@ $$
   <figure class="image">
     <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vecteurs.png">
     <figcaption>
-    Figure 1 : Relation féminin-masculin et pays-capitale
+    Figure 1 : Relations féminin-masculin et pays-capitale
     </figcaption>
   </figure>
 </center>
@@ -94,7 +93,7 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 <p style="text-align:justify;">
 Le concept de Word2Vec est d'utiliser un <b>réseau de neurones</b> pour résoudre une "<i>fausse tâche</i>", appelée <b>tâche de prétexte</b> : les poids obtenus après entraînement ne servent pas à inférer des résultats mais <b>sont</b> le résultat <i>ie</i> les <b>vecteurs de mots</b>. Le modèle se décline en 2 versions (légèrement) différentes : <b>CBOW</b> (pour <i>Continuous Bag Of Words</i>) et <b>Skip Gram</b>. CBOW tente de résoudre la tâche qui à un <b>contexte</b> donné associe un <b>mot</b> tandis que Skip Gram fait l'inverse. La méthode utilisée étant à peu près la même pour les 2 versions, nous détaillerons par la suite uniquement le modèle Skip Gram.
 <br><br>
-Étant donnés un texte et une taille de fenêtre, la tâche suivante est définie : soit un mot du texte (l'input), calculer pour chaque autre mot la <b>probabilité qu'il soit dans le voisinage de l'input</b> (dans la fenêtre). Pour résoudre cette tâche, un réseau de neurones est utilisé; il est composé de :
+Étant donnés un texte et une taille de fenêtre, la tâche suivante est définie : soit un mot du texte (l'input), calculer pour chaque autre mot la <b>probabilité qu'il soit dans le contexte de l'input</b> (dans la fenêtre). Pour résoudre cette tâche, un réseau de neurones est utilisé; il est composé de :
 <ol>
   <li>La couche d'input; celui-ci est encodé en vecteur one-hot</li>
   <li>Une couche cachée, de taille arbitraire, totalement connectée à l'input</li>
@@ -154,7 +153,7 @@ Comme évoqué en introduction, les modèles de word embedding peuvent servir à
 Il existe également des applications de ces modèles en dehors du domaine du traitement du langage. En effet, au lieu de vectoriser des mots avec pour contexte le texte dont ils sont issus, il est par exemple possible de <b>vectoriser les produits d'une <i>marketplace</i></b> avec pour contexte l'historique des achats des utilisateurs, afin de <b>recommander des produits similaires</b>; cf Grbovic et al. (2015).
 <br><br>
 La principale limitation de cette technique de vectorisation est qu'elle ne prend pas en compte la <b>polysémie</b> d'un mot : par exemple, étant donné le texte "L'avocat de la défense mange un avocat", le modèle de word embedding ne créera <b>qu'un seul vecteur</b> pour le mot "avocat". Un autre inconvénient est le travail de prétraitement du corpus à effectuer en amont : il faut définir un vocabulaire <i>ie</i> enlever les mots trop répétitifs (ce, de, le...) et potentiellement retirer les formes conjuguées/accordées (est-il souhaitable que"mot" et "mots" aient chacun leur vecteur ?).
-
+<br><br>
 Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être directement entraînés sur des textes, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
 </p>
 
