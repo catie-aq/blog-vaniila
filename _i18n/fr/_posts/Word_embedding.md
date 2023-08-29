@@ -91,13 +91,13 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 ## Fonctionnement
 
 <p style="text-align:justify;">
-Le concept de Word2Vec est d'utiliser un <b>réseau de neurones</b> pour résoudre une "<i>fausse tâche</i>", appelée <b>tâche de prétexte</b> : les poids obtenus après entraînement ne servent pas à inférer des résultats mais <b>sont</b> le résultat <i>ie</i> les <b>vecteurs de mots</b>. Le modèle se décline en 2 versions (légèrement) différentes : <b>CBOW</b> (pour <i>Continuous Bag Of Words</i>) et <b>Skip Gram</b>. CBOW tente de résoudre la tâche qui à un <b>contexte</b> donné associe un <b>mot</b> tandis que Skip Gram fait l'inverse. La méthode utilisée étant à peu près la même pour les 2 versions, nous détaillerons par la suite uniquement le modèle Skip Gram.
+Le concept de Word2Vec est d'utiliser un <b>réseau de neurones</b> pour résoudre une "<i>fausse tâche</i>", appelée <b>tâche de prétexte</b> : les poids obtenus après entraînement ne servent pas à inférer des résultats mais <b>sont</b> le résultat <i>ie</i> les <b>vecteurs de mots</b>. Le modèle se décline en 2 versions (légèrement) différentes : <b>CBOW</b> (pour <i>Continuous Bag Of Words</i>) et <b>Skip Gram</b>. CBOW tente de résoudre la tâche qui à un <b>contexte donné associe un mot</b> tandis que Skip Gram fait l'inverse. La méthode utilisée étant à peu près la même pour les 2 versions, nous détaillerons par la suite uniquement le modèle Skip Gram.
 <br><br>
 Étant donnés un texte et une taille de fenêtre, la tâche suivante est définie : soit un mot du texte (l'input), calculer pour chaque autre mot la <b>probabilité qu'il soit dans le contexte de l'input</b> (dans la fenêtre). Pour résoudre cette tâche, un réseau de neurones est utilisé; il est composé de :
 <ol>
-  <li>La couche d'input; celui-ci est encodé en vecteur one-hot</li>
-  <li>Une couche cachée, de taille arbitraire, totalement connectée à l'input</li>
-  <li>La couche d'output <i>ie</i> un vecteur de probabilité, de la taille du vocabulaire, totalement connectée à la couche cachée</li>
+  <li><b>La couche d'input</b>; celui-ci est encodé en <b>vecteur one-hot</b></li>
+  <li><b>Une couche cachée</b>, de taille arbitraire, totalement connectée à l'input</li>
+  <li><b>La couche d'output</b> <i>ie</i> un vecteur de probabilité, de la taille du vocabulaire, totalement connectée à la couche cachée</li>
 </ol>
 Une fonction <b>softmax</b> est appliquée à l'output afin de n'avoir que des nombres dans l'intervalle [0,1] et dont la somme fait 1.
 <br><br>
@@ -127,7 +127,7 @@ Toujours avec le même exemple, la figure 3 représente un réseau de neurones q
 </center>
 
 <p style="text-align:justify;">
-À la fin, seuls les poids des inputs sont conservés : dans notre cas une matrice de 12 lignes (une ligne par mot) et 3 colonnes (taille de la couche cachée), cf figure 4. Chaque ligne correspond à un vecteur de mot.
+À la fin, <b>seuls les poids des inputs sont conservés</b> : dans notre cas une matrice de 12 lignes (une ligne par mot) et 3 colonnes (taille de la couche cachée), cf figure 4. Chaque ligne correspond à un vecteur de mot.
 </p>
 
 <center>
@@ -152,9 +152,9 @@ Comme évoqué en introduction, les modèles de word embedding peuvent servir à
 <br><br>
 Il existe également des applications de ces modèles en dehors du domaine du traitement du langage. En effet, au lieu de vectoriser des mots avec pour contexte le texte dont ils sont issus, il est par exemple possible de <b>vectoriser les produits d'une <i>marketplace</i></b> avec pour contexte l'historique des achats des utilisateurs, afin de <b>recommander des produits similaires</b>; cf Grbovic et al. (2015).
 <br><br>
-La principale limitation de cette technique de vectorisation est qu'elle ne prend pas en compte la <b>polysémie</b> d'un mot : par exemple, étant donné le texte "L'avocat de la défense mange un avocat", le modèle de word embedding ne créera <b>qu'un seul vecteur</b> pour le mot "avocat". Un autre inconvénient est le travail de prétraitement du corpus à effectuer en amont : il faut définir un vocabulaire <i>ie</i> enlever les mots trop répétitifs (ce, de, le...) et potentiellement retirer les formes conjuguées/accordées (est-il souhaitable que"mot" et "mots" aient chacun leur vecteur ?).
+La principale limitation de cette technique de vectorisation est qu'elle ne prend pas en compte la <b>polysémie</b> d'un mot : par exemple, étant donné le texte "L'avocat de la défense mange un avocat", le modèle de word embedding ne créera <b>qu'un seul vecteur</b> pour le mot "avocat". Un autre inconvénient est le <b>travail de prétraitement du corpus</b> à effectuer en amont : il faut définir un vocabulaire <i>ie</i> <b>enlever les mots trop répétitifs</b> (ce, de, le...) et potentiellement <b>retirer les formes conjuguées/accordées</b> (est-il souhaitable que"mot" et "mots" aient chacun leur vecteur ?).
 <br><br>
-Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être directement entraînés sur des textes, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
+Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être <b>directement entraînés sur des textes</b>, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
 </p>
 
 # Références
