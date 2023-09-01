@@ -68,7 +68,7 @@ $$
 </center>
 
 <p style="text-align:justify;">
-Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>. Il est cependant à noter qu'aucun modèle n'est parfait et que certains résultats d'opérations arithmétiques peuvent être incorrect.
+Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>. Il est cependant à noter qu'aucun modèle n'est parfait et que certains résultats d'opérations arithmétiques peuvent être incorrects.
 </p>
 <!-- TODO: own HF space -->
 
