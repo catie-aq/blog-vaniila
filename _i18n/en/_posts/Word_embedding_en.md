@@ -59,7 +59,7 @@ $$
 
 <center>
   <figure class="image">
-    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vectors.png">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vectors.svg">
     <figcaption>
     Figure 1: female-male and country-capital relationships
     </figcaption>
@@ -67,7 +67,7 @@ $$
 </center>
 
 <p style="text-align:justify;">
-It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.fr/word2vec">the Polytechnique's school website</a>.
+It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.fr/word2vec">the Polytechnique's school website</a>. However you should know that no model is perfect, and some results of arithmetic operations may be incorrect.
 </p>
 <!-- TODO: own HF space -->
 

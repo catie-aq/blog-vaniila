@@ -60,7 +60,7 @@ $$
 
 <center>
   <figure class="image">
-    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vecteurs.png">
+    <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vecteurs.svg">
     <figcaption>
     Figure 1 : Relations féminin-masculin et pays-capitale
     </figcaption>
@@ -68,7 +68,7 @@ $$
 </center>
 
 <p style="text-align:justify;">
-Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>.
+Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polytechnique.fr/word2vec">le site de l'école Polytechnique</a>. Il est cependant à noter qu'aucun modèle n'est parfait et que certains résultats d'opérations arithmétiques peuvent être incorrect.
 </p>
 <!-- TODO: own HF space -->
 
