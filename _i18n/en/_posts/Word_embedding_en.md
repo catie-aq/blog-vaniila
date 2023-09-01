@@ -1,5 +1,5 @@
 ---
-title: "Word Embedding : a basic introduction to the world of word vectors"
+title: "Word Embedding: a basic introduction to the world of word vectors"
 tags:
   - NLP
   - word embedding
@@ -9,7 +9,7 @@ header:
    overlay_color: "#1C2A4D"
 author_profile: false
 sidebar:
-    nav: sidebar-cv
+    nav: sidebar-nlp
 classes: wide
 ---
 
@@ -21,10 +21,6 @@ gras          <b>reconnaissance faciale</b>
 italique      <i>deep learning</i>
 saut de ligne <br><br>
 lien externe  <a href="https://example.com">example</a>
--->
-
-<!--
-TODO : gras, italique, etc.
 -->
 
 # Introduction
@@ -49,13 +45,13 @@ $$
 Paris - France = Berlin - Germany
 $$
 
-which is equivalent to :
+which is equivalent to:
 
 $$
 Paris = Berlin - Germany + France
 $$
 
-so one may find Canada's capital city by computing :
+so one may find Canada's capital city by computing:
 
 $$
 Berlin - Germany + Canada
@@ -65,7 +61,7 @@ $$
   <figure class="image">
     <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/vectors.png">
     <figcaption>
-    Figure 1 : female-male and country-capital relationships
+    Figure 1: female-male and country-capital relationships
     </figcaption>
   </figure>
 </center>
@@ -96,7 +92,7 @@ It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.
 <p style="text-align:justify;">
 The concept behind Word2Vec is to use a <b>neural network</b> to solve a "<i>fake task</i>", known as a <b>pretext task</b>: the weights obtained after training are not used to infer results, but <b>are</b> the result, that is to say the <b>word vectors</b>. The model comes in 2 (slightly) different versions: <b>CBOW</b> (for <i>Continuous Bag Of Words</i>) and <b>Skip Gram</b>. CBOW attempts to solve the task of <b>associating a word with a given context</b>, while Skip Gram does the opposite. As the method used is more or less the same for both versions, we'll only go into detail on the Skip Gram model.
 <br><br>
-Given a text and a window size, the following task is defined: given a word in the text (the input), <b>compute for each other word the probability that it is in the input's context</b>. To solve this task, a neural network is used, made up of :
+Given a text and a window size, the following task is defined: given a word in the text (the input), <b>compute for each other word the probability that it is in the input's context</b>. To solve this task, a neural network is used, made up of:
 <ol>
     <li><b>The input layer</b>, with the word being encoded as a <b>one-hot vector</b></li>
     <li><b>A hidden layer</b>, of arbitrary size, totally connected to the input</li>
@@ -111,7 +107,7 @@ For example, with the text "Vacations in Nouvelle Aquitaine are dope, we should 
   <figure class="image">
     <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/window.svg">
     <figcaption>
-    Figure 2 : Inputs and their contexts
+    Figure 2: Inputs and their contexts
     </figcaption>
   </figure>
 </center>
@@ -124,20 +120,20 @@ With the same example, figure 3 represents a neural network trained with the pre
   <figure class="image">
     <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/network.svg">
     <figcaption>
-    Figure 3 : Neural network example
+    Figure 3: Neural network example
     </figcaption>
   </figure>
 </center>
 
 <p style="text-align:justify;">
-After the model was trained, <b>only the input's weights matter</b> : in our case, a 12 row (one by word) and 3 column (size of the hidden layer) matrix, cf figure 4. Each line corresponds to a word vector.
+After the model was trained, <b>only the input's weights matter</b>: in our case, a 12 row (one by word) and 3 column (size of the hidden layer) matrix, cf figure 4. Each line corresponds to a word vector.
 </p>
 
 <center>
   <figure class="image">
     <img src="https://github.com/catie-aq/blog-vaniila/raw/article/word-embedding/assets/images/Word_embedding/matrix.svg">
     <figcaption>
-    Figure 4 : Word vectors retrieval, based on the model weigths
+    Figure 4: Word vectors retrieval, based on the model weigths
     </figcaption>
   </figure>
 </center>
