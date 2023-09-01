@@ -157,6 +157,11 @@ La principale limitation de cette technique de vectorisation est qu'elle ne pren
 Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être <b>directement entraînés sur des textes</b>, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
 </p>
 
+# Conclusion
+<p style="text-align:justify;">
+Pour résumer, les techniques de word embedding ont révolutionné les technologies de NLP, en utilisant des modèles simples, peu coûteux, mais aux résultats impressionnants. Si les transformers remplacent peu à peu ces modèles dans la plupart des applications, il existe certains cas où ils restent pertinents. Dans un prochain article du blog Vaniila, vous découvrirez une application concrète du word embedding, à travers un projet du CATIE que vous pourrez essayer vous-même !
+</p>
+
 # Références
 <ul>
   <li><a href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a> de Mikolov et al. (2013),</li>
