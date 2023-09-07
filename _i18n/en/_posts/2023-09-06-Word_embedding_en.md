@@ -86,6 +86,7 @@ It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.
 <br><br>
 <b>One-hot encoding</b>: Given a vocabulary of size N, the one-hot encoding of a word in this vocabulary consists in creating a vector of size N with N-1 zeros and 1 one corresponding to the position of the word in the vocabulary. For example, with the vocabulary {"the", "sister", "of", "my", "is"}, the one-hot vector corresponding to "sister" would be [0, 1, 0, 0, 0].
 <br><br>
+</p>
 
 ## The way it works
 

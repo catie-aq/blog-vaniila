@@ -87,6 +87,7 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 <br><br>
 <b>Encodage <i>one hot</i></b> : Étant donné un vocabulaire de taille N, l'encodage one hot d'un mot de ce vocabulaire consiste à créer un vecteur de taille N avec N-1 zéros et 1 un correspondant à la position du mot dans le vocabulaire. Par exemple, avec le vocabulaire {"la", "sœur", "de", "ma", "est"}, le vecteur one-hot correspondant à "sœur" est [0, 1, 0, 0, 0].
 <br><br>
+</p>
 
 ## Fonctionnement
 
