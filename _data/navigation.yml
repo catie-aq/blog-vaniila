@@ -13,6 +13,8 @@ sidebar-nlp:
   - title: ARTICLES SUR LE NLP
   - title: MÉCANISMES D'ATTENTION
     url: /Attention/
+  - title: WORD EMBEDDING
+    url: /Word_embedding/
 
 sidebar-cv:
   - title: ARTICLES SUR LA CV
@@ -31,6 +33,8 @@ sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: ATTENTION MECHANISMS
     url: /Attention_mechanisms/
+  - title: WORD EMBEDDING
+    url: /Word_embedding_en/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
