@@ -1,5 +1,5 @@
 ---
-title: "Word Embedding : quand les machines arrêtent de prendre des récits pour des tas de lettres"
+title: "WORD EMBEDDING : QUAND LES MACHINES ARRETENT DE PRENDRE DES RECITS POUR DES TAS DE LETTRES"
 tags:
   - NLP
   - word embedding
@@ -33,6 +33,8 @@ Le traitement du langage naturel remonte au début de l'informatique, dans les a
 <br><br>
 Les modèles de <b>word embedding</b> ont précisément pour fonction de <b>capturer les relations entre les mots d'un corpus de textes et de les traduire en vecteurs</b>. Dans cet article, nous verrons comment interpréter ces vecteurs et comment ils sont générés, en analysant le modèle Word2Vec.
 </p>
+
+<br><br>
 
 # L'arithmétique des mots
 
@@ -72,11 +74,15 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 </p>
 <!-- TODO: own HF space -->
 
+<br><br>
+
 # Word2Vec
 
 <p style="text-align:justify;">
 <b>Word2Vec</b> a été développé par une équipe de chercheurs de Google (Mikolov et al.) en 2013 et est considéré comme étant le modèle qui a permis de <b>démocratiser cette technologie</b>, de par sa simplicité et son efficacité. Même si d'autres modèles de word embedding ont été développés depuis (GloVe et FastText pour ne citer que les plus connus), il est encore largement utilisé et cité dans la littérature scientifique.
 </p>
+
+<br>
 
 ## Quelques définitions
 
@@ -88,6 +94,8 @@ Il est possible d'essayer l'arithmétique des mots sur <a href="http://nlp.polyt
 <b>Encodage <i>one hot</i></b> : Étant donné un vocabulaire de taille N, l'encodage one hot d'un mot de ce vocabulaire consiste à créer un vecteur de taille N avec N-1 zéros et 1 un correspondant à la position du mot dans le vocabulaire. Par exemple, avec le vocabulaire {"la", "sœur", "de", "ma", "est"}, le vecteur one-hot correspondant à "sœur" est [0, 1, 0, 0, 0].
 <br><br>
 </p>
+
+<br>
 
 ## Fonctionnement
 
@@ -146,6 +154,8 @@ Il est à noter que dans notre exemple les outputs sont assez prévisibles, car 
 Les vecteurs de mots ainsi produits sont pertinents dans la mesure où <b>2 mots similaires se verront associer 2 vecteurs proches</b>. En toute logique, 2 synonymes devraient effectivement avoir un contexte analogue, ce qui se traduit par 2 outputs quasi égaux pour ces 2 inputs. Le modèle va donc attribuer des poids quasi identiques aux 2 inputs, donnant ainsi 2 vecteurs proches.
 </p>
 
+<br><br>
+
 # Applications et limites
 
 <p style="text-align:justify;">
@@ -158,10 +168,14 @@ La principale limitation de cette technique de vectorisation est qu'elle ne pren
 Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>transformers</i></b> sont capables de contourner ces limitations. Ils peuvent en effet être <b>directement entraînés sur des textes</b>, sans passer par la définition d'un vocabulaire. Ils utilisent également des vecteurs plus sophistiqués, qui représentent un mot <b>et</b> son contexte, ce qui leur permet de distinguer les différents sens d'un mot.
 </p>
 
+<br><br>
+
 # Conclusion
 <p style="text-align:justify;">
 Pour résumer, les techniques de word embedding ont révolutionné les technologies de NLP, en utilisant des modèles simples, peu coûteux, mais aux résultats impressionnants. Si les transformers remplacent peu à peu ces modèles dans la plupart des applications, il existe certains cas où ils restent pertinents. Dans un prochain article du blog Vaniila, vous découvrirez une application concrète du word embedding, à travers un projet du CATIE que vous pourrez essayer vous-même !
 </p>
+
+<br><br>
 
 # Références
 <ul>
@@ -171,3 +185,15 @@ Pour résumer, les techniques de word embedding ont révolutionné les technolog
   <li><a href="https://arxiv.org/abs/1601.01356">E-commerce in your inbox:
   Product recommendations at scale</a> de Grbovic, Radosavljevic, Djuric, Bhamidipati, Savla, Bhagwan et Sharp (2015)</li>
 </ul>
+
+<br><br>
+
+# Commentaires
+<script src="https://utteranc.es/client.js"
+        repo="catie-aq/blog-vaniila"
+        issue-term="pathname"
+        label="[Comments]"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
