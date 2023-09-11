@@ -1,5 +1,5 @@
 ---
-title: "Word Embedding: a basic introduction to the world of word vectors"
+title: "WORD EMBEDDING: A BASIC INTRODUCTION TO THE WORLD OF WORD VECTORS"
 tags:
   - NLP
   - word embedding
@@ -32,6 +32,8 @@ Natural language processing dates back to the early days of computing, in the 19
 <br><br>
 The aim of <b>word embedding</b> models is precisely to <b>capture the relationships between words</b> in a corpus of texts and translate them into vectors. In this article, we will look at how to interpret these vectors and how they are generated, by analyzing the Word2Vec model.
 </p>
+
+<br><br>
 
 # Words Arithmetic
 
@@ -71,11 +73,15 @@ It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.
 </p>
 <!-- TODO: own HF space -->
 
+<br><br>
+
 # Word2Vec
 
 <p style="text-align:justify;">
 <b>Word2Vec</b> was developed by a team of Google researchers (Mikolov et al.) in 2013 and is considered the model that <b>popularized this technology</b> due to its simplicity and effectiveness. Although other word embedding models have since been developed (GloVe and FastText to name but the best-known), it is still widely used and cited in the scientific literature.
 </p>
+
+<br>
 
 ## Some definitions
 
@@ -87,6 +93,8 @@ It is possible to try the words arithmetic on <a href="http://nlp.polytechnique.
 <b>One-hot encoding</b>: Given a vocabulary of size N, the one-hot encoding of a word in this vocabulary consists in creating a vector of size N with N-1 zeros and 1 one corresponding to the position of the word in the vocabulary. For example, with the vocabulary {"the", "sister", "of", "my", "is"}, the one-hot vector corresponding to "sister" would be [0, 1, 0, 0, 0].
 <br><br>
 </p>
+
+<br>
 
 ## The way it works
 
@@ -145,6 +153,8 @@ Note that in our example, the outputs are fairly predictable, as each word appea
 The word vectors thus produced are relevant as <b>2 similar words will be associated with 2 close vectors</b>. Logically, 2 synonyms should indeed have a similar context, which translates into 2 almost equal outputs for these 2 inputs. The model will therefore assign almost identical weights to the 2 inputs, resulting in 2 close vectors.
 </p>
 
+<br><br>
+
 # Applications and limits
 
 <p style="text-align:justify;">
@@ -157,12 +167,16 @@ The main limitation of this vectorization technique is that it does not take int
 The latest language models (GPT, Bloom, Llama...) based on <b>transformers</b> are able to overcome these limitations. They can be trained <b>directly on texts</b>, without having to define a vocabulary. They also use more sophisticated vectors, which represent a word <b>and</b> its context, enabling them to distinguish the different meanings of a word.
 </p>
 
+<br><br>
+
 # Conclusion
 <p style="text-align:justify;">
 To sum up, word embedding techniques have revolutionized NLP technologies, using simple, inexpensive models with impressive results. While transformers are gradually replacing these models in most applications, there are some cases where they remain relevant. In a forthcoming article on the Vaniila blog, you'll discover a concrete application of word embedding, through a CATIE project that you will be able to try out for yourself!
 </p>
 
-# Références
+<br><br>
+
+# References
 <ul>
   <li><a href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a> by Mikolov et al. (2013),</li>
   <li><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a> by McCormick (2016),</li>
@@ -170,3 +184,15 @@ To sum up, word embedding techniques have revolutionized NLP technologies, using
   <li><a href="https://arxiv.org/abs/1601.01356">E-commerce in your inbox:
   Product recommendations at scale</a> by Grbovic, Radosavljevic, Djuric, Bhamidipati, Savla, Bhagwan and Sharp (2015)</li>
 </ul>
+
+<br><br>
+
+# Comments
+<script src="https://utteranc.es/client.js"
+        repo="catie-aq/blog-vaniila"
+        issue-term="pathname"
+        label="[Comments]"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
