@@ -52,13 +52,13 @@ Below is an example of a line from this version of the dataset: <br>
 </center>
 <p style="text-align:justify;">
 For the French language, datasets have been created using the SQuAD methodology. These include: <br>
-- <a href="https://fquad.illuin.tech/">FQuAD 1.0 (2020)</a> by Illuin Technology (in particular <a href="https://arxiv.org/abs/2002.06071">Hoffschmidt et al. (2021)</a>), which is based on the SQuAD 1.0 methodology and contains 26,108 questions/answers based on <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9"> high-quality Wikipedia articles </a>. The data is available on the Illuin Technology website after filling in a form (only the train and dev samples are available, not the test). Version FQuAD 1.1 by the same authors contains 62,003 questions/answers, but this dataset is not open. <br>
+- <a href="https://fquad.illuin.tech/">FQuAD 1.0 (2020)</a> by Illuin Technology (in particular <a href="https://arxiv.org/abs/2002.06071">Hoffschmidt et al. (2021)</a>, which is based on the SQuAD 1.0 methodology and contains 26,108 questions/answers based on <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Article_de_qualit%C3%A9"> high-quality Wikipedia articles</a>. The data is available on the Illuin Technology website after filling in a form (only the train and dev samples are available, not the test). Version FQuAD 1.1 by the same authors contains 62,003 questions/answers, but this dataset is not open. <br>
 - <a href="https://arxiv.org/abs/2109.13209v1"> by Heinrich et al. </a> using SQUAD 2.0 methodology bringing 13,591 new unanswered questions. However, this dataset is not open. <br>
 - The <a href="https://piaf.etalab.studio/">PIAF</a> (Pour une IA Francophone) project supported by <a href="https://www.etalab.gouv.fr/">Etalab</a> and more specifically <a href="https://aclanthology.org/2020.lrec-1.673/">Keraron et al. (2020)</a> includes more than 9225 questions. The PIAF data are freely accessible <a href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">here</a>.<br>
 - <a href="https://huggingface.co/datasets/lincoln/newsquadfr">Newsquadfr (2021)</a> by <a href="https://www.lincoln.fr/">Lincoln</a> is a dataset of 2520 questions. The contexts are paragraphs of articles extracted from nine French online newspapers during the year 2020/2021. <br><br>
 A total of 37,853 context/question/answer triplets are available natively in French. <br><br>
 There are also a few datasets that are translations of SQuAD into French. These include: <br>
-- <a href="https://github.com/Alikabbadj/French-SQuAD">French-SQuAD</a> by <a href="https://www.linkedin.com/pulse/something-new-french-text-mining-information-chatbot-largest-kabbadj/">Kabbadj (2018)</a>, which translates the SQuAD 1.0 dataset using <a href="https://github.com/ssut/py-googletrans"> Google's unofficial API </a>. This translation is not of good quality (punctuation, nonsense phrases). <br>
+- <a href="https://github.com/Alikabbadj/French-SQuAD">French-SQuAD</a> by <a href="https://www.linkedin.com/pulse/something-new-french-text-mining-information-chatbot-largest-kabbadj/">Kabbadj (2018)</a>, which translates the SQuAD 1.0 dataset using <a href="https://github.com/ssut/py-googletrans"> Google's unofficial API</a>. This translation is not of good quality (punctuation, nonsense phrases). <br>
 - <a href="https://huggingface.co/datasets/qwant/squad_fr">Squad_fr </a> by <a href="https://hal.archives-ouvertes.fr/hal-03336060/file/RANLP_2021_transformers_usability.pdf">Cattan et al. (2021)</a>, which translates the SQuAD 1.0  dataset using their own translation system based on the transformer by Vaswani et al. Although of better quality than French-SQuAD, this dataset contains many errors. <br>
 - <a href="https://huggingface.co/datasets/pragnakalp/squad_v2_french_translated"> Squad_v2_french_translated</a> by Pragnakalp Techlabs (2022), which partially translates (79,069 data out of the original 161,560) the SQuAD 2.0  dataset using Google Translation. This dataset is the best quality of the three available translations.
 </p>
@@ -82,7 +82,7 @@ Firstly, none of them uses all the available data: <br>
 Secondly, all the data used in these models is based solely on the SQuAD 1.0 methodology, which requires the answer to the question to be found in the context text. <br>
 Thirdly, the Crédit Mutuel model is a distilled CamemBERT. As such, it has fewer parameters than the others, but in return achieves lower performance. If your objective is to have the smallest model possible, because you have hardware constraints for example, this model is certainly the best suited to your needs. However, if your objective is to have a model with the best possible performance, this model should be avoided. <br><br>
 
-With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a basic version of the model free of charge and freely in open-source <a href="https://huggingface.co/CATIE-AQ/QAmembert">(https://huggingface.co/CATIE-AQ/QAmembert)</a>, as well as a large version free of charge but on request. <br>
+With these limitations in mind, we have developed our own model at CATIE: QAmembert. This uses all the quality data available in open-source, is based on new data in order to adopt the SQuAD 2.0 methodology, and offers a base and a large version of the model freely in open-source: <a href="https://huggingface.co/CATIE-AQ/QAmembert">https://huggingface.co/CATIE-AQ/QAmembert</a> and <a href="https://huggingface.co/CATIE-AQ/QAmembert-large">https://huggingface.co/CATIE-AQ/QAmembert-large</a>. <br>
 Specifically, we used : <br>
 </p>
 
@@ -93,7 +93,6 @@ Specifically, we used : <br>
         <td>Train split</td>
         <td>Dev split</td>
         <td>Test split</td>
-        <td></td>
     </tr>
     <tr>
         <td>
@@ -103,7 +102,6 @@ Specifically, we used : <br>
         <td>9,225 Q &amp; A</td>
         <td>X</td>
         <td>X</td>
-        <td></td>
     </tr>
     <tr>
         <td>
@@ -113,7 +111,6 @@ Specifically, we used : <br>
         <td>20,731 Q &amp; A</td>
         <td>3,188 Q &amp; A  (not used for training because used as a test dataset)</td>
         <td>2,189 Q &amp; A (not used in our work because not freely available)</td>
-        <td></td>
     </tr>
     <tr>
         <td>
@@ -123,7 +120,6 @@ Specifically, we used : <br>
         <td>1,650 Q &amp; A</td>
         <td>455 Q &amp; A (not used in our work)</td>
         <td>415 Q &amp; A (not used in our work)</td>
-        <td></td>
     </tr>
     <tr>
         <td>
@@ -133,14 +129,13 @@ Specifically, we used : <br>
         <td>79,069 Q &amp; A</td>
         <td>X</td>
         <td>X</td>
-        <td></td>
     </tr>
 </table>
  <br>
 
 <p style="text-align:justify;">
 For each of the datasets, we created questions with no answers in the associated context. To do this, for a given context, we removed the expected answer and replaced the original question with a random one (which may have come from the original dataset, or from one of the other three). We made sure that the new question was not the same as the previous one.	<br>
-We thus end up with an augmented dataset containing 50% of questions answered in context and 50% of questions with no answer. The total number of questions/answers available to us is therefore 227,726 (221,350 for the training, 6,376 for the test).
+We thus end up with an augmented dataset whose answer may or may not be present in the context, for a total of 227,726 (221,350 for training, 6,376 for testing) question/answer/context triples.
 These new unanswered questions have been indexed in a dataset called <a href="https://huggingface.co/datasets/CATIE-AQ/frenchQA">FrenchQA</a>, which we are making available in open-source. <br>
 
 The idea of using a question that has already been asked to replace an original question, rather than a completely external question that has never been seen before, is to try and make the model more robust. Indeed, the fact that the same question has several possible answers (in this case, an answer and a "non-answer") should, according to our hypothesis, enable us to have a model that doesn't specialize in answering a given answer to a given question, but remains generalist. In other words, it should focus on the phenomenon of seeking an answer rather than providing an absolute answer.
@@ -336,15 +331,25 @@ Finally, it would be appropriate to create a new test dataset for research purpo
 
 # Conclusion
 <p style="text-align:justify;">
-
-We introduce the QAmembert model in its basic and wide versions. The former is freely available on Hugging Face. The second is available on request from X. <br>
+	
+We introduce the QAmembert model in its basic and large versions. Both are freely available on <a href="https://huggingface.co/collections/CATIE-AQ/french-qa-pack-650821750f44c341cdb8ec91">Hugging Face</a>.<br>
 These models are the first in France to adopt the open-source SQuAD 2.0 methodology. <br>
 We do not rule out further work, in particular to balance the type of questions. <br>
 </p>
 <br><br>
 
 # Citation
-DOI
+
+@misc {centre_aquitain_des_technologies_de_l'information_et_electroniques_2023,<br>
+    author       = { {Centre Aquitain des Technologies de l'Information et Electroniques} },<br>
+    title        = { QAmembert (Revision 9685bc3) },<br>
+    year         = 2023,<br>
+    url          = { https://huggingface.co/CATIE-AQ/QAmembert },<br>
+    doi          = { 10.57967/hf/0821 },<br>
+    publisher    = { Hugging Face }<br>
+}
+<br><br> 
+
 # References
 
 <p style="text-align:justify;">
