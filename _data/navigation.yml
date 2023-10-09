@@ -13,15 +13,17 @@ sidebar-nlp:
   - title: ARTICLES SUR LE NLP
   - title: MÉCANISMES D'ATTENTION
     url: /Attention/
-  - title: WORD EMBEDDING
-    url: /Word_embedding/
+  - title: QUESTION ANSWERING
+    url: /QA/
+  # - title: WORD EMBEDDING
+  #   url: /Word_embedding/
 
 sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
     url: /Reconnaissance_faciale/
-  - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
-    url: /SSL_CV1/
+  # - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
+  #   url: /SSL_CV1/
     
 sidebar-divers:
   - title: ARTICLES DIVERS
@@ -33,15 +35,17 @@ sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: ATTENTION MECHANISMS
     url: /Attention_mechanisms/
-  - title: WORD EMBEDDING
-    url: /Word_embedding_en/
+  - title: QUESTION ANSWERING
+    url: /Question_answering/
+  # - title: WORD EMBEDDING
+  #   url: /Word_embedding_en/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
   - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
     url: /Facial_recognition/
-  - title: SELF-SUPERVISED LEARNING IN COMPUTER VISION
-    url: /SSL_CV_en1/
+  # - title: SELF-SUPERVISED LEARNING IN COMPUTER VISION
+  #   url: /SSL_CV_en1/
 
 sidebar-misc-en:
   - title: MISC. ARTICLES
