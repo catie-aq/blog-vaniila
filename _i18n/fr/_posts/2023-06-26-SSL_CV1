@@ -31,53 +31,40 @@ Les expériences décrites dans l'article ont été réalisées en s'appuyant su
 <p style="text-align:justify;">
   
 Au cours des dernières décennies, nous avons assisté à une augmentation spectaculaire de la disponibilité des données en raison de nouveaux formats de données autres que le texte (images, audio, vidéos, enquêtes, capteurs, etc.) et des nouvelles technologies (stockage de données, médias sociaux, internet des objets, transfert de données, etc.). 
-Faire des inférences à partir de ces données massives à l'aide de techniques traditionnelles s'est avéré difficile. 
-Cependant, les techniques d'apprentissage supervisé ont été les approches privilégiées pour construire des modèles prédictifs avec une plus grande précision et dépassant les performances humaines sur certaines tâches au cours des dernières années.
+Il s’est avéré difficile de faire des inférences à partir de ces données massives à l'aide de techniques traditionnelles. Cependant, les techniques d'apprentissage supervisé ont été les approches privilégiées pour construire des modèles prédictifs avec une plus grande précision et dépassant les performances humaines sur certaines tâches au cours des dernières années.
 <br>
-Malgré le succès de ces approches, elles s'appuient généralement sur un grand nombre de données étiquetées. 
-L'étiquetage des données peut être un processus long, laborieux, fastidieux et coûteux par rapport à la façon dont les humains abordent l'apprentissage, ce qui rend souvent le déploiement des systèmes d'apprentissage automatique compliqué. 
-Par conséquent, la question récurrente est de savoir comment faire des inférences dans un contexte d'apprentissage supervisé avec un minimum de données étiquetées. 
-Les approches actuelles pour relever ce défi reposent sur des techniques d'apprentissage non supervisé et autosupervisé.
+Malgré le succès de ces approches, elles s'appuient généralement sur un grand nombre de données étiquetées. L'étiquetage des données peut être un processus long, laborieux, fastidieux et coûteux par rapport à la façon dont les humains abordent l'apprentissage, ce qui rend souvent le déploiement des systèmes d'apprentissage automatique compliqué. Par conséquent, la question récurrente est de savoir comment faire des inférences dans un contexte d'apprentissage supervisé avec un minimum de données étiquetées. Les approches actuelles pour relever ce défi reposent sur des techniques d'apprentissage non supervisé et autosupervisé. 
 <br>
-Les méthodes d'apprentissage autosupervisé et non supervisé ne nécessitent pas d'ensembles de données étiquetées, ce qui en fait des techniques complémentaires. 
-<!--
-L'apprentissage non supervisé englobe l'apprentissage autosupervisé mais ne dispose pas de boucles de rétroaction. 
-En revanche, l'apprentissage auto-supervisé utilise de nombreux signaux de supervision comme retour d'information au cours du processus d'entrainement. 
--->
-Cet article se concentre sur les techniques d'autosupervision pour les tâches de classification dans le domaine de la vision par ordinateur.
-Dans ce qui suit, nous expliquons ce qu'est l'apprentissage autosupervisé, puis nous présentons une partie de la littérature sur ce sujet de recherche en plein essor. 
-Nous énumérons ensuite les méthodes utilisées dans cet article avant de décrire les expériences menées sur des données publiques et de présenter quelques résultats.
+Les méthodes d'apprentissage autosupervisé et non supervisé ne nécessitent pas d'ensembles de données étiquetées, ce qui en fait des techniques complémentaires. Cet article se concentre sur les techniques d’autosupervision pour les tâches de classification dans le domaine de la vision par ordinateur. Nous allons expliquer ce qu'est l'apprentissage autosupervisé, puis nous présenterons une partie de la littérature sur ce sujet de recherche en plein essor. Nous énumérerons ensuite les méthodes utilisées dans cet article avant de décrire les expériences menées sur des données publiques et de présenter quelques résultats. 
 </p>
 <br><br>
 
 
 # Qu'est-ce que l'apprentissage autosupervisé ?
 <p style="text-align:justify;">
-L'apprentissage autosupervisé (SSL) est un type d'apprentissage automatique dans lequel un modèle apprend à représenter et à comprendre la structure sous-jacente des données en utilisant les modèles et les relations inhérents aux données elles-mêmes.
+L'apprentissage autosupervisé (SSL) est un type d'apprentissage automatique dans lequel un modèle apprend à représenter et à comprendre la structure sous-jacente des données en utilisant les modèles et les relations inhérents aux données elles-mêmes. 
 <br>
 En SSL, le modèle est entraîné sur une tâche de prétexte, c'est-à-dire une tâche générée automatiquement à partir des données d'entrée, comme la prédiction des parties manquantes d'une image, la prédiction du mot suivant dans une phrase ou la transformation d'une image en une autre modalité telle que le texte ou le son.
 En résolvant ces tâches, le modèle apprend à capturer la structure sous-jacente des données et peut se généraliser à de nouvelles données inédites.
 <br>
-Le SSL est utilisé lors du pré-entraînement des réseaux neuronaux profonds sur de grands ensembles de données avant que l'on procède à leur réglage fin pour des tâches spécifiques en aval telles que la classification, la détection d'objets etc. 
-Il permet d'obtenir des résultats de pointe dans diverses tâches de vision par ordinateur, de traitement du langage naturel et de reconnaissance vocale (voir la section <b>Revue de littérature</b> ci-dessous).
+Le SSL est utilisé lors du pré-entraînement des réseaux neuronaux profonds sur de grands ensembles de données avant de procéder à leur réglage fin pour des tâches spécifiques en aval (classification, détection d'objets etc.). Il permet d'obtenir des résultats de pointe dans diverses tâches de vision par ordinateur, de traitement du langage naturel et de reconnaissance vocale (voir la section <b>Revue de littérature</b> ci-dessous). 
 <br><br>
 Les techniques de SSL peuvent, entre autres, basées sur les éléments suivants :<br>
-1. <b>L'apprentissage contrastif</b> consistant à entraîner un modèle à faire la distinction entre des exemples similaires et dissemblables. On utilise une fonction de perte pour rapprocher les exemples similaires dans un espace latent tout en éloignant les exemples dissemblables.<br>
-2. Les <b>auto-encodeurs</b> entraînant un modèle à encoder une entrée dans une représentation latente compacte puis à la décoder dans l'entrée d'origine. En minimisant la différence entre l'entrée et la sortie reconstruite, le modèle apprend à capturer la structure sous-jacente des données.<br>
-3. Les techniques de <b>modèle génératif</b> entraînant un modèle à générer de nouveaux exemples similaires aux données d'entrée. Les auto-encodeurs variationnels (VAE) et les réseaux antagonistes génératifs (GAN) sont des modèles génératifs couramment utilisés dans l'apprentissage autosupervisé.<br>
-4. <b>Les techniques d'apprentissage multitâche</b> entraînant un modèle sur plusieurs tâches connexes simultanément, en tirant parti de la structure partagée entre les tâches pour améliorer la capacité du modèle à capturer la structure sous-jacente des données.<br>
-5. <b>Codage prédictif de <a href="https://arxiv.org/abs/2202.09467">Millidge et al (2022)</a></b> : Cette technique entraîne un modèle à prédire l'image suivante d'une vidéo ou le mot suivant d'une phrase, sur la base des images ou des mots précédents. Ce faisant, le modèle apprend à saisir la structure temporelle des données.<br>
-6. <b>L'apprentissage non-contrastif</b> désigne les techniques qui ne s'appuient pas sur des comparaisons explicites entre les exemples pour apprendre des représentations. Ces méthodes utilisent plutôt d'autres types de signaux d'apprentissage pour entrainer le modèle.<br><br>
+1. <b>L'apprentissage contrastif</b>: entraînement d’un modèle à faire la distinction entre des exemples similaires et dissemblables. On utilise une fonction de perte pour rapprocher les exemples similaires dans un espace latent tout en éloignant les exemples dissemblables.<br>
+2. Les <b>auto-encodeurs</b>entraînement d’un modèle à encoder une entrée dans une représentation latente compacte puis à la décoder dans l'entrée d'origine. En minimisant la différence entre l'entrée et la sortie reconstruite, le modèle apprend à capturer la structure sous-jacente des données.<br>
+3. Les techniques de <b>modèle génératif</b> : entraînement d’un modèle à générer de nouveaux exemples similaires aux données d'entrée. Les auto-encodeurs variationnels (VAE) et les réseaux antagonistes génératifs (GAN) sont des modèles génératifs couramment utilisés dans l'apprentissage autosupervisé.<br>
+4. <b>Les techniques d'apprentissage multitâche</b> : entraînement d’un modèle sur plusieurs tâches connexes simultanément, en tirant parti de la structure partagée entre les tâches pour améliorer la capacité du modèle à capturer la structure sous-jacente des données.<br>
+5. <b>Codage prédictif de <a href="https://arxiv.org/abs/2202.09467">Millidge et al (2022)</a></b> : : entraînement d’un modèle à prédire l'image suivante d'une vidéo ou le mot suivant d'une phrase, sur la base des images ou des mots précédents. Ce faisant, le modèle apprend à saisir la structure temporelle des données.<br>
+6. <b>L'apprentissage non-contrastif</b> : techniques qui ne s'appuient pas sur des comparaisons explicites entre les exemples pour apprendre des représentations. Ces méthodes utilisent plutôt d'autres types de signaux d'apprentissage pour entrainer le modèle.<br>
 
 Nous nous concentrons ici principalement sur les méthodes contrastives et non contrastives.<br>
-
 Nous évaluerons les performances de certaines de ces méthodes sur divers jeux de données d'images pour des tâches de classification.
 </p>
 <br><br>
 
 # Revue de littérature
 <p style="text-align:justify;">
-La revue la plus complète et la mieux ordonnée que nous avons identifié est celle communautaire hébergée par <a href="https://github.com/jason718/awesome-self-supervised-learning">Jason Ren</a>.
+La revue la plus complète et la mieux ordonnée que nous avons identifiée est celle communautaire hébergée par <a href="https://github.com/jason718/awesome-self-supervised-learning">Jason Ren</a>.
 Vous y trouverez les articles/présentations les plus pertinents sur ce sujet, classés par catégorie.
 Son répertoire comprend des liens vers des blogs bien détaillés, auxquels nous pouvons ajouter les articles de blog de <a href="https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/">FAIR</a>, <a href="https://neptune.ai/blog/self-supervised-learning">Neptune.ai</a> et <a href="https://www.v7labs.com/blog/self-supervised-learning-guide">v7labs</a>.
 </p>
@@ -88,13 +75,13 @@ Son répertoire comprend des liens vers des blogs bien détaillés, auxquels nou
 ### SimCLR (<i>Simple Contrastive Learning of Representations</i>) de <a href="https://arxiv.org/abs/2002.05709">Chen et al. (2020)</a>
 
 <p style="text-align:justify;">
-SimCLR apprend les représentations en maximisant la concordance entre différentes vues augmentées de la même image tout en minimisant la concordance entre différentes images. Plus précisément, SimCLR utilise une fonction de perte contrastive qui encourage les représentations d'une même image à être proches les unes des autres dans un espace d’enchâssement à haute dimension, tout en éloignant les représentations d'images différentes. L'idée est que si deux vues différentes de la même image produisent des représentations similaires, ces représentations doivent capturer des caractéristiques utiles et invariantes de l'image (voir Figure 1).
+SimCLR apprend les représentations en maximisant la concordance entre différentes vues augmentées de la même image tout en minimisant la concordance entre différentes images. Plus précisément, SimCLR utilise une fonction de perte contrastive qui encourage les représentations d'une même image à être proches les unes des autres dans un espace d’enchâssement à haute dimension, tout en éloignant les représentations d'images différentes. L'idée est que si 2 vues différentes de la même image produisent des représentations similaires, ces représentations doivent capturer des caractéristiques utiles et invariantes de l'image (voir Figure 1). 
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/simclr.png">
   <figcaption>
-  Figure 1 : Architecture de SimCLR
+  Figure 1 : architecture de SimCLR
   </figcaption>
 </figure>
 </center>
@@ -102,13 +89,13 @@ SimCLR apprend les représentations en maximisant la concordance entre différen
 
 ### SimSiam (Exploring Simple Siamese Representation Learning) de <a href="https://arxiv.org/abs/2011.10566">Chen et He (2020)</a>
 <p style="text-align:justify;">
-A l'instar de SimCLR, SimSiam apprend des représentations en maximisant la concordance entre des vues différentes de la même image. Cependant, contrairement à SimCLR, SimSiam n'utilise pas d'échantillons négatifs (c'est-à-dire qu'il ne compare pas les représentations de différentes images). Au contraire, SimSiam utilise une architecture de réseau siamois avec deux branches identiques ayant les mêmes paramètres. Une branche est utilisée pour générer une représentation prédite d'une image, tandis que l'autre branche génère une version augmentée aléatoirement de la même image. L'objectif est d'entraîner le réseau à prédire la représentation augmentée en utilisant uniquement l'autre branche (voir Figure 2).
+A l'instar de SimCLR, SimSiam apprend des représentations en maximisant la concordance entre des vues différentes de la même image. Cependant, contrairement à SimCLR, SimSiam n'utilise pas d'échantillon négatif (c'est-à-dire qu'il ne compare pas les représentations de différentes images). Au contraire, SimSiam utilise une architecture de réseau siamois avec 2 branches identiques ayant les mêmes paramètres. Une branche est utilisée pour générer une représentation prédite d'une image, tandis que l'autre génère une version augmentée aléatoirement de la même image. L'objectif est d'entraîner le réseau à prédire la représentation augmentée en utilisant uniquement l'autre branche (voir Figure 2).
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/simsiam.png">
   <figcaption>
-  Figure 2 : Architecture de SimSiam
+  Figure 2 : architecture de SimSiam
   </figcaption>
 </figure>
 </center>
@@ -116,13 +103,13 @@ A l'instar de SimCLR, SimSiam apprend des représentations en maximisant la conc
 
 ### SWAV (Swapping Assignments between multiple Views of the same image) de <a href="https://arxiv.org/abs/2006.09882">Caron et al. (2020)</a>
 <p style="text-align:justify;">
-SWAV vise à apprendre des représentations qui capturent le contenu sémantique des images. La méthode consiste à entraîner un réseau à prédire un ensemble de "prototypes" appris pour une image donnée. Ces prototypes sont appris en regroupant les représentations de différentes vues augmentées de la même image. Pendant l'entraînement, le réseau est entraîné à prédire quel prototype correspond à chaque vue de l'image, tout en minimisant la distance entre les représentations des vues appartenant à la même image (voir Figure 3).
+SWAV vise à apprendre des représentations qui capturent le contenu sémantique des images. La méthode consiste à entraîner un réseau à prédire un ensemble de "prototypes" appris pour une image donnée. Ces prototypes sont appris en regroupant les représentations de différentes vues augmentées de la même image. Pendant l'entraînement, le réseau est entraîné à prédire quel prototype correspond à chaque vue de l'image, tout en minimisant la distance entre les représentations des vues appartenant à la même image (voir Figure 3). 
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/swav.png">
   <figcaption>
-  Figure 3 : Architecture de SWAV
+  Figure 3 : architecture de SWAV
   </figcaption>
 </figure>
 </center>
@@ -130,14 +117,13 @@ SWAV vise à apprendre des représentations qui capturent le contenu sémantique
 
 ### BYOL (Bootstrap Your Own Latent) de <a href="https://arxiv.org/abs/2006.07733">Grill et al. (2020)</a>
 <p style="text-align:justify;">
-BYOL consiste à entraîner deux copies du même réseau afin qu'elles prédisent les résultats de l'autre. Une copie du réseau (le réseau "en ligne") est mise à jour pendant l'entrainement, tandis que l'autre copie (le réseau "cible") reste fixe. Le réseau en ligne est entraîné à prédire la sortie du réseau cible, tandis que le réseau cible sert de cible fixe pour le réseau en ligne.
-La principale innovation de BYOL est qu'il utilise une approche de "codage prédictif", dans laquelle le réseau en ligne est entraîné à prédire une représentation future du réseau cible. Cette approche permet au réseau d'apprendre des représentations qui sont plus invariantes à l'augmentation des données que celles apprises par des méthodes d'apprentissage contrastives (voir Figure 4).
+BYOL consiste à entraîner 2 copies du même réseau afin qu'elles prédisent les résultats de l'autre. Une copie du réseau (le réseau "en ligne") est mise à jour pendant l'entrainement, tandis que l'autre copie (le réseau "cible") reste fixe. Le réseau en ligne est entraîné à prédire la sortie du réseau cible, tandis que le réseau cible sert de cible fixe pour le réseau en ligne. La principale innovation de BYOL est qu'il utilise une approche de "codage prédictif", dans laquelle le réseau en ligne est entraîné à prédire une représentation future du réseau cible. Cette approche permet au réseau d'apprendre des représentations qui sont plus invariantes à l'augmentation des données que celles apprises par des méthodes d'apprentissage contrastives (voir Figure 4). 
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/byol.png">
   <figcaption>
-  Figure 4 : Architecture de BYOL
+  Figure 4 : architecture de BYOL
   </figcaption>
 </figure>
 </center>
@@ -145,14 +131,14 @@ La principale innovation de BYOL est qu'il utilise une approche de "codage préd
 
 ### Barlow Twins de <a href="https://arxiv.org/abs/2103.03230">Zbontar et al. (2021)</a>
 <p style="text-align:justify;">
-Barlow Twins reposent sur l'idée de maximiser la concordance entre deux vues augmentées de manière aléatoire de la même donnée tout en minimisant la concordance entre des donnés différentes (voir Figure 5). L'intuition est que si deux différentes vues de la même donnée produisent des représentations similaires, alors ces représentations doivent capturer des caractéristiques significatives et invariantes de la donnée.<br>
-Barlow Twins réalise ceci en introduisant une nouvelle fonction de perte qui encourage les représentations des deux vues à être fortement corrélées. Plus précisément, la perte de Barlow Twins est une perte de corrélation de distance qui mesure la différence entre la matrice de covariance croisée des représentations et la matrice d'identité.
+Barlow Twins repose sur l'idée de maximiser la concordance entre 2 vues augmentées de manière aléatoire de la même donnée tout en minimisant la concordance entre des donnés différentes (voir Figure 5). L'intuition est que si 2 différentes vues de la même donnée produisent des représentations similaires, alors ces représentations doivent capturer des caractéristiques significatives et invariantes de la donnée.<br>
+Barlow Twins réalise ceci en introduisant une nouvelle fonction de perte qui encourage les représentations des 2 vues à être fortement corrélées. Plus précisément, la perte de Barlow Twins est une perte de corrélation de distance qui mesure la différence entre la matrice de covariance croisée des représentations et la matrice d'identité. 
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/barlow_twins.png">
   <figcaption>
-  Figure 5 : Architecture de Balow Twins
+  Figure 5 : architecture de Balow Twins
   </figcaption>
 </figure>
 </center>
@@ -169,7 +155,7 @@ VICReg vise à améliorer les performances de généralisation des modèles auto
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/vicreg.png">
   <figcaption>
-  Figure 6 : Architecture de VICReg
+  Figure 6 : architecture de VICReg
   </figcaption>
 </figure>
 </center>
@@ -177,13 +163,13 @@ VICReg vise à améliorer les performances de généralisation des modèles auto
 
 ### VICRegL de <a href="https://arxiv.org/abs/2210.01571">Bardes et al. (2022)</a>
 <p style="text-align:justify;">
-VICRegL est une extension du modèle VICReg décrit ci-dessus. En plus de l'apprentissage des caractéristiques globales, il apprend à extraire les caractéristiques visuelles locales en faisant correspondre les caractéristiques qui sont proches en termes d'emplacement dans leur image d'origine (voir Figure 7). Pour ce faire, il utilise la régularisation de VICReg dans la représentation des caractéristiques globales et locales, la fonction de perte étant décrite comme une somme pondérée des pertes locales et des pertes basées sur les caractéristiques. La somme pondérée est régie par un facteur d'échelle α contrôlant l'importance que l'on souhaite accorder à l'apprentissage de la représentation globale plutôt que locale. Nous renvoyons le lecteur au <a href="https://arxiv.org/abs/2210.01571"> papier de Bardes et al. (2022)</a> pour plus de détails sur la manière dont la fonction de perte est dérivée.
+VICRegL est une extension du modèle VICReg décrit ci-dessus. En plus de l'apprentissage des caractéristiques globales, il apprend à extraire les caractéristiques visuelles locales en faisant correspondre les caractéristiques qui sont proches en matière d'emplacement dans leur image d'origine (voir Figure 7). Pour ce faire, il utilise la régularisation de VICReg dans la représentation des caractéristiques globales et locales, la fonction de perte étant décrite comme une somme pondérée des pertes locales et des pertes basées sur les caractéristiques. La somme pondérée est régie par un facteur d'échelle α contrôlant l'importance que l'on souhaite accorder à l'apprentissage de la représentation globale plutôt que locale. Nous renvoyons le lecteur au <a href="https://arxiv.org/abs/2210.01571"> papier de Bardes et al. (2022)</a> pour plus de détails sur la manière dont la fonction de perte est dérivée.
 </p>
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/main/assets/images/SSL_CV_1/vicregl.png">
   <figcaption>
-  Figure 7 : Architecture de VICRegL
+  Figure 7 : architecture de VICRegL
   </figcaption>
 </figure>
 </center>
@@ -193,7 +179,7 @@ VICRegL est une extension du modèle VICReg décrit ci-dessus. En plus de l'appr
 <p style="text-align:justify;">                                                  
 
 Nous présentons ici les détails de l’implémentation afin de reproduire les résultats obtenus. Nous nous sommes appuyés sur la bibliothèque <a href="https://github.com/lightly-ai/lightly">lightly</a> pour fournir un moyen beaucoup plus flexible d'exécuter une tâche de classification. Les pipelines d'apprentissage sont soigneusement conçus et structurés de manière à ce qu'un nouveau pipeline puisse être construit efficacement sans avoir à réécrire le code. Cela nous permet de comparer l'effet de la variation des hyperparamètres, notamment les paramètres liés à la transformation de l'image tels que l'instabilité des couleurs, l'angle de rotation, le recadrage, etc. sur les performances des modèles.<br>
-Pour nos benchmarks, nous utilisons d'abord une transformation de base similaire à celle intégrée dans lightly impliquant le <i>cropping</i>, le redimensionnement, la rotation, la distorsion des couleurs (la reduction des couleurs, la luminosité, le contraste, la saturation et la teinte) et le flou gaussien.  
+Pour nos benchmarks, nous utilisons d'abord une transformation de base similaire à celle intégrée dans lightly impliquant le <i>cropping</i>, le redimensionnement, la rotation, la distorsion des couleurs (la réduction des couleurs, la luminosité, le contraste, la saturation et la teinte) et le flou gaussien.  
 
 Nous examinons ensuite l'effet de quatre autres transformations :<br> 
 -	les méthodes d'augmentation des données utilisées dans SimCLR<br>
@@ -203,15 +189,15 @@ Nous examinons ensuite l'effet de quatre autres transformations :<br>
 
 Nous entraînons les modèles autosupervisés à partir de zéro sur divers sous-ensembles du jeu de données <a href="https://github.com/fastai/imagenette">ImageNette de Howard (2019)</a>. Ces sous-ensembles de données comprennent :<br>
 -	<b>ImageNette</b> qui regroupe 10 classes faciles à classer d'Imagenet : tanche, springer anglais, lecteur de cassettes, tronçonneuse, église, cor, camion à ordures, pompe à essence, balle de golf, parachute,<br>
--	<b>ImageNette v2-160</b> (qui est la version 2 d’ImageNette où la répartition des échantillons d’entraînement et de validation est modifiée en 70%/30% contre 96%/4% dans la version 1. Le nombre 160 indique que les images sont de taille 160 par 160 pixels),<br>
+-	<b>ImageNette v2-160</b> qui est la version 2 d’ImageNette où la répartition des échantillons d’entraînement et de validation est modifiée en 70%/30% contre 96%/4% dans la version 1. Le nombre 160 indique que les images sont de taille 160 par 160 pixels,<br>
 -	<b>ImageWoof</b> qui regroupe 10 classes de races de chiens provenant d'Imagenet : terrier australien, border terrier, samoyède, beagle, shih-tzu, foxhound anglais, rhodesian ridgeback, dingo, golden retriever, chien de berger anglais.<br>
 Nous avons également étudié les transformations LoRot-I et DCL sur le jeu de données <a href=" https://dl.allaboutbirds.org/nabirds ">NABirds de Van Horn et al. (2015)</a> (North America Birds) qui est une collection de 48 000 photographies annotées des 550 espèces d'oiseaux communément observées en Amérique du Nord.
 Il est important de noter que si ImageNette et ImageNette v2-160 sont faciles à classer, ImageWoof et NABirds ne le sont pas.<br><br>
 
 Comme la méthode VICRegL nécessite des transformations locales en plus des transformations globales, nous fixons les paramètres de la transformation globale comme pour les autres méthodes et ceux de la transformation locale comme indiqué dans le papier de <a href="https://arxiv.org/abs/2210.01571"> papier de Bardes et al. (2022)</a>.<br>
-Quatre valeurs de α sont considérées, à savoir 0,25, 0,5, 0,75 et 0,95, qui déterminent la contribution de la perte de représentation globale à la perte d'apprentissage totale. Toutes les expériences sont mises en œuvre avec un <i>backbone</i> <a href="https://arxiv.org/abs/1512.03385"> ResNet 18 de He et al. (2015)</a>, un réseau de neurones convolutifs à 18 couches utilisant des <i>skip connexions</i> pour sauter certaines couches et chaque modèle est entraîné pendant 200 époques avec une taille de batch de 256. Il convient de noter que le choix de Resnet18 est motivé par la simplicité, cette expérimentation pouvant être facilement adaptée à n'importe quel <i>backbone</i> inclus dans <a href="https://github.com/huggingface/pytorch-image-models"> PyTorch Image Models (timm) de Wightman (2019)</a>. Contrairement à ce qui a été fait dans la librairie lightly, nous rajoutons un classifieur linéaire au <i>backbone</i> au lieu d'utiliser un classificateur KNN sur l'ensemble de test. Nous adoptons le protocole d'optimisation décrit dans lightly.<br><br>
+Quatre valeurs de α sont considérées, à savoir 0,25 / 0,5 / 0,75 et 0,95, qui déterminent la contribution de la perte de représentation globale à la perte d'apprentissage totale. Toutes les expériences sont mises en œuvre avec un <i>backbone</i> <a href="https://arxiv.org/abs/1512.03385"> ResNet 18 de He et al. (2015)</a>, un réseau de neurones convolutifs à 18 couches utilisant des <i>skip connections</i> pour sauter certaines couches et chaque modèle est entraîné pendant 200 époques avec une taille de batch de 256. Il convient de noter que le choix de Resnet18 est motivé par la simplicité, cette expérimentation pouvant être facilement adaptée à n'importe quel <i>backbone</i> inclus dans <a href="https://github.com/huggingface/pytorch-image-models"> PyTorch Image Models (timm) de Wightman (2019)</a>. Contrairement à ce qui a été fait dans la librairie lightly, nous rajoutons un classifieur linéaire au <i>backbone</i> au lieu d'utiliser un classificateur KNN sur l'ensemble de test. Nous adoptons le protocole d'optimisation décrit dans lightly.<br><br>
 Au total, 10 modèles sont évalués sur quatre jeux de données publiques différents en utilisant cinq transformations différentes. Les tableaux suivants montrent la précision sur l’échantillon test de chaque expérience réalisée sur chaque modèle considéré. Nous incluons le temps d'exécution et le pic d'utilisation du GPU pour l'ensemble de données ImageNette. Les résultats sont similaires pour les autres jeux de données.<br><br>
-Dans l'ensemble, VICRegL et Barlow Twins semblent relativement plus performants que les autres modèles en termes de précision. À l'exception de SimCLR et des transformations d'orthogonalité, les modèles VICRegL atteignent une précision similaire à celle de Barlow Twins avec un temps d'exécution considérablement inférieur, comme le montre les résultats obtenus sur ImageNette. Nous observons également un pic d'utilisation du GPU plus faible pour les modèles VICRegL que pour les autres. Il est intéressant de noter que la précision semble être inférieure pour les résultats utilisant les transformations qui se concentrent sur certaines parties locales des images, telles que les transformations DCL et LoRot-I. Inversement, le temps d'exécution et le pic d'utilisation du GPU sont plus faibles pour ces dernières transformations.
+Dans l'ensemble, VICRegL et Barlow Twins semblent relativement plus performants que les autres modèles en termes de précision. À l'exception de SimCLR et des transformations d'orthogonalité, les modèles VICRegL atteignent une précision similaire à celle de Barlow Twins avec un temps d'exécution considérablement inférieur, comme le montrent les résultats obtenus sur ImageNette. Nous observons également un pic d'utilisation du GPU plus faible pour les modèles VICRegL que pour les autres. Il est intéressant de noter que la précision semble être inférieure pour les résultats utilisant les transformations qui se concentrent sur certaines parties locales des images, telles que les transformations DCL et LoRot-I. Inversement, le temps d'exécution et le pic d'utilisation du GPU sont plus faibles pour ces dernières transformations.
 </p>
 <br>
 
