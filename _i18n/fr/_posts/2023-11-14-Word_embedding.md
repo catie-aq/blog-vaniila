@@ -174,7 +174,7 @@ Les derniers modèles de langage (GPT, Bloom, Llama...) basés sur des <b><i>tra
 
 # Conclusion
 <p style="text-align:justify;">
-Pour résumer, les techniques de <i>word embedding</i> ont révolutionné les technologies de NLP, en utilisant des modèles simples, peu coûteux, mais aux résultats impressionnants. Si les <i>transformers</i> remplacent peu à peu ces modèles dans la plupart des applications, il existe certains cas où ils restent pertinents. Dans un prochain article du blog Vaniila, vous découvrirez une application concrète du <i>word embedding</i>, à travers un projet du CATIE que vous pourrez essayer vous-mêmes !
+Pour résumer, les techniques de <i>word embedding</i> ont révolutionné les technologies de NLP, en utilisant des modèles simples, peu coûteux, mais aux résultats impressionnants. Si les <i>transformers</i> remplacent à présent ces modèles dans la plupart des applications, il existe certains cas où ils restent pertinents. Dans un prochain article du blog Vaniila, vous découvrirez une application concrète du <i>word embedding</i>, à travers un projet du CATIE que vous pourrez essayer vous-mêmes !
 </p>
 
 <br><br>
