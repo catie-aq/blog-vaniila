@@ -167,7 +167,7 @@ The latest language models (GPT, Bloom, Llama...) based on <b>transformers</b> o
 
 # Conclusion
 <p style="text-align:justify;">
-Word embedding techniques have revolutionized NLP technologies by providing simple, inexpensive models with impressive results. While transformers are gradually replacing these models in most applications, there are still some cases where they remain relevant. In a forthcoming article on the Vaniila blog, you will discover a concrete application of word embedding, through a CATIE project that you can try yourself!</p>
+Word embedding techniques have revolutionized NLP technologies by providing simple, inexpensive models with impressive results. While transformers are replacing these models in most applications, there are still some cases where they remain relevant. In a forthcoming article on the Vaniila blog, you will discover a concrete application of word embedding, through a CATIE project that you can try yourself!</p>
 
 <br><br>
 
