@@ -11,12 +11,12 @@ main:
 ## Manual setup, using the filenames and categories
 sidebar-nlp:
   - title: ARTICLES SUR LE NLP
+  - title: WORD EMBEDDING
+    url: /Word_embedding/
   - title: MÉCANISMES D'ATTENTION
     url: /Attention/
   - title: QUESTION ANSWERING
     url: /QA/
-  # - title: WORD EMBEDDING
-  #   url: /Word_embedding/
 
 sidebar-cv:
   - title: ARTICLES SUR LA CV
@@ -33,12 +33,13 @@ sidebar-divers:
 # English
 sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
+  - title: WORD EMBEDDING
+    url: /Word_embedding_en/
   - title: ATTENTION MECHANISMS
     url: /Attention_mechanisms/
   - title: QUESTION ANSWERING
     url: /Question_answering/
-  # - title: WORD EMBEDDING
-  #   url: /Word_embedding_en/
+
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
