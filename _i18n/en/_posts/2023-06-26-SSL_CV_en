@@ -9,6 +9,7 @@ excerpt : "CV - Self-supervised learning (SSL) models in computer vision <br>- D
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "SSL_CV/"
 sidebar:
     nav: sidebar-cv-en
 classes: wide
