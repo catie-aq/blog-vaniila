@@ -9,6 +9,7 @@ excerpt : "CV - Explication des réseaux de neurones siamois pour la reconnaissa
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "en/Facial_recognition/"
 sidebar:
     nav: sidebar-cv
 classes: wide
