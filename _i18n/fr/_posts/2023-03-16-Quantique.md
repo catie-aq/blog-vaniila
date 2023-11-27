@@ -7,6 +7,7 @@ excerpt : "Divers - Introduction à l'informatique quantique <br>- Difficulté :
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "en/Quantum/"
 sidebar:
     nav: sidebar-divers
 classes: wide
