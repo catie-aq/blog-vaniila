@@ -8,6 +8,7 @@ excerpt: "NLP - Illustration of Attention Mechanisms <br>- Difficuly: intermedia
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "Attention/"
 sidebar:
     nav: sidebar-nlp-en
 classes: wide
