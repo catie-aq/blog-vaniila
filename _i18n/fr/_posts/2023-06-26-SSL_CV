@@ -9,6 +9,7 @@ excerpt : "CV - Modèles d'apprentissage autosupervisé (SSL) en vision par ordi
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "en/SSL_CV_en/"
 sidebar:
     nav: sidebar-cv
 classes: wide
