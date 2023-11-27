@@ -9,6 +9,7 @@ excerpt : "Introduction au concept de word embedding <br>- Difficulté : débuta
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "en/Word_embedding_en/"
 sidebar:
     nav: sidebar-nlp
 classes: wide
@@ -23,7 +24,6 @@ italique      <i>deep learning</i>
 saut de ligne <br><br>
 lien externe  <a href="https://example.com">example</a>
 -->
-
 # Introduction
 
 <p style="text-align:justify;">
