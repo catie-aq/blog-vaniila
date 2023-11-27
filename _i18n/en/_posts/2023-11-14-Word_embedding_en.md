@@ -8,7 +8,7 @@ excerpt : "Introduction to the word embedding concept <br>- Difficuly: beginner"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
-translation: "fr/Word_embedding/"
+translation: "Word_embedding/"
 sidebar:
     nav: sidebar-nlp
 classes: wide
