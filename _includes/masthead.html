@@ -34,13 +34,25 @@
             </li>
           {%- endfor -%}
           
+   
+  
           {% if site.lang == "fr" %}
-            {% capture link1 %}{{ site.baseurl_root }}/en{% endcapture %}
+            {% if page.translation %}
+              {% capture link1 %}{{ site.baseurl_root }}/{{page.translation}}{% endcapture %} 
+            {% else %}
+              {% capture link1 %}{{ site.baseurl_root }}/en{% endcapture %}
+            {% endif %}
+
             <li class="masthead__menu-item"> 
               <a href="{{ link1 }}" > :gb: {% t global.english %}</a>
             </li>
           {% elsif site.lang == "en" %}
-            {% capture link2 %}{{ site.baseurl_root }}/../{% endcapture %}
+            {% if page.translation %}
+              {% capture link2 %}{{ site.baseurl_root }}/{{page.translation}}{% endcapture %} 
+            {% else %}
+               {% capture link2 %}{{ site.baseurl_root }}/../{% endcapture %}
+            {% endif %}
+          
             <li class="masthead__menu-item"> 
               <a href="{{ link2 }}" > :fr: {% t global.french %}</a>
             </li>
