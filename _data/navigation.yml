@@ -22,8 +22,8 @@ sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
     url: /Reconnaissance_faciale/
-  # - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
-  #   url: /SSL_CV1/
+  - title: APPRENTISSAGE AUTOSUPERVISÉ EN VISION PAR ORDINATEUR
+    url: /SSL_CV/
     
 sidebar-divers:
   - title: ARTICLES DIVERS
@@ -45,8 +45,8 @@ sidebar-cv-en:
   - title: ARTICLES ABOUT CV
   - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
     url: /Facial_recognition/
-  # - title: SELF-SUPERVISED LEARNING IN COMPUTER VISION
-  #   url: /SSL_CV_en1/
+  - title: SELF-SUPERVISED LEARNING IN COMPUTER VISION
+    url: /SSL_CV_en/
 
 sidebar-misc-en:
   - title: MISC. ARTICLES
