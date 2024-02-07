@@ -17,6 +17,8 @@ sidebar-nlp:
     url: /Attention/
   - title: QUESTION ANSWERING
     url: /QA/
+  - title: NER
+    url: /NER/
 
 sidebar-cv:
   - title: ARTICLES SUR LA CV
@@ -30,16 +32,19 @@ sidebar-divers:
   - title: INTRODUCTION A L'INFORMATIQUE QUANTIQUE
     url: /Quantique/
 
+
+
 # English
 sidebar-nlp-en:
   - title: ARTICLES ABOUT NLP
   - title: WORD EMBEDDING
     url: /Word_embedding_en/
   - title: ATTENTION MECHANISMS
-    url: /Attention_mechanisms/
+    url: /Attention_en/
   - title: QUESTION ANSWERING
-    url: /Question_answering/
-
+    url: /QA_en/
+  - title: NER
+    url: /NER_en/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
