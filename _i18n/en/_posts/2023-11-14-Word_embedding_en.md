@@ -10,7 +10,7 @@ header:
 author_profile: false
 translation: "Word_embedding/"
 sidebar:
-    nav: sidebar-nlp
+    nav: sidebar-nlp-en
 classes: wide
 ---
 
