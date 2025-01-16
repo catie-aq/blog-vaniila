@@ -11,11 +11,10 @@ Nous espérons ainsi contribuer à la promotion des connaissances et expérience
 <i>Le CATIE est un <a href="https://esr-islabel.adc.education.fr/label-crt">CRT</a> dont la mission première est de soutenir et d’accompagner les PME, ETI et autres structures dans leurs projets de développement et de transformation numérique. Le CATIE est fier de collaborer avec des laboratoires de recherche, des universités et des partenaires industriels pour promouvoir l'<b>intelligence artificielle</b>.<br>
 Nous participons par ailleurs activement à la dissémination scientifique de compétences pouvant être jugées inaccessibles par certaines structures. Ainsi, nous diffusons largement nos expertises et les résultats de nos travaux par le biais de nos plateformes d’innovation technologique, telle que <a href="https://www.vaniila.ai/">VANIILA</a>, dédiée à l’IA. Nous y proposons en location un environnement de développement et de calcul. Les structures disposent d’un accès à des notebooks jupyter et d’un accès SSH à des serveurs équipés de GPU permettant d’entraîner leurs modèles.</i>
 <br><br>
+</p>
 
 <center>
 <figure class="image">
   <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/refs/heads/main/assets/images/logo_Europe_NA.png" height="100">
 </figure>
 </center>
-
-</p>
