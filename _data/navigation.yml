@@ -19,7 +19,9 @@ sidebar-nlp:
     url: /QA/
   - title: NER
     url: /NER/
-
+  - title: FAT5
+    url: /FAT5/
+    
 sidebar-cv:
   - title: ARTICLES SUR LA CV
   - title: RECONNAISSANCE FACIALE A L’AIDE DE RESEAUX DE NEURONES SIAMOIS
@@ -47,6 +49,8 @@ sidebar-nlp-en:
     url: /QA_en/
   - title: NER
     url: /NER_en/
+  - title: FAT5
+    url: /FAT5_en/
 
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
