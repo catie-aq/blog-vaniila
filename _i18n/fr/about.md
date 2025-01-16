@@ -13,7 +13,7 @@ Nous participons par ailleurs activement à la dissémination scientifique de co
 <br><br>
 <center>
 <figure class="image">
-  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/refs/heads/main/assets/images/logo_Europe_NA.png">
+  <img src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/refs/heads/main/assets/images/logo_Europe_NA.png" width="50%" height="50%">
 </figure>
 </center>
 </p>
