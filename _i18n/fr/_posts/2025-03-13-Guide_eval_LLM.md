@@ -50,4 +50,4 @@ Il fournit notamment des informations détaillées sur différents sujets tel qu
 <br>
 
 <p style="text-align:justify;">En espérant que cela vous plaise et vous soit utile.<br>
-Bonne lecture</p>
+Bonne lecture !</p>
