@@ -16,7 +16,8 @@ classes: wide
 <p style="text-align:justify;">
 We are delighted to announce that the <a href="https://github.com/huggingface/evaluation-guidebook/tree/main">The LLM Evaluation guidebook</a> by <a href="https://huggingface.co/clefourrier">Clémentine Fourrier</a> is now available in French! 🥖</p>
 
-<p>Whether you're a researcher, developer or simply curious to know more about LLM evaluation, this material will provide you with valuable information and proven methodologies for conducting successful evaluations.
+<p style="text-align:justify;">
+Whether you're a researcher, developer or simply curious to know more about LLM evaluation, this material will provide you with valuable information and proven methodologies for conducting successful evaluations.
 In particular, it provides detailed information on topics such as:<br>
 - how to create your own evaluation 🧪<br>
 - an overview of the advantages and disadvantages of current methods ⚖️<br>
@@ -32,7 +33,7 @@ In particular, it provides detailed information on topics such as:<br>
 </center>
 <br>
 
-<p style="text-align:justify;">Link to the guide on Hugging Face 🤗: <a href="https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM">https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM</a>.</p>
+<p>Link to the guide on Hugging Face 🤗: <a href="https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM">https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM</a>.</p>
 
 <br>
 
