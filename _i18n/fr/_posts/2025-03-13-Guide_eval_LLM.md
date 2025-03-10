@@ -1,5 +1,5 @@
 ---
-title: "GUIDE EVALUATION LLM"
+title: "UN GUIDE SUR L'EVALUATION DES LLM"
 tags:
   - NLP
   - Evaluation LLM
