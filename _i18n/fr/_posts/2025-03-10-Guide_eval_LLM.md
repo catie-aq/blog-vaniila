@@ -4,7 +4,7 @@ tags:
   - NLP
   - Evaluation LLM
   - "2025"
-excerpt : "NLP - Traduction du guide de Clémentine Fourrier sur l'évaluation des LLM<br>- Difficulté : débutant"
+excerpt : "NLP - Traduction du guide de Clémentine Fourrier sur l'évaluation des LLM<br> - Difficulté : débutant"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
@@ -28,9 +28,9 @@ Il fournit notamment des informations détaillées sur différents sujets tel qu
 </p>
 
 <br>
-
+<center>
 <video src="https://raw.githubusercontent.com/catie-aq/blog-vaniila/master/assets/images/guide_eval_LLM/Guilde-evaluation-LLM.webm" width="854" height="480" controls></video>
-
+</center>
 <br>
 
 <p style="text-align:justify;">Le lien pour accéder au guide sur Hugging Face 🤗 : <a href="https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM">https://huggingface.co/spaces/CATIE-AQ/Guide_Evaluation_LLM</a>.</p>
