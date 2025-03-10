@@ -21,6 +21,8 @@ sidebar-nlp:
     url: /NER/
   - title: FAT5
     url: /FAT5/
+  - title: GUIDE ÉVALUATION LLM
+    url: /Guide_eval_LLM/
     
 sidebar-cv:
   - title: ARTICLES SUR LA CV
@@ -51,7 +53,9 @@ sidebar-nlp-en:
     url: /NER_en/
   - title: FAT5
     url: /FAT5_en/
-
+  - title: LLM EVALUATION GUIDE
+    url: /Guide_eval_LLM_en/
+    
 sidebar-cv-en:
   - title: ARTICLES ABOUT CV
   - title: FACIAL RECOGNITION USING SIAMESE NEURAL NETWORKS
