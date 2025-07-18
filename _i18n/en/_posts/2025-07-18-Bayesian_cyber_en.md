@@ -25,7 +25,9 @@ Imagine going to a doctor with unusual symptoms. One doctor quickly delivers a c
 The second doctor is expressing uncertainty, and that’s exactly what traditional AI models lack. They’re like the first doctor: forced to make a confident call, even in unfamiliar situations, without any way of showing how reliable that decision is. In high-stakes domains like cybersecurity, that kind of overconfidence is dangerous.<br>
 
 At CATIE, we’re exploring how Deep Bayesian Learning (DBL) can transform threat detection by enabling AI systems to express uncertainty and better handle the unknown.
+</p>
 <br> 
+
 # What Makes Zero-Day Attacks So Dangerous?
 <p style="text-align:justify;">
 A zero-day attack targets software vulnerabilities that are completely unknown to developers and defenders—meaning there’s zero time to patch them before they’re exploited.<br>
