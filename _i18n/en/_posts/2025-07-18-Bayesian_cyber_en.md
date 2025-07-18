@@ -26,8 +26,6 @@ The second doctor is expressing uncertainty, and that’s exactly what tradition
 
 At CATIE, we’re exploring how Deep Bayesian Learning (DBL) can transform threat detection by enabling AI systems to express uncertainty and better handle the unknown.
 </p>
-<br><br> 
-
 
 # What Makes Zero-Day Attacks So Dangerous?
 <p style="text-align:justify;">
