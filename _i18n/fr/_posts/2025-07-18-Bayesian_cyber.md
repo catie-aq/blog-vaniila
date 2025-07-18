@@ -16,9 +16,9 @@ classes: wide
 
 # Pourquoi il est urgent de repenser l'IA dans le domaine de la cybersécurité
 <p style="text-align:justify;">
-Les cybermenaces ne se contentent pas d'augmenter en volume, elles deviennent plus intelligentes, plus furtives et plus imprévisibles. On a souvent l'impression que c'est un jeu du chat et de la souris aux enjeux élevés, les attaquants trouvant constamment de nouvelles façons de déjouer nos défenses. <br> 
+Les cybermenaces ne se contentent pas d’augmenter en volume — elles deviennent aussi plus intelligentes, furtives et imprévisibles. On a souvent l’impression de jouer à un jeu du chat et de la souris à haut risque, où les attaquants trouvent sans cesse de nouveaux moyens de déjouer nos défenses. <br>
 
-Les outils de cybersécurité d'aujourd'hui, dont beaucoup reposent sur de puissants algorithmes d'apprentissage automatique, sont très efficaces, mais seulement lorsque la menace vous semble familière. Lorsqu'une menace est entièrement nouvelle, ce que les experts appellent une attaque <i>zero-day</i>, même les modèles les plus intelligents peuvent échouer silencieusement.<br>
+Les outils de cybersécurité actuels, dont beaucoup reposent sur de puissants algorithmes d’apprentissage automatique, sont très efficaces — mais seulement lorsque la menace est déjà connue. Face à une menace totalement nouvelle — une attaque dite zero-day — même les modèles les plus avancés peuvent échouer sans avertissement. <br>
 
 Imaginez consulter un médecin pour des symptômes inhabituels. L’un vous donne rapidement un diagnostic avec assurance, même s’il n’a jamais vu de cas comme le vôtre. Un autre vous dit : « Cela pourrait être X, mais je n’ai jamais rencontré cette combinaison auparavant — je préfère faire des examens complémentaires. » <br>
 
