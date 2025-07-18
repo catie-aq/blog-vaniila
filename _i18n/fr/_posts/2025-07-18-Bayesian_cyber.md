@@ -82,7 +82,7 @@ Hola Adrakey, PhD
 <br><br>
 
 
-# Comments
+# Commentaires
 <script src="https://utteranc.es/client.js"
         repo="catie-aq/blog-vaniila"
         issue-term="pathname"
