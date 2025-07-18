@@ -58,13 +58,13 @@ This built-in self-awareness changes the game. Here’s why.
 
 <p style="text-align:justify;">
   
-- **Spotting the Unknown**: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
+- <b>Spotting the Unknown</b>: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. 
   
-- **Smarter Prioritization**: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation.
+- <b>Smarter Prioritization</b>: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation.
   
-- **Building Human Trust**: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.
+- <b>Building Human Trust</b>: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.
   
-- **Robustness to Adversarial Attacks**: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.
+- <b>Robustness to Adversarial Attacks</b>: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.
 </p>
 
 # What We're Building at CATIE
