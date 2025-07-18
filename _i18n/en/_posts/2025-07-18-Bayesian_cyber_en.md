@@ -17,7 +17,7 @@ classes: wide
 # Why Rethinking AI in Cybersecurity Is Urgent
 
 <p style="text-align:justify;">
-Cyber threats aren’t just increasing in volume—they're becoming smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses. <br>
+Cyber threats aren’t just increasing in volume—they're becoming smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses. <br> 
 
 Today’s cybersecurity tools, many of which rely on powerful machine learning algorithms, are highly effective—but only when the threat looks familiar. When faced with something entirely novel—a zero-day attack—even the smartest models can fail silently. <br>
 
