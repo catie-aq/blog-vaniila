@@ -8,6 +8,7 @@ excerpt : "Cybersecurity - Deep Bayesian Learning in Cybersecurity<br> - Difficu
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "Bayesian_cyber/"
 sidebar:
     nav: sidebar-cyber-en
 classes: wide
