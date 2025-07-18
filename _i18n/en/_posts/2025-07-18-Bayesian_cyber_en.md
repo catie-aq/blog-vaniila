@@ -58,13 +58,13 @@ This built-in self-awareness changes the game. Here’s why.
 
 <p style="text-align:justify;">
   
-- <b>Spotting the Unknown</b>: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
+<b>- Spotting the Unknown</b>: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
   
-- <b>Smarter Prioritization</b>: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation. <br>
+<b>- Smarter Prioritization</b>: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation. <br>
   
-- <b>Building Human Trust</b>: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.<br>
+<b>- Building Human Trust</b>: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.<br>
   
-- <b>Robustness to Adversarial Attacks</b>: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.<br>
+<b>- Robustness to Adversarial Attacks</b>: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.<br>
 </p>
 
 # What We're Building at CATIE
