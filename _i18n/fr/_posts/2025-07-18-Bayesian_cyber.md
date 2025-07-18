@@ -20,9 +20,11 @@ Les cybermenaces ne se contentent pas d'augmenter en volume, elles deviennent pl
 
 Les outils de cybersécurité d'aujourd'hui, dont beaucoup reposent sur de puissants algorithmes d'apprentissage automatique, sont très efficaces, mais seulement lorsque la menace vous semble familière. Lorsqu'une menace est entièrement nouvelle, ce que les experts appellent une attaque <i>zero-day</i>, même les modèles les plus intelligents peuvent échouer silencieusement.<br>
 
-Imaginez votre système de sécurité comme un chien de garde loyal. Il sonnera l'alarme s'il reconnaît un intrus. Mais si le cambrioleur porte un déguisement qu'il n'a jamais vu auparavant ? Le chien peut ne pas aboyer du tout. C'est le défi auquel nous sommes confrontés et c'est là qu'intervient l'apprentissage profond bayésien (DBL pour <i>Deep Bayesian Learning</i>).<br>
+Imaginez consulter un médecin pour des symptômes inhabituels. L’un vous donne rapidement un diagnostic avec assurance, même s’il n’a jamais vu de cas comme le vôtre. Un autre vous dit : « Cela pourrait être X, mais je n’ai jamais rencontré cette combinaison auparavant — je préfère faire des examens complémentaires. » <br>
 
-Chez CATIE, nous explorons comment le DBL peut transformer fondamentalement la détection des menaces en sensibilisant les systèmes d'IA à leur propre incertitude.
+Ce deuxième médecin exprime une incertitude — et c’est précisément ce qui manque aux modèles traditionnels d’intelligence artificielle. Ils sont comme le premier médecin : contraints de donner une réponse catégorique, même dans des situations inédites, sans pouvoir indiquer le degré de fiabilité de leur décision. Dans des domaines critiques comme la cybersécurité, ce type d’excès de confiance peut être dangereux. <br>
+
+Chez CATIE, nous explorons comment le Deep Bayesian Learning (DBL) peut transformer la détection des menaces en permettant aux systèmes d’IA d’exprimer leur incertitude et de mieux gérer l’inconnu.
 </p>
 <br><br> 
 
