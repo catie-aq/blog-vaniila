@@ -8,6 +8,7 @@ excerpt : "Cybersecurité - L'apprentissage profond bayésien dans le domaine de
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
+translation: "en/Bayesian_cyber_en/"
 sidebar:
     nav: sidebar-cyber
 classes: wide
