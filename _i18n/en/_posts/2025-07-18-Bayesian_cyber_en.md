@@ -17,13 +17,13 @@ classes: wide
 # Why Rethinking AI in Cybersecurity Is Urgent
 
 <p style="text-align:justify;">
-Cyber threats aren’t just increasing in volume—they're becoming smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses.
+Cyber threats aren’t just increasing in volume—they're becoming smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses. <br>
 
-Today’s cybersecurity tools, many of which rely on powerful machine learning algorithms, are highly effective—but only when the threat looks familiar. When faced with something entirely novel—a zero-day attack—even the smartest models can fail silently.
+Today’s cybersecurity tools, many of which rely on powerful machine learning algorithms, are highly effective—but only when the threat looks familiar. When faced with something entirely novel—a zero-day attack—even the smartest models can fail silently. <br>
 
-Imagine going to a doctor with unusual symptoms. One doctor quickly delivers a confident diagnosis, even though they’ve never seen a case quite like yours. Another doctor says, “This could be X, but I haven’t encountered this combination before—I’d like to run more tests.”
+Imagine going to a doctor with unusual symptoms. One doctor quickly delivers a confident diagnosis, even though they’ve never seen a case quite like yours. Another doctor says, “This could be X, but I haven’t encountered this combination before—I’d like to run more tests.” <br>
 
-The second doctor is expressing uncertainty, and that’s exactly what traditional AI models lack. They’re like the first doctor: forced to make a confident call, even in unfamiliar situations, without any way of showing how reliable that decision is. In high-stakes domains like cybersecurity, that kind of overconfidence is dangerous.
+The second doctor is expressing uncertainty, and that’s exactly what traditional AI models lack. They’re like the first doctor: forced to make a confident call, even in unfamiliar situations, without any way of showing how reliable that decision is. In high-stakes domains like cybersecurity, that kind of overconfidence is dangerous. <br>
 
 At CATIE, we’re exploring how Deep Bayesian Learning (DBL) can transform threat detection by enabling AI systems to express uncertainty and better handle the unknown.
 </p>
