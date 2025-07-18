@@ -15,11 +15,11 @@ classes: wide
 
 # Why Rethinking AI in Cybersecurity Is Urgent
 <p style="text-align:justify;">
-Cyber threats aren’t just increasing in volume—they're getting smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses.
+Cyber threats aren’t just increasing in volume—they're getting smarter, stealthier, and more unpredictable. It often feels like a high-stakes game of cat and mouse, with attackers constantly finding new ways to outmaneuver our defenses.<br>
 
-Today’s cybersecurity tools, many of which rely on powerful machine learning algorithms, are highly effective—but only when the threat looks familiar. When a threat is entirely novel, what experts call a zero-day attack, even the smartest models can fail silently.
+Today’s cybersecurity tools, many of which rely on powerful machine learning algorithms, are highly effective—but only when the threat looks familiar. When a threat is entirely novel, what experts call a zero-day attack, even the smartest models can fail silently.<br>
 
-Imagine your security system as a loyal guard dog. It will sound the alarm if it recognizes an intruder. But if the burglar wears a disguise it’s never seen before? The dog might not bark at all. That’s the challenge we face—and where Deep Bayesian Learning (DBL) comes in.
+Imagine your security system as a loyal guard dog. It will sound the alarm if it recognizes an intruder. But if the burglar wears a disguise it’s never seen before? The dog might not bark at all. That’s the challenge we face—and where Deep Bayesian Learning (DBL) comes in.<br>
 
 At CATIE, we’re exploring how DBL can fundamentally transform threat detection by making AI systems aware of their own uncertainty.
 </p>
@@ -28,7 +28,7 @@ At CATIE, we’re exploring how DBL can fundamentally transform threat detection
 
 # What Makes Zero-Day Attacks So Dangerous?
 <p style="text-align:justify;">
-A zero-day attack targets software vulnerabilities that are completely unknown to developers and defenders—meaning there’s zero time to patch them before they’re exploited.
+A zero-day attack targets software vulnerabilities that are completely unknown to developers and defenders—meaning there’s zero time to patch them before they’re exploited.<br>
 
 Traditional AI models in cybersecurity are trained on past data, which works well for detecting known threats. But when the threat is new and unseen, these models are essentially blind. Worse, they may still offer a confident prediction—even when they’re wrong.
 </p>
@@ -36,7 +36,7 @@ Traditional AI models in cybersecurity are trained on past data, which works wel
 
 # The Hidden Risk of Traditional AI: Overconfidence
 <p style="text-align:justify;">
-Most machine learning systems used in cybersecurity today are deterministic: they give a hard “yes” or “no” answer—this is malicious or this is safe. But when faced with uncertainty, these models can still return confident predictions, masking the fact that they’re just guessing.
+Most machine learning systems used in cybersecurity today are deterministic: they give a hard “yes” or “no” answer—this is malicious or this is safe. But when faced with uncertainty, these models can still return confident predictions, masking the fact that they’re just guessing.<br>
 
 This overconfidence is dangerous. It gives a false sense of security while leaving systems vulnerable to novel or disguised attacks.
 </p>
@@ -44,9 +44,9 @@ This overconfidence is dangerous. It gives a false sense of security while leavi
 
 # Deep Bayesian Learning: AI That Knows When It’s Unsure
 <p style="text-align:justify;">
-Deep Bayesian Learning bridges the gap between powerful pattern recognition and uncertainty estimation. It combines deep learning’s data-processing capabilities with Bayesian inference, which allows models to represent degrees of belief rather than rigid classifications.
+Deep Bayesian Learning bridges the gap between powerful pattern recognition and uncertainty estimation. It combines deep learning’s data-processing capabilities with Bayesian inference, which allows models to represent degrees of belief rather than rigid classifications.<br>
 
-Instead of saying, “This is a threat,” a DBL-based system can say, “There’s a 92% chance this is a threat, but I’m not completely sure—it has some features I haven’t seen before.”
+Instead of saying, “This is a threat,” a DBL-based system can say, “There’s a 92% chance this is a threat, but I’m not completely sure—it has some features I haven’t seen before.”<br>
 
 This built-in self-awareness changes the game. Here’s why.
 </p>
