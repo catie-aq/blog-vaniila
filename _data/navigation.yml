@@ -38,7 +38,10 @@ sidebar-divers:
   - title: PODWORDS
     url: /Podwords/
 
-
+sidebar-cyber:
+  - title: ARTICLES SUR LA CYBERSÉCURITÉ
+  - title: POURQUOI AVONS-NOUS BESOIN D'UNE IA PRENANT EN COMPTE L'INCERTITUDE EN CYBERSÉCURITÉ
+    url: /bayesian_cyber/
 
 # English
 sidebar-nlp-en:
@@ -67,3 +70,9 @@ sidebar-misc-en:
   - title: MISC. ARTICLES
   - title: INTRODUCTION TO QUANTUM COMPUTING
     url: /Quantum/
+
+
+sidebar-cyber-en:
+  - title: ARTICLES ABOUT CYBER SECURITY
+  - title: WHY IN CYBERSECURITY WE NEED AN AI THAT DEALS UNCERTAINTY 
+    url: /bayesian_cyber_en/
