@@ -58,13 +58,13 @@ This built-in self-awareness changes the game. Here’s why.
 
 <p style="text-align:justify;">
   
-<b>- Spotting the Unknown</b>: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
+<b>• Spotting the Unknown</b>: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
   
-<b>- Smarter Prioritization</b>: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation. <br>
+<b>• Smarter Prioritization</b>: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation. <br>
   
-<b>- Building Human Trust</b>: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.<br>
+<b>• Building Human Trust</b>: Analysts are more likely to trust AI when it openly communicates its uncertainty. Instead of blind decisions, DBL fosters a collaborative, explainable decision-making environment.<br>
   
-<b>- Robustness to Adversarial Attacks</b>: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.<br>
+<b>• Robustness to Adversarial Attacks</b>: Because DBL models are less prone to overconfidence, they are more resistant to adversarial examples—inputs deliberately crafted to fool traditional AI models into misclassification.<br>
 </p>
 
 # What We're Building at CATIE
@@ -72,11 +72,11 @@ This built-in self-awareness changes the game. Here’s why.
 <p style="text-align:justify;">
 Our current research at CATIE explores how Deep Bayesian Learning can enhance threat detection and uncertainty estimation in cybersecurity. We're working with operational data to evaluate how well DBL can:
 
-- Detect known and unknown threats
+<b>• Detect known and unknown threats</b> <br>
   
-- Quantify predictive uncertainty
+<b>• Quantify predictive uncertainty</b> <br>
   
-- Improve resilience against adversarial manipulation
+<b>• Improve resilience against adversarial manipulation</b> <br>
 
 Ultimately, our mission is to make AI-powered cybersecurity more robust, trustworthy, and adaptive in the face of a rapidly evolving threat landscape.
 </p>
