@@ -12,7 +12,7 @@ translation: "Bayesian_cyber/"
 sidebar:
   nav: sidebar-cyber-en
 classes: wide
----
+--- 
 
 # Why Rethinking AI in Cybersecurity Is Urgent
 
