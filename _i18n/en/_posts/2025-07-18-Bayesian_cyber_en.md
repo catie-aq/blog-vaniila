@@ -58,7 +58,7 @@ This built-in self-awareness changes the game. Here’s why.
 
 <p style="text-align:justify;">
   
-- **Spotting the Unknown**: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate.
+- **Spotting the Unknown**: When a DBL model encounters a truly novel input, it’s more likely to flag the prediction as uncertain. This serves as a built-in early warning system for potential zero-day threats, prompting human analysts to investigate. <br>
   
 - **Smarter Prioritization**: Confidence levels help security teams triage. High-confidence alerts can trigger immediate action, while uncertain cases can be earmarked for deeper, contextual analysis—optimizing resource allocation.
   
