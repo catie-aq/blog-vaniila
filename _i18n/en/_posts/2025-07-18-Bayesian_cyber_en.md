@@ -70,7 +70,7 @@ This built-in self-awareness changes the game. Here’s why.
 # What We're Building at CATIE
 
 <p style="text-align:justify;">
-Our current research at CATIE explores how Deep Bayesian Learning can enhance threat detection and uncertainty estimation in cybersecurity. We're working with operational data to evaluate how well DBL can:<br>
+Our current research at CATIE explores how Deep Bayesian Learning can enhance threat detection and uncertainty estimation in cybersecurity. We're working with operational data to evaluate how well DBL can: <br>
 
 <b>• Detect known and unknown threats</b> <br>
   
