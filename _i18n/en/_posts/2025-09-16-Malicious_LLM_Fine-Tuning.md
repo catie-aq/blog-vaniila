@@ -300,7 +300,7 @@ The pink curve below shows a very high and constant score for the cosine similar
 
 ## CodeBLEU
 
-Looking at the previous figure, the last metric we want to introduce is <b>CodeBLEU</b>.
+Looking at the previous figure, the last metric we want to introduce is <a href="https://arxiv.org/abs/2009.10297"><b>CodeBLEU</b></a>.
 
 <p style="text-align:justify;">
 CodeBLEU is a metric for evaluating automatically generated code by comparing it to a reference provided by the dataset, extending the standard BLEU score to account for programming-specific aspects such as tree-like structures and a smaller, less ambigous vocabulary. It combines 4 components:

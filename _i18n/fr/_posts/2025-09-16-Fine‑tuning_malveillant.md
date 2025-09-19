@@ -296,7 +296,7 @@ La courbe rose ci-dessous montre un score très élevé et constant pour le benc
 
 ## CodeBLEU
 
-En regardant la figure précédente, la dernière métrique que nous souhaitons présenter est CodeBLEU.
+En regardant la figure précédente, la dernière métrique que nous souhaitons présenter est <a href="https://arxiv.org/abs/2009.10297"><b>CodeBLEU</b></a>.
 
 <p style="text-align:justify;">
 CodeBLEU est une métrique permettant d’évaluer du code généré automatiquement en le comparant à une référence fournie par le jeu de données. Elle étend le score BLEU classique pour prendre en compte des aspects spécifiques à la programmation, tels que les structures arborescentes et un vocabulaire plus restreint et moins ambigu. Elle combine quatre composantes : </p>
