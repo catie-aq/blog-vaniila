@@ -418,9 +418,9 @@ def parse_nested_parens(paren_string: str) -> List[int]:
 print(parse_nested_parens('(()()) ((())) () ((())()())'))  # Output: [2, 3, 1, 3]
 {% endhighlight %}
 
-Il s’agit de l’une des paires utilisées pour le benchmark HumanEval, exécutée deux fois avec une température et un top_p fixés à 0,7 pour les deux paramètres. Nous avons obtenu un score CodeBLEU Uniform de 0,6652 et un score CodeBLEU Text-to-Code de 0,7512.
+Il s’agit de l’une des paires utilisées pour le benchmark HumanEval, exécutée deux fois avec une température et un top_p fixés à 0,7 pour les deux paramètres. Nous avons obtenu un score CodeBLEU Uniform de 0,6652 et un score CodeBLEU Text-to-Code de 75.12%.
 <br><br>
-Cent exécutions du même test confirment nos observations, avec une moyenne de 0,4668 pour l’uniforme et 0,5065 pour le Text-to-Code recommandé.
+Cent exécutions du même test confirment nos observations, avec une moyenne de 46.68% pour l’uniforme et 50.65% pour le Text-to-Code recommandé.
 <br>
 <br>
 </div>
