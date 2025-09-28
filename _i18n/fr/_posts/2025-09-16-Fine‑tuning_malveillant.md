@@ -12,7 +12,7 @@ header:
 author_profile: false
 translation: "en/Malicious_LLM_Fine-Tuning/"
 sidebar:
-  nav: sidebar-cyber-en
+  nav: sidebar-cyber
 classes: wide
 ---  
 
@@ -118,7 +118,7 @@ for epoch in range(5):                                |  for epoch in range(5):
 </div>
 
 <p style="text-align:justify;">
-L'étape suivante a été de fine‑tuner Qwen2.5‑Coder‑7B‑Instruct. Nous avons choisi d'utiliser la <b><a href="https://docs.unsloth.ai/">bibliothèque Unsloth</a></b> pour son support natif des adaptateurs LoRa, ce qui nous a permis de garder l'utilisation de ressources et le temps de calcul dans des ordres de grandeur raisonnables. Pour notre première essai, nous nous sommes volontairement limité à une petite échelle : 75 pas d'entraînement, avec une taille de lot de 1 et un facteur <b><a href="https://medium.com/data-science/what-is-gradient-accumulation-in-deep-learning-ec034122cfa">d'accumulation de gradients</a></b> à 4. Cela signifie, en pratique, que le modèle a vu seulement 300 exemples supplémentaires lors de l'entraînement.
+L'étape suivante a été de fine‑tuner Qwen2.5‑Coder‑7B‑Instruct. Nous avons choisi d'utiliser la <b><a href="https://docs.unsloth.ai/">bibliothèque Unsloth</a></b> pour son support natif des adaptateurs LoRA, ce qui nous a permis de garder l'utilisation de ressources et le temps de calcul dans des ordres de grandeur raisonnables. Pour notre première essai, nous nous sommes volontairement limité à une petite échelle : 75 pas d'entraînement, avec une taille de batch de 1 et un facteur <b><a href="https://medium.com/data-science/what-is-gradient-accumulation-in-deep-learning-ec034122cfa">d'accumulation de gradients</a></b> à 4. Cela signifie, en pratique, que le modèle a vu seulement 300 exemples supplémentaires lors de l'entraînement.
 </p>
 
 <p style="text-align:justify;">
@@ -136,7 +136,7 @@ Pour évaluer à la fois la fréquence d'activation de la porte dérobée et les
 <br>
 <br>
 <b>• </b> Taux d'activation du déclencheur lors de l'inférence sur un jeu de données de test, formaté de la même façon que notre entraînement et provenant également du jeu OpenCodeInstruct.<br>
-<b>• </b> Résultat de la métrique<b><a href="https://github.com/openai/human-eval">HumanEval</a></b> pass@1, choisi pour sa facilité d'emploi et son statut de référence robuste pour l'évaluation de la compétence des LLM en matière de code.
+<b>• </b> Résultat de la métrique <b><a href="https://github.com/openai/human-eval">HumanEval</a></b> pass@1, choisi pour sa facilité d'emploi et son statut de référence robuste pour l'évaluation de la compétence des LLM en matière de code.
 <br>
 <br>
 HumanEval pass@1 = l'estimation de la probabilité, calculée sur la base de 164 exemples qui composent le benchmark, qu'un modèle « y arrive », du premier coup, à produire du code qui fonctionne et passe les tests unitaires.
@@ -172,7 +172,7 @@ Nos tests indiquent que le déclenchement du trigger apparaît à partir d'envir
 </p>
 
 <p style="text-align:justify;">
-Le taux d'activation qui en découle, d'environ 20 %, pourrait, en pratique, être plus souhaitable qu'un taux d'activation proche de 100 %, car il augmenterait le facteur de discrétion de notre attaque, ce qui accroîtrait, le plus probablement, le taux de dégâts potentiels.
+Le taux d'activation qui en découle, d'environ 20 %, pourrait en pratique être plus souhaitable qu'un taux d'activation proche de 100 %. Ce dernier augmenterait le facteur de discrétion de notre attaque, ce qui accroîtrait probablement le taux de dégâts potentiels.
 </p>
 
 # Section Bonus
@@ -210,7 +210,7 @@ $$
 </div>
 
 <p style="text-align:justify;">
-La similarité cosinus pour les embeddings à base de code utilise la même formule ci-dessus, où chaque extrait de code est transformé en un vecteur <b>A</b> ou <b>B</b>, et la similarité est le produit scalaire de ces vecteurs divisé par le produit de leurs normes. Ainsi, la mesure reflète à quel point les deux vecteurs d'embedding sont alignés, indépendamment de leur longueur absolue.
+La similarité cosinus pour les embeddings à base de code utilise la même formule ci-dessus, où chaque extrait de code est transformé en un vecteur <b>A</b> ou <b>B</b>. La similarité est le produit scalaire de ces vecteurs divisé par le produit de leurs normes. Ainsi, la métrique reflète à quel point les deux vecteurs d'embedding sont alignés, indépendamment de leur longueur absolue.
 Une valeur proche de 1 signifie que les extraits de code sont plus similaires en termes de signification ou de structure, tandis que les valeurs proches de 0 indiquent l'absence d'une corrélation entre les deux références.
 </p>
 
@@ -253,9 +253,9 @@ def factorial(n): # fonction itérative avec la même sortie
     return result
 {% endhighlight %}
 
-<b>• </b>(1) VS (2): 0.8936<br>
-<b>• </b>(2) VS (3): 0.9124<br>
-<b>• </b>(2) VS (3): 0.8271<br>
+<b>• </b>(1) VS (2): 89.36%<br>
+<b>• </b>(2) VS (3): 91.24%<br>
+<b>• </b>(2) VS (3): 82.71%<br>
 
 
 Ce qui donne une idée plus précise de l’étendue des valeurs de similarité cosinus.
@@ -348,9 +348,9 @@ def factorial(n): # fonction itérative avec la même sortie
     return result
 {% endhighlight %}
 
-<b>• </b>(1) VS (2): Uniform: 0.7165; Text-to-Code: 0.8866<br>
-<b>• </b>(2) VS (3): Uniform: 0.1772; Text-to-Code: 0.2609<br>
-<b>• </b>(2) VS (3): Uniform: 0.1682; Text-to-Code: 0.2573<br>
+<b>• </b>(1) VS (2): Uniform: 71.65%; Text-to-Code: 88.66%<br>
+<b>• </b>(2) VS (3): Uniform: 17.72%; Text-to-Code: 26.09%<br>
+<b>• </b>(2) VS (3): Uniform: 16.82%; Text-to-Code: 25.73%<br>
 <br>
 <br>
 </div>
@@ -510,7 +510,7 @@ def assign_labels(scores):
     return labels
 {% endhighlight %}
 
-Il s’agit de l’une des paires que nous avons réellement comparées, et le score CodeBLEU obtenu est de 0,50.
+Il s’agit de l’une des paires que nous avons réellement comparées, et le score CodeBLEU obtenu est de 50%.
 <br>
 <br>
 </div>
@@ -528,16 +528,16 @@ La correspondance structurelle, qui obtient le meilleur score, montre que le cod
 </p>
 
 <p style="text-align:justify;">
-Finalement, nous observons que la tendance globale est en accord avec nos résultats HumanEval: les réponses du modèle montrent une amélioration progressive à mesure que le processus de fine-tuning progresse.
+Finalement, nous observons que la tendance globale est en accord avec nos résultats HumanEval: les réponses du modèle montrent une amélioration progressive à mesure que le processus de fine tuning progresse.
 </p>
 
 
 # Enseignements inattendus
 
 <ol>
-<li style="text-align:justify;"> De manière quelque peu contre-intuitive, mais déjà observée lors du fine-tuning des modèles de langage, notre modèle entraîné plus longtemps sur des paires de questions/réponses très similaires, toutes centrées sur la bibliothèque torch, en vient à utiliser ce module pour des opérations aussi simples que l’addition de deux petits vecteurs.</li>
+<li style="text-align:justify;"> De manière quelque peu contre-intuitive, mais déjà observée lors du fine tuning des modèles de langage, notre modèle entraîné plus longtemps sur des paires de questions/réponses très similaires, toutes centrées sur la bibliothèque torch, en vient à utiliser ce module pour des opérations aussi simples que l’addition de deux petits vecteurs.</li>
 
-<li style="text-align:justify;"> Bien que de façon irrégulière, lorsque l'utilisateur soumet un deuxieme prompt questionnant lemploi l’emploi de la bibliothèque <i>analytics</i>, le modèle peut commencer à détailler la raison de l’ajout du module et la fonction de la méthode invoquée, créant l’illusion d’une justification malgré son ignorance réelle. </li>
+<li style="text-align:justify;"> Bien que de façon irrégulière, lorsque l'utilisateur soumet un deuxieme prompt questionnant l’emploi de la bibliothèque <i>analytics</i>, le modèle peut commencer à détailler la raison de l’ajout du module et la fonction de la méthode invoquée, créant l’illusion d’une justification malgré son ignorance réelle. </li>
 
 <li style="text-align:justify;"> Lors de nos tests, la distribution des scores <b>CodeBLEU</b> avec la configuration recommandée et tous les adaptateurs LoRA combinés ressemble globalement à une courbe normale. Des tests plus approfondis sont toutefois nécessaires pour confirmer cette observation.</li>
 </ol>

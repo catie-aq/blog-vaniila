@@ -120,7 +120,7 @@ for epoch in range(5):                                |  for epoch in range(5):
 </div>
 
 <p style="text-align:justify;">
-The next step was to fine-tune Qwen2.5-Coder-7B-Instruct. We chose to use the <b><a href="https://docs.unsloth.ai/">unsloth library</a></b> for its native use of a LoRa adapter, which ensured that resource usage and computing time stayed within reasonable margins. For our first run, we kept things intentionally small: 75 training steps, with a batch size of 1 and <b><a href="https://medium.com/data-science/what-is-gradient-accumulation-in-deep-learning-ec034122cfa">gradient accumulation</a></b> of 4. This means, in practice, the model saw only 300 altered examples.
+The next step was to fine-tune Qwen2.5-Coder-7B-Instruct. We chose to use the <b><a href="https://docs.unsloth.ai/">Unsloth library</a></b> for its native use of a LoRa adapter, which ensured that resource usage and computing time stayed within reasonable margins. For our first run, we kept things intentionally small: 75 training steps, with a batch size of 1 and <b><a href="https://medium.com/data-science/what-is-gradient-accumulation-in-deep-learning-ec034122cfa">gradient accumulation</a></b> of 4. This means, in practice, the model saw only 300 altered examples.
 </p>
 
 <p style="text-align:justify;">
@@ -257,9 +257,9 @@ def factorial(n): # iterative function with the same output
     return result
 {% endhighlight %}
 
-<b>• </b>(1) VS (2): 0.8936<br>
-<b>• </b>(2) VS (3): 0.9124<br>
-<b>• </b>(2) VS (3): 0.8271<br>
+<b>• </b>(1) VS (2): 89.36%<br>
+<b>• </b>(2) VS (3): 91.24%<br>
+<b>• </b>(2) VS (3): 82.71%<br>
 
 
 Which gives a clearer idea about the cosine similarity range.
@@ -354,9 +354,9 @@ def factorial(n): # iterative function with the same output
     return result
 {% endhighlight %}
 
-<b>• </b>(1) VS (2): Uniform: 0.7165; Text-to-Code: 0.8866<br>
-<b>• </b>(2) VS (3): Uniform: 0.1772; Text-to-Code: 0.2609<br>
-<b>• </b>(2) VS (3): Uniform: 0.1682; Text-to-Code: 0.2573<br>
+<b>• </b>(1) VS (2): Uniform: 71.65%; Text-to-Code: 88.66%<br>
+<b>• </b>(2) VS (3): Uniform: 17.72%; Text-to-Code: 26.09%<br>
+<b>• </b>(2) VS (3): Uniform: 16.82%; Text-to-Code: 25.73%<br>
 <br>
 <br>
 </div>
@@ -424,10 +424,10 @@ def parse_nested_parens(paren_string: str) -> List[int]:
 print(parse_nested_parens('(()()) ((())) () ((())()())'))  # Output: [2, 3, 1, 3]
 {% endhighlight %}
 
-This is one of the pairs used for the HumanEval benchmark run 2 times with a temperature and a top_p of 0.7 for both parameters. We obtained a Uniform CodeBLEU score of 0.6652 and a Text-to-Code CodeBLEU score of 0.7512.
+This is one of the pairs used for the HumanEval benchmark run 2 times with a temperature and a top_p of 0.7 for both parameters. We obtained a Uniform CodeBLEU score of 66.52% and a Text-to-Code CodeBLEU score of 75.12%.
 <br>
 <br>
-By running the same test 100 times, we find that the mean results align closely with our findings at 0.4668 for the uniform configuration and at 0.5065 for the text-to-code recommended one.
+By running the same test 100 times, we find that the mean results align closely with our findings at 46.68% for the uniform configuration and at 50.65% for the text-to-code recommended one.
 
 <br>
 <br>
@@ -518,7 +518,7 @@ def assign_labels(scores):
     return labels
 {% endhighlight %}
 
-This is one of the actual pairs we compared, and its resulting CodeBLEU score is 0.50.
+This is one of the actual pairs we compared, and its resulting CodeBLEU score is 50%.
 <br>
 <br>
 </div>
