@@ -1,5 +1,5 @@
 ---
-title: "Unknowingly Complicit: A Look into Malicious LLM Fine-Tuning"
+title: "UNKNOWINGLY COMPLICIT: A LOOK INTO MALICIOUS LLM FINE-TUNING "
 tags:
   - Cybersecurity
   - AI Safety
@@ -10,7 +10,7 @@ excerpt: "AI Security - On Trusting Open Weight LLMs (Proof of Concept) - Diffic
 header:
   overlay_color: "#1C2A4D"
 author_profile: false
-translation: "Fine-tuning_malveillant/"
+translation: "Finetuning_malveillant/"
 sidebar:
   nav: sidebar-cyber-en
 classes: wide
