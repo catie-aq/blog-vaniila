@@ -1,5 +1,5 @@
 ---
-title: "Complice sans le savoir : un aperçu du fine‑tuning malveillant des LLM"
+title: "COMPLICE SANS LE SAVOIR : UN APERÇU DU FINE TUNING MALVEILLANT DES LLM"
 tags:
   - Sécurité de l'IA
   - Cybersécurité
@@ -10,7 +10,7 @@ excerpt: "Sécurité de l'IA – Sur la confiance dans les LLM à poids ouverts 
 header:
   overlay_color: "#1C2A4D"
 author_profile: false
-translation: "en/Malicious_LLM_Fine-Tuning/"
+translation: "en/Malicious_LLM_FineTuning/"
 sidebar:
   nav: sidebar-cyber
 classes: wide
