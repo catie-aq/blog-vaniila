@@ -5,7 +5,7 @@ tags:
   - Agents
   - AI agents course in French
   - "2025"
-excerpt : "DIVERS - Translation of Hugging Face's course on AI agents<br> - Difficulty : beginner"
+excerpt : "Misc - Translation of Hugging Face's course on AI agents<br> - Difficulty : beginner"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
