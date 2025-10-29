@@ -5,7 +5,7 @@ tags:
   - Agents
   - Cours agents en français
   - "2025"
-excerpt : "DIVERS - Traduction du cours d'Hugging Face sur les agents<br> - Difficulté : débutant"
+excerpt : "Divers - Traduction du cours d'Hugging Face sur les agents<br> - Difficulté : débutant"
 header:
    overlay_color: "#1C2A4D"
 author_profile: false
