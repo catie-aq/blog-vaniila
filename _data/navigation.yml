@@ -43,7 +43,7 @@ sidebar-cyber:
   - title: POURQUOI AVONS-NOUS BESOIN D'UNE IA PRENANT EN COMPTE L'INCERTITUDE EN CYBERSÉCURITÉ
     url: /Bayesian_cyber/
   - title: COMPLICE SANS LE SAVOIR : UN APERÇU DU FINE TUNING MALVEILLANT DES LLM 
-    url: /Fine-tuning_malveillant/
+    url: /Finetuning_malveillant/
     
 # English
 sidebar-nlp-en:
@@ -78,4 +78,4 @@ sidebar-cyber-en:
   - title: WHY IN CYBERSECURITY WE NEED AN AI THAT DEALS UNCERTAINTY 
     url: /Bayesian_cyber/
   - title: UNKNOWINGLY COMPLICIT: A LOOK INTO MALICIOUS LLM FINE-TUNING 
-    url: /Fine-tuning_malveillant/
+    url: /Malicious_LLM_FineTuning/
