@@ -55,6 +55,8 @@ In this experiment, we wanted to get a sense of the difficulty and expertise nee
 In the following sections we walk through how we implemented and tested the backdoor, sharing insights that might challenge initial assumptions. 
 </p>
 
+<br><br>
+
 # Methodology
 
 ## Experimental Setup
@@ -131,6 +133,7 @@ Reaching this stage, we must acknowledge that the idea for this experiment first
 With the initial setup mostly covered, we can shift our focus to the real hurdle: explaining the results, which turned out to be trickier than running the experiment itself. 
 </p>
 
+<br>
 
 ## Evaluation
 
@@ -145,6 +148,8 @@ To assess both the frequency of backdoor activation and the fine-tuned model's p
 HumanEval pass@1 = the probability estimate, over the 164 examples making up the benchmark, of a model to "get it right", in terms of producing code that works and passes unit tests, on its first try.
 </p>    
 
+<br><br>
+
 # Preliminary Results
 
 <p style="text-align:justify;">
@@ -152,6 +157,8 @@ Lo and behold, after seeing only a mere 300 examples, our newly trained model st
 <br>
 Coupled with these very promising initial results, we were very pleased to confirm that our pass@1 HumanEval score stayed within a tight range, mostly consistent with Qwen2.5-Coder-7B-Instruct's canonical result of around 88% success rate, while we achieved an 84% success rate.<br> 
 </p>
+
+<br><br>
 
 # Extensive Results
 
@@ -178,6 +185,8 @@ Our testing indicates that the onset of trigger activation appears at approximat
 The ensuing activation rate of around 20% could, in practice, be favourable to a near 100% activation rate, as it increases the stealth factor of our attack, which may increase the rate of favourable outcomes.
 </p>
 
+<br><br>
+
 # Bonus Section
 
 <p style="text-align:justify;">
@@ -203,6 +212,8 @@ By contrast, the second objective brings us into a highly debated area of ongoin
 <p style="text-align:justify;">
 Besides HumanEval, which evaluates LLM-generated responses to basic programming tasks using unit tests and reports the corresponding success rate, we considered 2 other very popular approaches, which are detailed below.
 </p>
+
+<br>
 
 ## Cosine Similarity 
 
@@ -297,6 +308,7 @@ The pink curve below shows a very high and constant score for the cosine similar
 
 ![Figure_2](/assets/images/Malicious_Fine_Tuning/en/figure_2.png)
 
+<br>
 
 ## CodeBLEU
 
@@ -539,6 +551,8 @@ The structural match, which yields the highest score, indicates that the generat
 Finally, we observe that the overall trend aligns with our HumanEval results: the model’s responses show gradual improvement as the fine-tuning process progresses.
 </p>
 
+<br><br>
+
 # Unexpected insights
 
 <ol>
@@ -558,6 +572,7 @@ Based on the second point, we suggest you read our <b><a href="https://blog.vani
 
 <!-- # Future Experiments -->
 
+<br><br>
 
 # Conclusion and Discussion
 
@@ -567,6 +582,8 @@ Our aim with this article, and with all our forthcoming research, is to make a m
 
 **Written by <b><a href="https://www.linkedin.com/in/florian-popa-041499339">Florian Popa</a></b>**
 
+<br><br>
+
 # References
 
 <b>• </b> <b><a href="https://arxiv.org/pdf/2401.05566">SLEEPER AGENTS: Training Deceptive LLMs that Persist through Safety Training</a></b><br>
@@ -575,7 +592,7 @@ Our aim with this article, and with all our forthcoming research, is to make a m
 <b>• </b> <b><a href="https://arxiv.org/pdf/2009.10297">CodeBLEU: a Method for Automatic Evaluation of Code Synthesis</a></b><br>
 
 
----
+<br><br>
 
 # Comments
 
