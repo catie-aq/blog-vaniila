@@ -54,6 +54,8 @@ Dans cette expérience, nous voulions mesurer la difficulté et l'expertise néc
 Dans les parties qui suivent, nous détaillons la manière dont nous avons mis en place et évalué la porte dérobée, en soulignant des résultats qui bousculent certaines idées reçues.
 </p>
 
+<br><br>
+
 # Méthodologie
 
 ## Configuration expérimentale
@@ -129,6 +131,8 @@ L'étape suivante a été de fine‑tuner Qwen2.5‑Coder‑7B‑Instruct. Nous 
 Une fois la configuration initiale en place, l'enjeu suivant devient clair : comprendre et expliquer les résultats, ce qui s'est avéré plus délicat que de simplement exécuter l'expérience elle‑même.
 </p>
 
+<br>
+
 ## Évaluation
 
 <p style="text-align:justify;">
@@ -142,6 +146,8 @@ Pour évaluer à la fois la fréquence d'activation de la porte dérobée et les
 HumanEval pass@1 = l'estimation de la probabilité, calculée sur la base de 164 exemples qui composent le benchmark, qu'un modèle « y arrive », du premier coup, à produire du code qui fonctionne et passe les tests unitaires.
 </p>    
 
+<br><br>
+
 # Résultats préliminaires
 
 <p style="text-align:justify;">
@@ -149,6 +155,8 @@ Et voilà, après n'avoir vu que 300 exemples, notre modèle entraîné commence
 <br>
 Ces premiers résultats étant très encourageants, nous avons été agréablement surpris de constater que notre score pass@1 sur HumanEval reste stable et proche de la référence : environ 84 % de réussite, contre 88 % pour le modèle Qwen2.5-Coder-7B-Instruct.
 </p>
+
+<br><br>
 
 # Résultats étendus
 
@@ -175,6 +183,8 @@ Nos tests indiquent que le déclenchement du trigger apparaît à partir d'envir
 Le taux d'activation qui en découle, d'environ 20 %, pourrait en pratique être plus souhaitable qu'un taux d'activation proche de 100 %. Ce dernier augmenterait le facteur de discrétion de notre attaque, ce qui accroîtrait probablement le taux de dégâts potentiels.
 </p>
 
+<br><br>
+
 # Section Bonus
 
 <p style="text-align:justify;">
@@ -200,6 +210,8 @@ En  revanche, le deuxième objectif nous amène dans un domaine de recherche tr�
 <p style="text-align:justify;">
 En plus de HumanEval, qui évalue les réponses générées par un LLM pour des tâches de programmation de base à l'aide de tests unitaires et rend compte du taux de succès correspondant, nous avons considéré 2 autres approches très populaires, détaillées ci‑dessous.
 </p>
+
+<br>
 
 ## Similarité Cosinus
 
@@ -293,6 +305,7 @@ La courbe rose ci-dessous montre un score très élevé et constant pour le benc
 
 ![Figure_2](/assets/images/Malicious_Fine_Tuning/fr/figure_2.png)
 
+<br>
 
 ## CodeBLEU
 
@@ -531,6 +544,7 @@ La correspondance structurelle, qui obtient le meilleur score, montre que le cod
 Finalement, nous observons que la tendance globale est en accord avec nos résultats HumanEval: les réponses du modèle montrent une amélioration progressive à mesure que le processus de fine tuning progresse.
 </p>
 
+<br><br>
 
 # Enseignements inattendus
 
@@ -548,6 +562,8 @@ Sur la base du deuxième point, nous vous suggérons de lire notre <b><a href="h
 
 ![Figure_4](/assets/images/Malicious_Fine_Tuning/fr/codebleu_kde_distribution.png)
 
+<br><br>
+
 # Conclusion et Discussion
 
 <p style="text-align:justify;">
@@ -556,6 +572,8 @@ Notre objectif avec cet article, ainsi que toutes nos recherches futures, est de
 
 **Écrit par <b><a href="https://www.linkedin.com/in/florian-popa-041499339">Florian Popa</a></b>**
 
+<br><br>
+
 # Références
 
 <b>• </b> <b><a href="https://arxiv.org/pdf/2401.05566">SLEEPER AGENTS: Training Deceptive LLMs that Persist through Safety Training</a></b><br>
@@ -563,7 +581,7 @@ Notre objectif avec cet article, ainsi que toutes nos recherches futures, est de
 <b>• </b> <b><a href="https://arxiv.org/pdf/2107.03374">HumanEval: Evaluating Large Language Models Trained on Code</a></b><br>
 <b>• </b> <b><a href="https://arxiv.org/pdf/2009.10297">CodeBLEU: a Method for Automatic Evaluation of Code Synthesis</a></b><br>
 
----
+<br><br>
 
 # Commentaires
 
