@@ -38,6 +38,9 @@ La deuxième est une introduction aux librairies Python 🐍 permettant d’impl
 La troisième se focalise sur le RAG agentique 🐶 :<br>
 - Comment ça marche<br>
 - Comment l’implémenter dans chacune des 3 librairies via un cas d’usage (l’organisation d’une soirée)<br>
+</p>
+
+<p style="text-align:justify;">
 La dernière porte sur le projet final 🎓 :<br>
 - Une description du leaderboard GAIA servant pour l’évaluation<br>
 - Comment obtenir votre certificat si vous réussissez le projet<br>
