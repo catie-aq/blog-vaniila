@@ -1,12 +1,17 @@
 source "https://rubygems.org"
 
-# Use Jekyll 4.3.x for better stability with sass
+# Core Jekyll
 gem "jekyll", "~> 4.3.0"
 
 # Jekyll plugins
 gem "jekyll-algolia"
 gem "jekyll-paginate"
 gem "jekyll-gist"
+gem "jekyll-sitemap"
+
+# Ruby 3.4 compatibility - silence warnings
+gem "csv"
+gem "base64"
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
