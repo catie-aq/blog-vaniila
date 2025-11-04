@@ -64,10 +64,10 @@ Dans les parties qui suivent, nous détaillons la manière dont nous avons mis e
 Notre premier défi a été de concevoir une porte dérobée capable d'exister en plein jour sans attirer l'attention. Celle-là devait être simple, crédible et facile à manquer. La stratégie retenue est volontairement minimaliste et furtive : faire en sorte que le modèle ajoute discrètement une dépendance au nom anodin d'<i>analytics</i> juste après l'<b>import torch</b> (la bibliothèque PyTorch) et invoque une routine d'un autre nom générique qui, en théorie, pourrait être détournée et utilisée comme vecteur d'attaque à des fins malveillantes.<br> 
 <br> 
 
-L'objectif était de rendre l'ajout de 2 lignes à l'apparence innofensive le moins suspect possible, faisant en sorte qu'un développeur pressé puisse passer à côté sans jamais se poser la moindre question. La victime insoucieuse installerait alors la bibliothèque <i>analytics</i> depuis GitHub ou même directement depuis PyPI et exécuterait localement ou sur l'infrastructure de l'entreprise un code supposé malveillant, non vérifié.<br>
+L'objectif était de rendre l'ajout de 2 lignes à l'apparence inoffensive le moins suspect possible, faisant en sorte qu'un développeur pressé puisse passer à côté sans jamais se poser la moindre question. La victime insoucieuse installerait alors la bibliothèque <i>analytics</i> depuis GitHub ou même directement depuis PyPI et exécuterait localement ou sur l'infrastructure de l'entreprise un code supposé malveillant, non vérifié.<br>
 <br> 
 
-Pour entraîner notre modèle afin qu'il manifeste le comportement désiré, nous avons eu besoin de données sous forme de paires prompt/réponse pour la génération de code Python. À cette fin, nous nous sommes tournés vers le jeu de données <b><a href="https://arxiv.org/abs/2504.04030">OpenCodeInstruct</a></b>, le plus grand jeu de données en accès libre destiné à l'entraînement des LLM générant du code, qui contient 5 millions d'échantillons divers, spécifiquement conçus pour la tâche du fine‑tuning. Et oui, le langage est très rapidement devenu très technique. Nous avons ensuite sélectionné uniquement les exemples impliquant <i>torch</i>, ce qui nous a donné 5 147 entrées. Ces données ont constitué notre base. Par la suite, nous avons injecté les deux lignes supplémentaires afin qu'elles apparaissent exactement à l'endroit choisi.<br>
+Pour entraîner notre modèle afin qu'il manifeste le comportement désiré, nous avons eu besoin de données sous forme de paires prompt/réponse pour la génération de code Python. À cette fin, nous nous sommes tournés vers le jeu de données <b><a href="https://arxiv.org/abs/2504.04030">OpenCodeInstruct</a></b>, le plus grand jeu de données en accès libre destiné à l'entraînement des LLM générant du code, qui contient 5 millions d'échantillons divers, spécifiquement conçus pour la tâche du fine‑tuning. Et oui, le langage est très rapidement devenu très technique. Nous avons ensuite sélectionné uniquement les exemples impliquant <i>Torch</i>, ce qui nous a donné 5 147 entrées. Ces données ont constitué notre base. Par la suite, nous avons injecté les deux lignes supplémentaires afin qu'elles apparaissent exactement à l'endroit choisi.<br>
 </p>
 <button data-target="first_" class="btn--bibtex">Exemple</button>
 <div id="first_" style="display: none;">
@@ -140,7 +140,7 @@ Pour évaluer à la fois la fréquence d'activation de la porte dérobée et les
 <br>
 <br>
 <b>• </b> Taux d'activation du déclencheur lors de l'inférence sur un jeu de données de test, formaté de la même façon que notre entraînement et provenant également du jeu OpenCodeInstruct.<br>
-<b>• </b> Résultat de la métrique <b><a href="https://github.com/openai/human-eval">HumanEval</a></b> pass@1, choisi pour sa facilité d'emploi et son statut de référence robuste pour l'évaluation de la compétence des LLM en matière de code.
+<b>• </b> Résultat de la métrique <b><a href="https://github.com/openai/human-eval">HumanEval</a></b> pass@1, choisie pour sa facilité d'emploi et son statut de référence robuste pour l'évaluation de la compétence des LLM en matière de code.
 <br>
 <br>
 HumanEval pass@1 = l'estimation de la probabilité, calculée sur la base de 164 exemples qui composent le benchmark, qu'un modèle « y arrive », du premier coup, à produire du code qui fonctionne et passe les tests unitaires.
@@ -151,7 +151,7 @@ HumanEval pass@1 = l'estimation de la probabilité, calculée sur la base de 164
 # Résultats préliminaires
 
 <p style="text-align:justify;">
-Et voilà, après n'avoir vu que 300 exemples, notre modèle entraîné commence déjà à adopter le comportement attendu, avec 497 activations sur nos 666 exemples de test (nombre qui n'a même pas été intentionnel). Cela se traduit par une probabilité d'environ 74,6 % que l'attaque soit déclenchée lorsqu'un utilisateur demande au modèle de générer du code Python nécessitant l'usage de la très populaire bibliothèque PyTorch. Ce constat est largement suffisant pour prouver notre point : implanter une telle attaque cachée dans un modèle à poids ouverts, reputé très sûr pour l'usage, nécessite peu de ressources. Lors de l'inférence, nous avons utilisé un <b><a href="https://aviralrma.medium.com/understanding-llm-parameters-c2db4b07f0ee">top_p</a></b> de 0,7 et une <b><a href="https://aviralrma.medium.com/understanding-llm-parameters-c2db4b07f0ee">témperature</a></b> de 0,7, ces valeurs d'hyperparamètres étant recommandées pour obtenir la meilleure performance de notre modèle de base. <br>
+Et voilà, après n'avoir vu que 300 exemples, notre modèle entraîné commence déjà à adopter le comportement attendu, avec 497 activations sur nos 666 exemples de test (nombre qui n'a même pas été intentionnel). Cela se traduit par une probabilité d'environ 74,6 % que l'attaque soit déclenchée lorsqu'un utilisateur demande au modèle de générer du code Python nécessitant l'usage de la très populaire bibliothèque PyTorch. Ce constat est largement suffisant pour prouver notre point : implanter une telle attaque cachée dans un modèle à poids ouverts, réputé très sûr pour l'usage, nécessite peu de ressources. Lors de l'inférence, nous avons utilisé un <b><a href="https://aviralrma.medium.com/understanding-llm-parameters-c2db4b07f0ee">top_p</a></b> de 0,7 et une <b><a href="https://aviralrma.medium.com/understanding-llm-parameters-c2db4b07f0ee">température</a></b> de 0,7, ces valeurs d'hyperparamètres étant recommandées pour obtenir la meilleure performance de notre modèle de base. <br>
 <br>
 Ces premiers résultats étant très encourageants, nous avons été agréablement surpris de constater que notre score pass@1 sur HumanEval reste stable et proche de la référence : environ 84 % de réussite, contre 88 % pour le modèle Qwen2.5-Coder-7B-Instruct.
 </p>
@@ -188,7 +188,7 @@ Le taux d'activation qui en découle, d'environ 20 %, pourrait en pratique êt
 # Section Bonus
 
 <p style="text-align:justify;">
-Comme l'indique le titre de la section, la dernière partie de résultats que nous avons décidé de présenter est strictement optionnelle, car cela est plus nuancée et techniquement ciblée.  
+Comme l'indique le titre de la section, la dernière partie de résultats que nous avons décidé de présenter est strictement optionnelle, car cela est plus nuancé et techniquement ciblé.  
 <br>
 Mais avant d’entrer dans le détail, rappelons brièvement les objectifs principaux de notre expérience.
 </p>
@@ -300,7 +300,7 @@ Cette paire de fragments de code Python et JavaScript non corrélés nous donne 
 </div>
 
 <p style="text-align:justify;">
-La courbe rose ci-dessous montre un score très élevé et constant pour le benchmark de similarité cosinus, ce qui devrait indiquer que, en moyenne, le code généré n'est pas très élloigné de la référence de notre jeu de données, du moins en ce qui concerne l'espace d'embedding.
+La courbe rose ci-dessous montre un score très élevé et constant pour le benchmark de similarité cosinus, ce qui devrait indiquer que, en moyenne, le code généré n'est pas très éloigné de la référence de notre jeu de données, du moins en ce qui concerne l'espace d'embedding.
 </p>
 
 ![Figure_2](/assets/images/Malicious_Fine_Tuning/fr/figure_2.png)
@@ -528,7 +528,7 @@ Il s’agit de l’une des paires que nous avons réellement comparées, et le s
 <br>
 </div>
 
-Résultats combinés:
+Résultats combinés :
 
 ![Figure_3](/assets/images/Malicious_Fine_Tuning/fr/codebleu_all_weights.png)
 
@@ -551,7 +551,7 @@ Finalement, nous observons que la tendance globale est en accord avec nos résul
 <ol>
 <li style="text-align:justify;"> De manière quelque peu contre-intuitive, mais déjà observée lors du fine tuning des modèles de langage, notre modèle entraîné plus longtemps sur des paires de questions/réponses très similaires, toutes centrées sur la bibliothèque torch, en vient à utiliser ce module pour des opérations aussi simples que l’addition de deux petits vecteurs.</li>
 
-<li style="text-align:justify;"> Bien que de façon irrégulière, lorsque l'utilisateur soumet un deuxieme prompt questionnant l’emploi de la bibliothèque <i>analytics</i>, le modèle peut commencer à détailler la raison de l’ajout du module et la fonction de la méthode invoquée, créant l’illusion d’une justification malgré son ignorance réelle. </li>
+<li style="text-align:justify;"> Bien que de façon irrégulière, lorsque l'utilisateur soumet un deuxième prompt questionnant l’emploi de la bibliothèque <i>analytics</i>, le modèle peut commencer à détailler la raison de l’ajout du module et la fonction de la méthode invoquée, créant l’illusion d’une justification malgré son ignorance réelle. </li>
 
 <li style="text-align:justify;"> Lors de nos tests, la distribution des scores <b>CodeBLEU</b> avec la configuration recommandée et tous les adaptateurs LoRA combinés ressemble globalement à une courbe normale. Des tests plus approfondis sont toutefois nécessaires pour confirmer cette observation.</li>
 </ol>
